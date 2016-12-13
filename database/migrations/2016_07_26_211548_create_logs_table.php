@@ -17,9 +17,12 @@ class CreatelogsTable extends Migration
             $table->increments('id');
             $table->string('mensaje');
             $table->string('puntos');
-            $table->integer('estudiante_id');
-            $table->integer('respuesta_id');
-            $table->integer('caso_id');
+            $table->integer('estudiante_id')->unsigned();
+            $table->foreign('estudiante_id')->references('id')->on('estudiantes');
+            $table->integer('respuesta_id')->unsigned();
+            $table->foreign('respuesta_id')->references('id')->on('respuestas');
+            $table->integer('caso_id')->unsigned();
+            $table->foreign('caso_id')->references('id')->on('casos');
             $table->timestamps();
             $table->softDeletes();
         });

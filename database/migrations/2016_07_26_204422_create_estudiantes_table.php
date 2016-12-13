@@ -15,9 +15,12 @@ class CreateestudiantesTable extends Migration
     {
         Schema::create('estudiantes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('materia_id');
-            $table->integer('persona_id');
-            $table->integer('periodo_id');
+            $table->integer('materia_id')->unsigned();
+            $table->foreign('materia_id')->references('id')->on('materias');
+            $table->integer('persona_id')->unsigned();
+            $table->foreign('persona_id')->references('id')->on('personas');
+            $table->integer('periodo_id')->unsigned();
+            $table->foreign('periodo_id')->references('id')->on('periodos');
             $table->timestamps();
             $table->softDeletes();
         });

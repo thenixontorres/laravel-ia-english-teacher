@@ -16,8 +16,10 @@ class CreatemateriasTable extends Migration
         Schema::create('materias', function (Blueprint $table) {
             $table->increments('id');
             $table->string('materia');
-            $table->integer('seccion_id');
-            $table->integer('persona_id');
+            $table->integer('seccion_id')->unsigned();
+            $table->foreign('seccion_id')->references('id')->on('seccions');
+            $table->integer('persona_id')->unsigned();
+            $table->foreign('persona_id')->references('id')->on('personas');
             $table->timestamps();
             $table->softDeletes();
         });

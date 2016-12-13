@@ -15,7 +15,8 @@ class CreatecontextosTable extends Migration
     {
         Schema::create('contextos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('caso_id');
+            $table->integer('caso_id')->unsigned();
+            $table->foreign('caso_id')->references('id')->on('casos');
             $table->string('contexto');
             $table->timestamps();
             $table->softDeletes();

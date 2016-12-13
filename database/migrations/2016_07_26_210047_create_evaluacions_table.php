@@ -17,7 +17,8 @@ class CreateevaluacionsTable extends Migration
             $table->increments('id');
             $table->string('titulo');
             $table->enum('tipo', ['Practica', 'Evaluacion']);
-            $table->integer('materia_id');
+            $table->integer('materia_id')->unsigned();
+            $table->foreign('materia_id')->references('id')->on('materias');
             $table->enum('estado', ['Activo', 'Inactivo']);
             $table->timestamps();
             $table->softDeletes();

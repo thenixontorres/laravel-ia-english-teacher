@@ -16,7 +16,8 @@ class CreatecasosTable extends Migration
         Schema::create('casos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('enunciado');
-            $table->integer('evaluacion_id');
+            $table->integer('evaluacion_id')->unsigned();
+            $table->foreign('evaluacion_id')->references('id')->on('evaluacions');
             $table->timestamps();
             $table->softDeletes();
         });

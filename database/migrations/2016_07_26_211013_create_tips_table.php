@@ -16,7 +16,9 @@ class CreatetipsTable extends Migration
         Schema::create('tips', function (Blueprint $table) {
             $table->increments('id');
             $table->string('tip');
-            $table->integer('contexto_id');
+            $table->integer('contexto_id')->unsigned();
+            $table->foreign('contexto_id')->references('id')->on('contextos');
+
             $table->timestamps();
             $table->softDeletes();
         });

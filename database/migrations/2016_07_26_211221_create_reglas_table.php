@@ -17,8 +17,10 @@ class CreatereglasTable extends Migration
             $table->increments('id');
             $table->string('regla');
             $table->string('puntos');
-            $table->integer('contexto_id');
-            $table->integer('apuntador_id');
+            $table->integer('contexto_id')->unsigned();
+            $table->foreign('contexto_id')->references('id')->on('contextos');
+            $table->integer('apuntador_id')->unsigned();
+            $table->foreign('apuntador_id')->references('id')->on('contextos');
             $table->timestamps();
             $table->softDeletes();
         });

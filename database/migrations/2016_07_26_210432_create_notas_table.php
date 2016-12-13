@@ -16,8 +16,10 @@ class CreatenotasTable extends Migration
         Schema::create('notas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('nota');
-            $table->integer('evaluacion_id');
-            $table->integer('estudiante_id');
+            $table->integer('evaluacion_id')->unsigned();
+            $table->foreign('evaluacion_id')->references('id')->on('evaluacions');
+            $table->integer('estudiante_id')->unsigned();
+            $table->foreign('estudiante_id')->references('id')->on('estudiantes');
             $table->timestamps();
             $table->softDeletes();
         });
