@@ -55,7 +55,7 @@ class respuesta extends Model
     {
         return $this->hasMany('App\Models\log');
     }
-     //BelongsTo----------------------------------
+    //BelongsTo----------------------------------
     public function regla()
     {
         return $this->BelongsTo('App\Models\regla');
