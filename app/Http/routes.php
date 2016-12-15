@@ -11,10 +11,28 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
 });
+*/
 
+Route::get('/', [
+	    'uses'  =>  'homeController@index',
+	    'as'    =>  'home',
+	]);
+
+//Route::get('/login', [
+    //'uses'  => 'Auth\AuthController@getLogin',
+    //'as'    => 'auth.login'
+//]);
+//Route::post('/login', [
+  //  'uses'  => 'Auth\AuthController@postLogin',
+   // 'as'    => 'auth.login'
+//]);
+//Route::get('/logout', [
+  //  'uses'  => 'Auth\AuthController@getLogout',
+   // 'as'    => 'auth.logout'
+//]);
 
 /*
 |--------------------------------------------------------------------------

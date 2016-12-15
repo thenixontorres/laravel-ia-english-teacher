@@ -1,0 +1,145 @@
+
+h1,h2,h3,h4,h5,h6{
+	font-family: Helvetica Neue LT Pro;
+}
+
+*{
+	font-family: arial;
+}
+
+.header{
+	padding: 20px 0;
+}
+
+.logoSafetyMaxyma{
+	width: 300px;
+}
+
+.navbar-social-phone{
+	display: none;
+}
+
+/*Estilos para el menú*/
+
+	.navbar-toggle{
+		border: none;
+	}
+
+	.navbar-inverse .navbar-toggle:hover, 
+	.navbar-inverse .navbar-toggle:focus{
+		background: transparent;
+	}
+
+.navbar-inverse {
+    margin: 0!important;
+    border: 0!important;
+	background-color: #0000a0;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #FFF;  
+    padding: 20px 10px;
+    border-bottom: 4px solid #0000a0;
+    transition: all .3s; 
+}
+
+.navbar-inverse  .navbar-nav > li > a:hover{
+    color: #f1f1f1;
+    border-bottom: 4px solid #eee;
+}
+
+	.navbar-social-pc > li > a{
+		font-size: 30px;
+		padding: 15px 10px!important;
+	}
+
+	.navbar-social-pc > li > a:hover{
+		border-bottom: 4px solid transparent!important;
+	}
+
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+	border-color: transparent;
+	border: none;
+}
+
+/*Fin estilos para el menú*/
+
+
+.scroll-up{
+    position: fixed;
+    display: none;
+    z-index: 999;
+    bottom: 2em;
+    right: 2em;
+}
+
+.scroll-up a {
+    background-color: rgba(135, 135, 135, 0.5);
+    display: block;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    color: #fff;
+    font-size: 15px;
+    line-height: 30px;
+}
+
+
+@media (max-width: 1199px){
+
+	.navbar-inverse .navbar-nav > li > a {
+	    padding: 15px 5px;
+	}
+
+	.navbar-social-pc > li > a{
+		padding: 10px 5px!important;
+	}
+	
+}
+
+@media (max-width: 991px){
+
+	.navbar-inverse .navbar-nav > li > a {
+	    padding: 15px 5px;
+	    font-size: 10px;
+	}
+
+	.navbar-social-pc > li > a{
+		padding: 13px 5px!important;
+		font-size: 20px!important;
+	}
+	
+}
+
+@media (max-width: 767px){
+
+	.logoSafetyMaxyma{
+		width: 250px;
+	}
+
+	.navbar-inverse .navbar-nav > li > a {
+	    font-size: 20px;
+	}
+
+	.navbar-social-pc{
+		display: none;
+	}
+
+	.navbar-social-phone{
+		display: inline-block;
+	}
+
+	.navbar-social-phone li{
+    	list-style: none;
+    	display: inline-block;
+    	margin-top: 12px;
+    }
+
+    .navbar-social-phone li a{
+    	color: #FFF;
+    	text-decoration: none;
+    	font-size: 20px;
+    	padding: 15px 10px!important;
+    }
+}
