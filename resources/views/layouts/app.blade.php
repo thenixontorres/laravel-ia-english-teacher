@@ -5,8 +5,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<title>@yield('titulo', 'Bienvenido')</title>
-		<link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" />
-    	<link rel="apple-touch-icon" href="{{ asset('img/favicon.png') }}" />
+		<link rel="shortcut icon" href="{{ asset('img/logo.png') }}" />
+    	<link rel="apple-touch-icon" href="{{ asset('img/logo.png') }}" />
    	 	<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     	<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     	<link rel="stylesheet" href="{{ asset('css/icon.css') }}">
@@ -18,10 +18,10 @@
 		@yield('css')
 	</head>
 	<body>
-		@include('layouts.elements.navbar')	
 		<div class="container">
+			@include('layouts.elements.navbar')	
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-10 col-md-offset-1">
 					@yield('content')	
 				</div>
 			</div>

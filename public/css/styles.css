@@ -8,9 +8,29 @@
     src: url(../fonts/CarnevaleeFreakShow/CarnevaleeFreakShow.ttf) format("truetype");
 }
 
+@font-face {
+    font-family: "LoveSweets";
+    src: url(../fonts/LoveSweets/LoveSweets.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "PassionTea";
+    src: url(../fonts/PassionTea/PassionTea.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "QUIGLEYW";
+    src: url(../fonts/QUIGLEYW/QUIGLEYW.TTF) format("truetype");
+}
+
+@font-face {
+    font-family: "TeamSpirit";
+    src: url(../fonts/TeamSpirit/TeamSpirit.ttf) format("truetype");
+}
+
 
 body{ 
-	font-family: "CarnevaleeFreakShow";
+	font-family: "LoveSweets";
 	padding-bottom: 30px;
 	padding-top: 70px; 
 	background-color: #f2eee5;
@@ -25,8 +45,8 @@ h1, h2, h3, h4, h5, h6{
 	padding: 20px 0;
 }
 
-.logoSafetyMaxyma{
-	width: 300px;
+.logo{
+	width: 50px;
 }
 
 .navbar-social-phone{
@@ -52,6 +72,7 @@ h1, h2, h3, h4, h5, h6{
 
 .navbar-inverse .navbar-nav > li > a {
     color: #efebe0;  
+    font-family: "CarnevaleeFreakShow";
     padding: 20px 10px;
     border-bottom: 4px solid #efebe0;
     transition: all .3s; 
@@ -61,7 +82,6 @@ h1, h2, h3, h4, h5, h6{
     color: #78a6a4;
     border-bottom: 4px solid #78a6a4;
 }
-
 	.navbar-social-pc > li > a{
 		font-size: 30px;
 		padding: 15px 10px!important;
@@ -99,6 +119,35 @@ h1, h2, h3, h4, h5, h6{
     line-height: 30px;
 }
 
+.img-article{
+	height: 30%;
+	width: 30%;
+}
+
+.indicador{
+	color: #efebe0;
+	text-align: center;
+}
+.indicador-azul{
+	background-color: #78a6a4;
+}
+.indicador-rojo{
+	background-color: #cb2f33;
+}
+.indicador-amarillo{
+	background-color: #c8a418;
+}
+
+.panel-header{
+	background-color: #251313;
+	color: #efebe0;  
+	font-family: "CarnevaleeFreakShow";
+	text-align: center;
+}
+.panel-header:hover{
+    color: #78a6a4;
+    border-bottom: 4px solid #78a6a4;
+}
 
 @media (max-width: 1199px){
 
@@ -128,7 +177,7 @@ h1, h2, h3, h4, h5, h6{
 
 @media (max-width: 767px){
 
-	.logoSafetyMaxyma{
+	.logo{
 		width: 250px;
 	}
 

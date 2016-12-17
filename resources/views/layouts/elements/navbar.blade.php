@@ -9,11 +9,9 @@
             </button>
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
-            <ul class="nav navbar-nav  navbar-social-pc">
-				<li><a href="#"><i class="icon-facebook icon-nav"></i></a></li>
-				<li><a href="#"><i class="icon-twitter icon-nav"></i></a></li>
-				<li><a href="#"><i class="icon-instagram icon-nav"></i></a></li>
-				<li><a href="#"><i class="icon-youtube icon-nav"></i></a></li>
+            <ul class="nav navbar-nav">
+				<li><img class="logo" src="{{ asset('img/logo.png') }}" alt="">
+                </li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 	            <li>
