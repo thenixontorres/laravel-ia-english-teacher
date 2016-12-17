@@ -1,11 +1,25 @@
-
-h1,h2,h3,h4,h5,h6{
-	font-family: Helvetica Neue LT Pro;
+@font-face {
+    font-family: "BrookeS8";
+    src: url(../fonts/BrookeS8/BrookeS8.ttf) format("truetype");
 }
 
-*{
-	font-family: arial;
+@font-face {
+    font-family: "CarnevaleeFreakShow";
+    src: url(../fonts/CarnevaleeFreakShow/CarnevaleeFreakShow.ttf) format("truetype");
 }
+
+
+body{ 
+	font-family: "CarnevaleeFreakShow";
+	padding-bottom: 30px;
+	padding-top: 70px; 
+	background-color: #f2eee5;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: "CarnevaleeFreakShow";
+}
+
 
 .header{
 	padding: 20px 0;
@@ -33,19 +47,19 @@ h1,h2,h3,h4,h5,h6{
 .navbar-inverse {
     margin: 0!important;
     border: 0!important;
-	background-color: #0000a0;
+	background-color: #251313;
 }
 
 .navbar-inverse .navbar-nav > li > a {
-    color: #FFF;  
+    color: #efebe0;  
     padding: 20px 10px;
-    border-bottom: 4px solid #0000a0;
+    border-bottom: 4px solid #efebe0;
     transition: all .3s; 
 }
 
 .navbar-inverse  .navbar-nav > li > a:hover{
-    color: #f1f1f1;
-    border-bottom: 4px solid #eee;
+    color: #78a6a4;
+    border-bottom: 4px solid #78a6a4;
 }
 
 	.navbar-social-pc > li > a{

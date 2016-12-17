@@ -18,9 +18,14 @@
 		@yield('css')
 	</head>
 	<body>
+		@include('layouts.elements.navbar')	
 		<div class="container">
-			@yield('content')			
-		</div>	
+			<div class="row">
+				<div class="col-md-12">
+					@yield('content')	
+				</div>
+			</div>
+		</div>
 		<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('js/main.js') }}"></script>
 		@yield('scripts')
