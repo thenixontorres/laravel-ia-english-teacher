@@ -40,6 +40,10 @@ h1, h2, h3, h4, h5, h6{
     font-family: "CarnevaleeFreakShow";
 }
 
+.footer{
+background-color: #251313;
+color: #efebe0;
+}
 
 .header{
 	padding: 20px 0;
