@@ -165,6 +165,10 @@ text-decoration: none;
 	background-color: #c8a418;
 }
 
+.indicador-gris{
+	background-color:  #bcb6a8;
+}
+
 .panel-header{
 	background-color: #251313;
 	color: #efebe0;  

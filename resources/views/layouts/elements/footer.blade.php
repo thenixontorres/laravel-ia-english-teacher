@@ -28,5 +28,13 @@
 					</ul>
 				</div>	
 			</div>
+			<div class="row pad-footer">
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<center>
+					<img class="img img-responsive " src="{{ asset('img/unerg.png') }}" alt="">
+					</center>
+				</div>
+			</div>
+			<br>
 		</div>
 	</footer>

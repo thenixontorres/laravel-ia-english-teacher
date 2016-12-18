@@ -1,15 +1,23 @@
 <div class="row" id="inicio">
-	<h4 class="text-center"> INICIO </h4>	
+	<div class="col-md-2 ">	
+		<img class="img img-responsive " src="{{ asset('img/left.png') }}" alt="">
+	</div>
+	<div class="col-md-8">	
+		<h4 class="text-center"> INICIO </h4>
+	</div>
+	<div class="col-md-2 ">	
+		<img class="img img-responsive " src="{{ asset('img/right.png') }}" alt="">
+	</div>		
 </div>
 <div class="row">
 	<div class="col-md-4 panel panel-default">
 		<div class="row panel-header">
-			NIXON IVAN TORRES 
+			SASHA MARIANA GREY 
 		</div>
 		<div class="row">
 			<div class="col-md-12 ">
 				<center>
-				<img class="img img-responsive " src="{{ asset('img/avatar.jpg') }}" alt="">
+				<img class="img img-responsive " src="{{ asset('img/profesor.jpg') }}" alt="">
 				</center> 
 			</div>
 		</div>
@@ -18,7 +26,7 @@
 				Cedula: 
 			</div>
 			<div class="col-md-8 ">
-				22.563.617 
+				x.xxx.xxx 
 			</div>
 		</div>
 		<div class="row">
@@ -31,18 +39,12 @@
 		</div>
 		<div class="row">
 			<div class="col-md-4 ">
-				Meteria: 
+				Meteria(s): 
 			</div>
 			<div class="col-md-8 ">
-				Ingles 
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4 ">
-				Seccion: 
-			</div>
-			<div class="col-md-8 ">
-				II 
+				Ingles I - Seccion I
+				<br>
+				Ingles I - Seccion II 
 			</div>
 		</div>
 		<div class="row">
@@ -53,7 +55,7 @@
 	</div>
 	<div class="col-md-4 panel panel-default">
 		<div class="row panel-header">
-			EVALUACIONES HECHAS 
+			EVALUACIONES ACTIVAS 
 		</div>
 		<div class="row">
 			<div class="col-md-12 ">
@@ -66,13 +68,18 @@
 		</div>
 		<hr>
 		<div class="row">
-			<div class="col-md-8">
-				TITULO DE LA EVALUACION. 
+			<div class="col-md-12">
+				TITULO DE LA EVALUACION: 
 			</div>
-			<div class="col-md-3 indicador indicador-azul">
-				<h4 class="indicador">100/100</h4> 
-			</div> 
 		</div>
+		<div class="row">		
+			<div class="col-md-5 indicador indicador-gris">
+				DESACTIVAR 
+			</div>
+			<div class="col-md-5 indicador indicador-azul">
+				ACTIVAR 
+			</div> 
+		</div> 
 		<br>
 		<div class="row">
 			<div class="col-md-8">

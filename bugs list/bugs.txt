@@ -1,0 +1,4 @@
+Inicio estudiantes - Lefts y rights se distorcionan con zoom a mas de 100%
+inicio estudiantes - Navbar no desplaza correctamente las secciones.  
+inicio estudiantes - Falta iconos. (Opcional)
+Inicio estudiantes - Falta logo oficial de bottutor en nav y footer.
