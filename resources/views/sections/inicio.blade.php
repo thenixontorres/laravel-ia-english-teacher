@@ -45,6 +45,11 @@
 				II 
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-md-12 indicador indicador-azul">
+				 <h4 class="indicador"> <button class="btn btn-default">Actualizar Perfil </button></h4> 
+			</div>
+		</div>
 	</div>
 	<div class="col-md-4 panel panel-default">
 		<div class="row panel-header">

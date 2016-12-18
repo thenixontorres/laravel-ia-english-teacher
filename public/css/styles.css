@@ -19,18 +19,17 @@
 }
 
 @font-face {
-    font-family: "QUIGLEYW";
-    src: url(../fonts/QUIGLEYW/QUIGLEYW.TTF) format("truetype");
+    font-family: "Enso";
+    src: url(../fonts/Enso/enso.ttf) format("truetype");
 }
 
 @font-face {
-    font-family: "TeamSpirit";
-    src: url(../fonts/TeamSpirit/TeamSpirit.ttf) format("truetype");
+    font-family: "MankSans";
+    src: url(../fonts/MankSans/MankSans.ttf) format("truetype");
 }
 
-
 body{ 
-	font-family: "LoveSweets";
+	font-family: "MankSans";
 	padding-bottom: 30px;
 	padding-top: 70px; 
 	background-color: #f2eee5;
@@ -40,9 +39,33 @@ h1, h2, h3, h4, h5, h6{
     font-family: "CarnevaleeFreakShow";
 }
 
+.btn-default{
+color: #efebe0;
+text-align: center;
+background-color: #78a6a4;
+border-color: #78a6a4;
+}
+
+.btn-default:hover{
+color: #efebe0;
+text-align: center;
+background-color: #78a6a4;
+border-color: #78a6a4;
+}
+
 .footer{
 background-color: #251313;
 color: #efebe0;
+}
+
+.footer-a{
+color: #78a6a4;
+text-decoration: none;
+}
+
+.footer-a:hover{
+color: #78a6a4;
+text-decoration: none;	
 }
 
 .header{
