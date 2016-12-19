@@ -55,10 +55,10 @@
 			<div class="col-md-4">
 				NOTA: 
 			</div>
-			<div class="col-md-3 indicador indicador-azul">
+			<div class="col-md-3 indicador indicador-rojo">
 				<h4 class="indicador">0/100</h4> 
 			</div>
-			<div class="col-md-4 indicador indicador-rojo">
+			<div class="col-md-4 indicador indicador-azul">
 				<h4 class="indicador">HACER</h4> 
 			</div> 
 		</div>

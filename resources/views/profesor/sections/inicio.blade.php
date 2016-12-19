@@ -38,109 +38,61 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-4 ">
-				Meteria(s): 
-			</div>
-			<div class="col-md-8 ">
-				Ingles I - Seccion I
-				<br>
-				Ingles I - Seccion II 
-			</div>
-		</div>
-		<div class="row">
 			<div class="col-md-12 indicador indicador-azul">
 				 <h4 class="indicador"> <button class="btn btn-default">Actualizar Perfil </button></h4> 
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4 panel panel-default">
+	<div class="col-md-8 panel panel-default">
 		<div class="row panel-header">
-			EVALUACIONES ACTIVAS 
+			MIS MATERIAS 
 		</div>
 		<div class="row">
-			<div class="col-md-12 ">
-				<center>
-				<img class="img img-responsive img-article" src="{{ asset('img/check-mark.png') }}" alt="">
-				</center>
-				<br>
-				Descripción detallada de lo que muestra esta sección. 
-			</div> 
+			<table class="table table-hover">
+				<tr>
+					<td>MATERIA</td>
+					<td>SECCION</td>
+					<td>ACCION</td>
+				</tr>
+				<tr>
+					<td>Ingles I</td>
+					<td>I</td>
+					<td> <button class="btn btn-default">INTEGRANTES</button>
+					</td>
+				</tr>
+				<tr>
+					<td>Ingles I</td>
+					<td>II</td>
+					<td> <button class="btn btn-default">INTEGRANTES</button>
+					</td>
+				</tr>
+			</table>
 		</div>
-		<hr>
-		<div class="row">
-			<div class="col-md-12">
-				TITULO DE LA EVALUACION: 
-			</div>
-		</div>
-		<div class="row">		
-			<div class="col-md-5 indicador indicador-gris">
-				DESACTIVAR 
-			</div>
-			<div class="col-md-5 indicador indicador-azul">
-				ACTIVAR 
-			</div> 
-		</div> 
-		<br>
-		<div class="row">
-			<div class="col-md-8">
-				TITULO DE LA EVALUACION. 
-			</div>
-			<div class="col-md-3 indicador indicador-azul">
-				<h4 class="indicador">100/100</h4> 
-			</div> 
-		</div>
-		<br>
-		<div class="row">
-			<div class="col-md-8">
-				TITULO DE LA EVALUACION. 
-			</div>
-			<div class="col-md-3 indicador indicador-azul">
-				<h4 class="indicador">100/100</h4> 
-			</div> 
-		</div>
-		<br>
-	</div>
-	<div class="col-md-4 panel panel-default">
 		<div class="row panel-header">
-			EVALUACIONES PENDIENTES 
+			MIS MATERIAS 
 		</div>
 		<div class="row">
-			<div class="col-md-12 ">
-				<center>
-				<img class="img img-responsive img-article" src="{{ asset('img/cross-mark.png') }}" alt="">
-				</center>
-				<br>
-				Descripción detallada de lo que muestra esta sección. 
-			</div> 
+			<table class="table table-hover">
+				<tr>
+					<td>MATERIA</td>
+					<td>SECCION</td>
+					<td>ACCION</td>
+				</tr>
+				<tr>
+					<td>Ingles I</td>
+					<td>I</td>
+					<td> <button class="btn btn-default">INTEGRANTES</button>
+					</td>
+				</tr>
+				<tr>
+					<td>Ingles I</td>
+					<td>II</td>
+					<td> <button class="btn btn-default">INTEGRANTES</button>
+					</td>
+				</tr>
+			</table>
 		</div>
-		<hr>
-		<div class="row">
-			<div class="col-md-8">
-				TITULO DE LA EVALUACION. 
-			</div>
-			<div class="col-md-3 indicador indicador-rojo">
-				<h4 class="indicador">IR</h4> 
-			</div> 
-		</div>
-		<br>
-		<div class="row">
-			<div class="col-md-8">
-				TITULO DE LA EVALUACION. 
-			</div>
-			<div class="col-md-3 indicador indicador-rojo">
-				<h4 class="indicador">IR</h4> 
-			</div> 
-		</div>
-		<br>
-		<div class="row">
-			<div class="col-md-8">
-				TITULO DE LA EVALUACION. 
-			</div>
-			<div class="col-md-3 indicador indicador-rojo">
-				<h4 class="indicador">IR</h4> 
-			</div> 
-		</div>
-		<br>
+		
 	</div>	
 </div>
 <hr>

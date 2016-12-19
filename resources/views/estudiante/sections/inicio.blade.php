@@ -74,30 +74,39 @@
 		</div>
 		<hr>
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-6">
 				TITULO DE LA EVALUACION. 
 			</div>
 			<div class="col-md-3 indicador indicador-azul">
 				<h4 class="indicador">100/100</h4> 
+			</div>
+			<div class="col-md-2 indicador indicador-azul">
+				<button class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span></button> 
 			</div> 
 		</div>
 		<br>
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-6">
 				TITULO DE LA EVALUACION. 
 			</div>
 			<div class="col-md-3 indicador indicador-azul">
 				<h4 class="indicador">100/100</h4> 
+			</div> 
+			<div class="col-md-2 indicador indicador-azul">
+				<button class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span></button> 
 			</div> 
 		</div>
 		<br>
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-6">
 				TITULO DE LA EVALUACION. 
 			</div>
 			<div class="col-md-3 indicador indicador-azul">
 				<h4 class="indicador">100/100</h4> 
-			</div> 
+			</div>
+			<div class="col-md-2 indicador indicador-azul">
+				<button class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span></button> 
+			</div>  
 		</div>
 		<br>
 	</div>

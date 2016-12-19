@@ -25,12 +25,15 @@
 		</div>
 		<hr>
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-5">
 				NOTA: 
 			</div>
-			<div class="col-md-5 indicador indicador-azul">
+			<div class="col-md-4 indicador indicador-azul">
 				<h4 class="indicador">100/100</h4> 
 			</div>
+			<div class="col-md-2 indicador indicador-azul">
+				<button class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span></button> 
+			</div> 
 		</div>
 		<br>
 	</div>
@@ -52,10 +55,10 @@
 			<div class="col-md-4">
 				NOTA: 
 			</div>
-			<div class="col-md-3 indicador indicador-azul">
+			<div class="col-md-3 indicador indicador-rojo">
 				<h4 class="indicador">0/100</h4> 
 			</div>
-			<div class="col-md-4 indicador indicador-rojo">
+			<div class="col-md-4 indicador indicador-azul">
 				<h4 class="indicador">HACER</h4> 
 			</div> 
 		</div>
@@ -76,12 +79,15 @@
 		</div>
 		<hr>
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-5">
 				NOTA: 
 			</div>
-			<div class="col-md-5 indicador indicador-amarillo">
+			<div class="col-md-4 indicador indicador-amarillo">
 				<h4 class="indicador">55/100</h4> 
 			</div>
+			<div class="col-md-2 indicador indicador-azul">
+				<button class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span></button> 
+			</div> 
 		</div>
 		<br>
 	</div>	
