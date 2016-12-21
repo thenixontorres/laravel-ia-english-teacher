@@ -43,7 +43,7 @@ class estudianteController extends AppBaseController
      */
     public function create()
     {
-        return view('estudiantes.create');
+        return view('panel.estudiante.create');
     }
 
     /**

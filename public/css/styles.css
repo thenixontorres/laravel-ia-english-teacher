@@ -57,6 +57,20 @@ background-color: #78a6a4;
 border-color: #78a6a4;
 }
 
+.btn-warning{
+color: #efebe0;
+text-align: center;
+background-color: #cb2f33;
+border-color: #cb2f33;
+}
+
+.btn-warning:hover{
+color: #efebe0;
+text-align: center;
+background-color: #cb2f33;
+border-color: #cb2f33;
+}
+
 .footer{
 background-color: #251313;
 color: #efebe0;
@@ -153,6 +167,18 @@ text-decoration: none;
 .img-article{
 	height: 30%;
 	width: 30%;
+}
+
+.nav-li{
+	color: #efebe0;
+	text-align: center;
+	background-color: #78a6a4;
+}
+
+.nav-li:hover{
+	color: #59a19d;
+	text-align: center;
+	background-color: #78a6a4;
 }
 
 .indicador{

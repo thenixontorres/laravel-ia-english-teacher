@@ -62,4 +62,18 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    protected function getLogin()
+    {
+        return view('auth.login');
+    }
+
+    public function loginPath()
+    {
+        return route('auth.login');
+    }
+    public function redirectPath()
+    {
+        return redirect()->guest('home');
+    }
 }

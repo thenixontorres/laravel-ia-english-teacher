@@ -1,2 +1,3 @@
 Inicio estudiantes - Lefts y rights se distorcionan con zoom a mas de 100%
 inicio estudiantes - Navbar no desplaza correctamente las secciones.  
+eliminar name de base de datos en tabla user
