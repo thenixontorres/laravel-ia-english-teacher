@@ -11,10 +11,6 @@
     	<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     	<link rel="stylesheet" href="{{ asset('css/icon.css') }}">
     	<script src=" {{ asset('js/jquery.js') }}"></script>
-    	<script src=" {{ asset('assets/js/smoothscroll.min.js') }}"></script>
-    	<script src=" {{ asset('assets/js/appear.min.js') }}"></script>
-    	<script src="{{ asset('assets/js/animations.min.js') }}"></script>
-    	<link rel="stylesheet" href="{{ asset('assets/css/animations.min.css') }}">
 		@yield('css')
 	</head>
 	<body>

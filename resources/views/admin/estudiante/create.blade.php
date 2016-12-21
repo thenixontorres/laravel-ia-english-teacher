@@ -18,12 +18,15 @@
         </div>
         <div class="col-md-10">
             <div class="row panel panel-default">
-                {!! Form::open(['route' => 'estudiante.store']) !!}
+                {!! Form::open(['route' => 'admin.estudiante.store', 'onsubmit' => 'return contras();']) !!}
 
-                    @include('panel.estudiante.fields')
+                    @include('admin.estudiante.fields')
 
                 {!! Form::close() !!}
             </div>    
         </div>
     </div>    
+@endsection
+@section('scripts')
+    <script src="{{ asset('/js/funciones.js') }}"></script>
 @endsection

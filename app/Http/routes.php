@@ -21,19 +21,20 @@ Route::get('/', [
   'as'    =>  'home',
 ]);
 
-Route::get('panel/estudiante/', [
+//Rutas Admin
+Route::get('admin/estudiante/', [
   'uses'  =>  'estudianteController@index',
-  'as'    =>  'estudiante.index',
+  'as'    =>  'admin.estudiante.index',
 ]);
 
-Route::get('panel/estudiante/create', [
+Route::get('admin/estudiante/create', [
   'uses'  =>  'estudianteController@create',
-  'as'    =>  'estudiante.create',
+  'as'    =>  'admin.estudiante.create',
 ]);
 
-Route::post('panel/estudiante/store', [
+Route::post('admin/estudiante/store', [
   'uses'  =>  'estudianteController@store',
-  'as'    =>  'estudiante.store',
+  'as'    =>  'admin.estudiante.store',
 ]);
 
 /*

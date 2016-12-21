@@ -32,7 +32,7 @@ class estudianteController extends AppBaseController
         $this->estudianteRepository->pushCriteria(new RequestCriteria($request));
         $estudiantes = $this->estudianteRepository->all();
 
-        return view('estudiantes.index')
+        return view('admin.estudiantes.index')
             ->with('estudiantes', $estudiantes);
     }
 
@@ -43,7 +43,7 @@ class estudianteController extends AppBaseController
      */
     public function create()
     {
-        return view('panel.estudiante.create');
+        return view('admin.estudiante.create');
     }
 
     /**
@@ -61,7 +61,7 @@ class estudianteController extends AppBaseController
 
         Flash::success('estudiante saved successfully.');
 
-        return redirect(route('estudiantes.index'));
+        return redirect(route('admin.estudiante.index'));
     }
 
     /**

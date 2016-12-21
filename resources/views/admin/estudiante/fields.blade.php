@@ -11,10 +11,25 @@
     {!! Form::text('email', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Estado Field -->
+<div class="form-group col-md-12">
+    {!! Form::label('estado', 'Estado:') !!}
+    <select name="estado" class="form-control">
+        <option value="Activo" selected>Activo</option>
+        <option value="Inactivo">Inactivo</option>
+    </select>       
+</div>
+
 <!-- Password Field -->
 <div class="form-group col-md-12">
     {!! Form::label('password', 'Clave:') !!}
-    {!! Form::password('password', null, ['class' => 'form-control']) !!}
+        <input id="ctr1" class="form-control" type="password" name="password" placeholder="Ingrese su Contraseña" required>
+</div>
+
+<!-- Clave confirm Field -->
+<div class="form-group col-md-12">
+        {!! Form::label('password2', 'Confirmar Clave:') !!}
+        <input id="ctr2" class="form-control" type="password" name="password2" placeholder="Repita su Contraseña" required>
 </div>
 
 <!-- De la tabla persona -->
@@ -59,6 +74,6 @@
 <div class="form-group col-md-12">
     <center>
     {!! Form::submit('Registrar', ['class' => 'btn btn-default']) !!}
-    <a href="{!! route('estudiante.index') !!}" class="btn btn-warning">Cancelar</a>
+    <a href="{!! route('admin.estudiante.index') !!}" class="btn btn-warning">Cancelar</a>
     </center>
 </div>
