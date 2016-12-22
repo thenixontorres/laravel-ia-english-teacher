@@ -16,6 +16,20 @@
 	<body>
 		<div class="container">
 			@include('layouts.elements.navbar')	
+			<div class="row row-fluid">
+				<div class="col-md-10 col-sm-offset-1">
+					@include('flash::message')
+					@if(count($errors) > 0)
+						<div class="alert alert-danger" role="alert">
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						</div>
+					@endif
+				</div>
+			</div>	
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
 					@yield('content')	

@@ -10,6 +10,15 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\user;
+use App\Models\persona;
+use App\Models\materia;
+use App\Models\seccion;
+use App\Models\periodo;
+
+
+
+
 
 class estudianteController extends AppBaseController
 {
@@ -43,7 +52,11 @@ class estudianteController extends AppBaseController
      */
     public function create()
     {
-        return view('admin.estudiante.create');
+        $materias = materia::all();
+        $periodos = periodo::all();
+        return view('admin.estudiante.create')
+            ->with('materias', $materias)
+            ->with('periodos', $periodos);
     }
 
     /**
@@ -57,11 +70,18 @@ class estudianteController extends AppBaseController
     {
         $input = $request->all();
 
+        dd($input);
+
+        $foto = $request->file('foto');
+        $nombre = time().'.'.$foto->getClientOriginalExtension();
+        $ruta = public_path().'/img/fotos/';
+        $foto->move($ruta, $nombre);
+
         $estudiante = $this->estudianteRepository->create($input);
 
-        Flash::success('estudiante saved successfully.');
+        Flash::success('Estudiante registrado correctamente.');
 
-        return redirect(route('admin.estudiante.index'));
+        return redirect(route('admin.estudiante.create'));
     }
 
     /**

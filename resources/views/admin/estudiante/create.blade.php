@@ -18,7 +18,7 @@
         </div>
         <div class="col-md-10">
             <div class="row panel panel-default">
-                {!! Form::open(['route' => 'admin.estudiante.store', 'onsubmit' => 'return contras();']) !!}
+                {!! Form::open(['route' => 'admin.estudiante.store', 'files' => true, 'onsubmit' => 'return contras();']) !!}
 
                     @include('admin.estudiante.fields')
 

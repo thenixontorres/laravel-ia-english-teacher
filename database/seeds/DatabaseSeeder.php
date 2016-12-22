@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             $this->call(PersonaSeeder::class);
             $this->call(SeccionSeeder::class);
             $this->call(MateriaSeeder::class);
+            $this->call(PeriodoSeeder::class);
 
         Model::reguard();
     }
