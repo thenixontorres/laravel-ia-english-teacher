@@ -1,12 +1,18 @@
-<table class="table table-responsive" id="mes-table">
+<table class="table table-responsive" id="table">
     <thead>
         <th>Nombre</th>
-        <th colspan="3">Accion</th>
+        <th>Apellido</th>
+        <th>Cedula</th>
+        <th>Materia</th>
+        <th>Accion</th>
     </thead>
     <tbody>
     @foreach($estudiantes as $estudiante)
         <tr>
             <td>{!! $estudiante->persona->nombre !!}</td>
+            <td>{!! $estudiante->persona->apellido !!}</td>
+            <td>{!! $estudiante->persona->cedula !!}</td>
+            <td>{!! $estudiante->materia->materia.' Seccion '.$estudiante->materia->seccion->seccion !!}</td>
             <td>
                 {!! Form::open(['route' => ['admin.estudiante.destroy', $estudiante->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

@@ -24,3 +24,23 @@
     </div>
     <br>    
 @endsection
+
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#table').DataTable({
+            "language": {
+                "lengthMenu": "Ver _MENU_ entradas por pagina",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Viendo la pagina _PAGE_ de _PAGES_",
+                "infoEmpty": "No hay informacion",
+                "search": "Buscar: ",
+                "paginate": {
+                    "previous": "Anterior ",
+                    "next": " Proximo",
+                }
+            }
+        });
+    } );
+</script>
+@endsection

@@ -37,8 +37,7 @@ class estudianteController extends AppBaseController
     public function index(Request $request)
     {
         $this->estudianteRepository->pushCriteria(new RequestCriteria($request));
-        $estudiantes = $this->estudianteRepository->all();
-
+        $estudiantes = $this->estudianteRepository->all(); 
         return view('admin.estudiante.index')
             ->with('estudiantes', $estudiantes);
     }
@@ -77,6 +76,7 @@ class estudianteController extends AppBaseController
         $user->name = $request->name;
         $user->email = $request->email;
         $user->estado = $request->estado;
+        $user->tipo = 'Estudiante';
         $user->password = bcrypt($request->password);
         $user->save();
         $user_id = $user->id;

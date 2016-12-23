@@ -10,6 +10,9 @@
    	 	<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     	<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     	<link rel="stylesheet" href="{{ asset('css/icon.css') }}">
+    	<!--Data table -->
+    	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/dataTables/css/dataTables.bootstrap.css') }}">
+
     	<script src=" {{ asset('js/jquery.js') }}"></script>
 		@yield('css')
 	</head>
@@ -39,6 +42,9 @@
 		@include('layouts.elements.footer')	
 		<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('js/main.js') }}"></script>
+		<!--Data tables -->
+		<script type="text/javascript" src="{{ asset('plugins/dataTables/js/jquery.dataTables.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('plugins/dataTables/js/dataTables.bootstrap.js') }}"></script>
 		@yield('scripts')
 	</body>
 </html>
