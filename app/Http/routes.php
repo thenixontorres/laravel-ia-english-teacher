@@ -37,7 +37,7 @@ Route::post('admin/estudiante/store', [
   'as'    =>  'admin.estudiante.store',
 ]);
 
-Route::post('admin/estudiante/show/{id}', [
+Route::get('admin/estudiante/show/{id}', [
   'uses'  =>  'estudianteController@show',
   'as'    =>  'admin.estudiante.show',
 ]);

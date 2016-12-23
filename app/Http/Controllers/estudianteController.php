@@ -85,7 +85,7 @@ class estudianteController extends AppBaseController
         $persona->nombre = $request->nombre;
         $persona->apellido = $request->apellido;
         $persona->cedula = $request->cedula;
-        $persona->foto = $ruta.$nombre;
+        $persona->foto = '/img/fotos/'.$nombre;
         $persona->user_id = $user_id;
         $persona->save();
         $persona_id = $persona->id;
@@ -117,12 +117,11 @@ class estudianteController extends AppBaseController
         $estudiante = $this->estudianteRepository->findWithoutFail($id);
 
         if (empty($estudiante)) {
-            Flash::error('estudiante not found');
+            Flash::error('Estudiante no encontrado');
 
-            return redirect(route('estudiantes.index'));
+            return redirect(route('admin.estudiante.index'));
         }
-
-        return view('estudiantes.show')->with('estudiante', $estudiante);
+        return view('admin.estudiante.show')->with('estudiante', $estudiante);
     }
 
     /**
