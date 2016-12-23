@@ -98,7 +98,7 @@ class materia extends Model
      * @var array
      */
     public static $rules = [
-        'materia' => 'required',
+        'materia' => 'required|max:20',
         'seccion_id' => 'required',
         'persona_id' => 'required'
     ];

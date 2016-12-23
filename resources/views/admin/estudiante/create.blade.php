@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row" id="inicio">
+<div class="row" id="inicio">
     <div class="col-md-2 "> 
         <img class="img img-responsive " src="{{ asset('img/left.png') }}" alt="">
     </div>

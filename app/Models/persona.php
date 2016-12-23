@@ -106,10 +106,10 @@ class persona extends Model
      * @var array
      */
     public static $rules = [
-        'nombre' => 'required',
-        'apellido' => 'required',
-        'cedula' => 'required',
-        'foto' => 'nullable',
-        'user_id' => 'required'
+        'nombre' => 'required|max:20',
+        'apellido' => 'required|max:20',
+        'cedula' => 'required|numeric',
+        'foto' => 'required',
+        'user_id' => 'nullable'
     ];
 }

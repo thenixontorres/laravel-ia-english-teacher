@@ -103,7 +103,7 @@ class estudiante extends Model
      */
     public static $rules = [
         'materia_id' => 'required',
-        'persona_id' => 'required',
+        'persona_id' => 'nullable',
         'periodo_id' => 'required'
     ];
 }

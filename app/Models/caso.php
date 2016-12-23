@@ -91,7 +91,7 @@ class caso extends Model
      * @var array
      */
     public static $rules = [
-        'enunciado' => 'required',
+        'enunciado' => 'required|max:255',
         'evaluacion_id' => 'required',
     ];
 }

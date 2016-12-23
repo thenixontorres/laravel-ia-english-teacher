@@ -100,8 +100,8 @@ class regla extends Model
      * @var array
      */
     public static $rules = [
-        'regla' => 'required',
-        'puntos' => 'required',
+        'regla' => 'required|max:140',
+        'puntos' => 'required|numeric',
         'contexto_id' => 'required',
         'apuntador_id' => 'required'
     ];

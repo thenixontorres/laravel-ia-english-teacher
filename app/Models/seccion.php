@@ -68,6 +68,6 @@ class seccion extends Model
      * @var array
      */
     public static $rules = [
-        'seccion' => 'required'
+        'seccion' => 'required|max:20'
     ];
 }

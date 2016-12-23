@@ -102,7 +102,7 @@ class evaluacion extends Model
      * @var array
      */
     public static $rules = [
-        'titulo' => 'required',
+        'titulo' => 'required|max:30',
         'tipo' => 'required',
         'materia_id' => 'required',
         'estado' => 'required'

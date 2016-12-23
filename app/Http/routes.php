@@ -37,22 +37,26 @@ Route::post('admin/estudiante/store', [
   'as'    =>  'admin.estudiante.store',
 ]);
 
-/*
-Route::get('lista/editar/{id}', [
-    'uses'  =>  'listaController@edit',
-    'as'    =>  'lista.edit',
+Route::post('admin/estudiante/show/{id}', [
+  'uses'  =>  'estudianteController@show',
+  'as'    =>  'admin.estudiante.show',
 ]);
 
+Route::get('admin/estudiante/editar/{id}', [
+    'uses'  =>  'estudianteController@edit',
+    'as'    =>  'admin.estudiante.edit',
+]);
+/*
 Route::patch('lista/update/{id}', [
     'uses'  => 'listaController@update',
     'as'    => 'lista.update',
 ]);
 
-Route::delete('lista/eliminar/{id}', [
-    'uses'  =>  'listaController@destroy',
-    'as'    =>  'lista.destroy',
-]);
 */
+Route::delete('admin/estudiant/eliminar/{id}', [
+    'uses'  =>  'estudianteController@destroy',
+    'as'    =>  'admin.estudiante.destroy',
+]);
 
 Route::get('/login', [
     'uses'  => 'Auth\AuthController@getLogin',

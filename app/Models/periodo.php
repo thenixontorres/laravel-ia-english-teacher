@@ -68,6 +68,6 @@ class periodo extends Model
      * @var array
      */
     public static $rules = [
-        'periodo' => 'required'
+        'periodo' => 'required|max:20'
     ];
 }

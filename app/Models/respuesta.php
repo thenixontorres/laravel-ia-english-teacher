@@ -88,7 +88,7 @@ class respuesta extends Model
      * @var array
      */
     public static $rules = [
-        'respuesta' => 'required',
+        'respuesta' => 'required|max:140',
         'regla_id' => 'required',
         'reaccion_id' => 'required'
     ];

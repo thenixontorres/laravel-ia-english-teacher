@@ -89,7 +89,7 @@ class nota extends Model
      * @var array
      */
     public static $rules = [
-        'nota' => 'required',
+        'nota' => 'required|numeric',
         'evaluacion_id' => 'required',
         'estudiante_id' => 'required'
     ];

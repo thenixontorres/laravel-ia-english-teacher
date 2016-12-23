@@ -76,7 +76,7 @@ class tip extends Model
      * @var array
      */
     public static $rules = [
-        'tip' => 'required',
+        'tip' => 'required|max:140',
         'contexto_id' => 'required'
     ];
 }

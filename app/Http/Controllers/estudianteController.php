@@ -10,14 +10,12 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
-use App\Models\user;
+use App\Models\estudiante;
+use App\User;
 use App\Models\persona;
 use App\Models\materia;
 use App\Models\seccion;
 use App\Models\periodo;
-
-
-
 
 
 class estudianteController extends AppBaseController
@@ -41,7 +39,7 @@ class estudianteController extends AppBaseController
         $this->estudianteRepository->pushCriteria(new RequestCriteria($request));
         $estudiantes = $this->estudianteRepository->all();
 
-        return view('admin.estudiantes.index')
+        return view('admin.estudiante.index')
             ->with('estudiantes', $estudiantes);
     }
 
@@ -70,18 +68,41 @@ class estudianteController extends AppBaseController
     {
         $input = $request->all();
 
-        dd($input);
-
         $foto = $request->file('foto');
         $nombre = time().'.'.$foto->getClientOriginalExtension();
         $ruta = public_path().'/img/fotos/';
         $foto->move($ruta, $nombre);
 
-        $estudiante = $this->estudianteRepository->create($input);
+        $user = new user();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->estado = $request->estado;
+        $user->password = bcrypt($request->password);
+        $user->save();
+        $user_id = $user->id;
 
-        Flash::success('Estudiante registrado correctamente.');
+        $persona = new persona();
+        $persona->nombre = $request->nombre;
+        $persona->apellido = $request->apellido;
+        $persona->cedula = $request->cedula;
+        $persona->foto = $ruta.$nombre;
+        $persona->user_id = $user_id;
+        $persona->save();
+        $persona_id = $persona->id;
 
-        return redirect(route('admin.estudiante.create'));
+        $estudiante = new estudiante();
+        $estudiante->materia_id = $request->materia_id;
+        $estudiante->periodo_id = $request->periodo_id;
+        $estudiante->persona_id = $persona_id;
+        $estudiante->save();
+        
+        if ($estudiante->save()) {
+            Flash::success('Estudiante registrado correctamente.');
+            return redirect(route('admin.estudiante.create'));    
+        }else{
+            Flash::error('Error al registrar el estudiante.');
+            return redirect(route('admin.estudiante.create'));
+        }       
     }
 
     /**

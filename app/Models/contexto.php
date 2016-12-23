@@ -90,6 +90,6 @@ class contexto extends Model
      */
     public static $rules = [
         'caso_id' => 'required',
-        'contexto' => 'required'
+        'contexto' => 'required|max:255'
     ];
 }
