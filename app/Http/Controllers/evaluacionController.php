@@ -148,15 +148,15 @@ class evaluacionController extends AppBaseController
         $evaluacion = $this->evaluacionRepository->findWithoutFail($id);
 
         if (empty($evaluacion)) {
-            Flash::error('evaluacion not found');
+            Flash::error('Evaluacion no econtrada.');
 
-            return redirect(route('evaluacions.index'));
+            return redirect(route('admin.evaluacion.index'));
         }
 
         $this->evaluacionRepository->delete($id);
 
-        Flash::success('evaluacion deleted successfully.');
+        Flash::success('Evaluacion borrada con exito.');
 
-        return redirect(route('evaluacions.index'));
+        return redirect(route('admin.evaluacion.index'));
     }
 }
