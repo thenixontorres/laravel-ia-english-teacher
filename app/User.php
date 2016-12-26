@@ -46,6 +46,20 @@ class User extends Model implements AuthenticatableContract,
     ];
 
     /**
+     * The attributes that should be casted to native types.
+     * AGREGADO
+     * @var array
+     */
+
+    protected $casts = [
+        'name' => 'string',
+        'email' => 'string',
+        'password' => 'string',
+        'tipo' => 'string',
+        'estado' => 'string'
+    ];
+
+    /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
@@ -53,5 +67,18 @@ class User extends Model implements AuthenticatableContract,
     protected $hidden = [
         'password',
         'remember_token'
+    ];
+
+    /**
+     * Validation rules
+     *AGREGADO
+     * @var array
+     */
+    public static $rules = [
+        'name' => 'required',
+        'email' => 'nullable',
+        'password' => 'required',
+        'tipo' => 'required',
+        'estado' => 'required'
     ];
 }

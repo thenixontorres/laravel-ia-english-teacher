@@ -21,7 +21,8 @@ Route::get('/', [
   'as'    =>  'home',
 ]);
 
-//Rutas Admin
+//Rutas Admin------------------------------
+//Estudiante
 Route::get('admin/estudiante/', [
   'uses'  =>  'estudianteController@index',
   'as'    =>  'admin.estudiante.index',
@@ -46,17 +47,54 @@ Route::get('admin/estudiante/editar/{id}', [
     'uses'  =>  'estudianteController@edit',
     'as'    =>  'admin.estudiante.edit',
 ]);
-/*
-Route::patch('lista/update/{id}', [
-    'uses'  => 'listaController@update',
-    'as'    => 'lista.update',
+
+Route::patch('admin/estudiante/update/{id}', [
+    'uses'  => 'estudianteController@update',
+    'as'    => 'admin.estudiante.update',
 ]);
 
-*/
 Route::delete('admin/estudiant/eliminar/{id}', [
     'uses'  =>  'estudianteController@destroy',
     'as'    =>  'admin.estudiante.destroy',
 ]);
+
+//Evaluacion-----------------------------------
+Route::get('admin/evaluacion/', [
+  'uses'  =>  'evaluacionController@index',
+  'as'    =>  'admin.evaluacion.index',
+]);
+
+Route::get('admin/evaluacion/create', [
+  'uses'  =>  'evaluacionController@create',
+  'as'    =>  'admin.evaluacion.create',
+]);
+
+Route::post('admin/evaluacion/store', [
+  'uses'  =>  'evaluacionController@store',
+  'as'    =>  'admin.evaluacion.store',
+]);
+
+Route::get('admin/evaluacion/show/{id}', [
+  'uses'  =>  'evaluacionController@show',
+  'as'    =>  'admin.evaluacion.show',
+]);
+
+Route::get('admin/evaluacion/editar/{id}', [
+    'uses'  =>  'evaluacionController@edit',
+    'as'    =>  'admin.evaluacion.edit',
+]);
+
+Route::patch('admin/evaluacion/update/{id}', [
+    'uses'  => 'evaluacionController@update',
+    'as'    => 'admin.evaluacion.update',
+]);
+
+Route::delete('admin/evaluacion/eliminar/{id}', [
+    'uses'  =>  'evaluacionController@destroy',
+    'as'    =>  'admin.evaluacion.destroy',
+]);
+
+//------------------------------------------
 
 Route::get('/login', [
     'uses'  => 'Auth\AuthController@getLogin',

@@ -32,7 +32,7 @@ class evaluacionController extends AppBaseController
         $this->evaluacionRepository->pushCriteria(new RequestCriteria($request));
         $evaluacions = $this->evaluacionRepository->all();
 
-        return view('evaluacions.index')
+        return view('admin.evaluacion.index')
             ->with('evaluacions', $evaluacions);
     }
 

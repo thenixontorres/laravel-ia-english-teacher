@@ -68,7 +68,7 @@ class estudianteController extends AppBaseController
         $input = $request->all();
 
         $foto = $request->file('foto');
-        $nombre = time().'.'.$foto->getClientOriginalExtension();
+        $nombre = $request->cedula.'.'.$foto->getClientOriginalExtension();
         $ruta = public_path().'/img/fotos/';
         $foto->move($ruta, $nombre);
 
@@ -98,7 +98,7 @@ class estudianteController extends AppBaseController
         
         if ($estudiante->save()) {
             Flash::success('Estudiante registrado correctamente.');
-            return redirect(route('admin.estudiante.create'));    
+            return redirect(route('admin.estudiante.index'));    
         }else{
             Flash::error('Error al registrar el estudiante.');
             return redirect(route('admin.estudiante.create'));
@@ -136,12 +136,16 @@ class estudianteController extends AppBaseController
         $estudiante = $this->estudianteRepository->findWithoutFail($id);
 
         if (empty($estudiante)) {
-            Flash::error('estudiante not found');
+            Flash::error('Estudiante no encontrado');
 
-            return redirect(route('estudiantes.index'));
+            return redirect(route('admin.estudiante.index'));
         }
-
-        return view('estudiantes.edit')->with('estudiante', $estudiante);
+        $materias = materia::all();
+        $periodos = periodo::all();
+        return view('admin.estudiante.edit')
+            ->with('estudiante', $estudiante)
+            ->with('materias', $materias)
+            ->with('periodos', $periodos);
     }
 
     /**

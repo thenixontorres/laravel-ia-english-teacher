@@ -16,9 +16,10 @@ class userRepository extends BaseRepository
 
     /**
      * Configure the Model
+     user::class anteriormente
      **/
     public function model()
     {
-        return user::class;
+        return User::class;
     }
 }

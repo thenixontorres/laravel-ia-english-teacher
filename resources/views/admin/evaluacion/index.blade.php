@@ -6,7 +6,7 @@
         <img class="img img-responsive " src="{{ asset('img/left.png') }}" alt="">
     </div>
     <div class="col-md-8">  
-        <h4 class="text-center"> ESTUDIANTES </h4>
+        <h4 class="text-center"> EVALUACIONES </h4>
     </div>
     <div class="col-md-2 "> 
         <img class="img img-responsive " src="{{ asset('img/right.png') }}" alt="">
@@ -17,9 +17,9 @@
             @include('layouts.elements.panel')
         </div>
         <div class="col-md-10 panel panel-default">  
-            <a class="btn btn-default pull-right nav-li" style="margin-top: 25px" href="{!! route('admin.estudiante.create') !!}">Agregar</a>
+            <a class="btn btn-default pull-right nav-li" style="margin-top: 25px" href="{!! route('admin.evaluacion.create') !!}">Agregar</a>
             <div class="clearfix"></div>
-            @include('admin.estudiante.table')
+            @include('admin.evaluacion.table')
         </div>
     </div>
     <br>    
