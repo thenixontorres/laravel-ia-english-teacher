@@ -6,7 +6,7 @@
         <img class="img img-responsive " src="{{ asset('img/left.png') }}" alt="">
     </div>
     <div class="col-md-8">  
-        <h4 class="text-center"> {!! $estudiante->persona->nombre.' '.$estudiante->persona->apellido !!} </h4>
+        <h4 class="text-center"> {!! $evaluacion->titulo !!} </h4>
     </div>
     <div class="col-md-2 "> 
         <img class="img img-responsive " src="{{ asset('img/right.png') }}" alt="">
@@ -18,10 +18,10 @@
     </div>
     <div class="col-md-10">
         <div class="row panel panel-default">
-   			@include('admin.estudiante.show_fields')
+   			@include('admin.evaluacion.show_fields')
 		    <div class="form-group col-md-12">
 		           <center>
-		           		<a href="{!! route('admin.estudiante.index') !!}" class="btn btn-default">Volver</a>
+		           		<a href="{!! route('admin.evaluacion.index') !!}" class="btn btn-default">Volver</a>
 		           </center>	
 		    </div>
 		</div>

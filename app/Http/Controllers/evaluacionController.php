@@ -80,12 +80,12 @@ class evaluacionController extends AppBaseController
         $evaluacion = $this->evaluacionRepository->findWithoutFail($id);
 
         if (empty($evaluacion)) {
-            Flash::error('evaluacion not found');
+            Flash::error('Evaluacion no encontrada');
 
-            return redirect(route('evaluacions.index'));
+            return redirect(route('admin.evaluacion.index'));
         }
 
-        return view('evaluacions.show')->with('evaluacion', $evaluacion);
+        return view('admin.evaluacion.show')->with('evaluacion', $evaluacion);
     }
 
     /**

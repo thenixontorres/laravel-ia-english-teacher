@@ -1,72 +1,38 @@
-
-<br>
-<center>
-    <div class="col-md-6">
-    	<img class="img img-responsive " src="{{ asset($estudiante->persona->foto) }}" alt="">
-        <hr>
-    </div>
-</center> 
-<!--De la tabla User -->
-<!-- Name Field -->
+<!-- Titulo Field -->
 <div class="form-group col-md-12">
-    {!! Form::label('name', 'Nombre de usuario:') !!}
-    <p>{!! $estudiante->persona->User->name !!}</p>
+    {!! Form::label('titulo', 'Titulo:') !!}
+    <p>{!! $evaluacion->titulo !!}</p>
     <hr>
 </div>
-<!-- Email Field -->
-<div class="form-group col-md-12">
-    {!! Form::label('email', 'Email:') !!}
-    <hr>
-</div>
-<!-- Tipo Field -->
+<!--Tipo Field -->
 <div class="form-group col-md-12">
     {!! Form::label('tipo', 'Tipo:') !!}
+    <p>{!! $evaluacion->tipo !!}</p>
     <hr>
 </div>
-<!-- Estado Field -->
-<div class="form-group col-md-12">
-    {!! Form::label('estado', 'Estado:') !!}
-    <hr>
-</div>
-<!--De la tabla persona -->
-<div class="form-group col-md-12">
-    {!! Form::label('nombre', 'Nombre:') !!}
-    <p>{!! $estudiante->persona->nombre !!}</p>
-    <hr>
-</div>
-<div class="form-group col-md-12">
-    {!! Form::label('apellido', 'Apellido:') !!}
-    <p>{!! $estudiante->persona->apellido !!}</p>
-    <hr>
-</div>
-<div class="form-group col-md-12">
-    {!! Form::label('cedula', 'Cedula:') !!}
-    <p>{!! $estudiante->persona->cedula !!}</p>
-    <hr>
-</div>
-<!--De la tabla estudiante -->
+<!--Materia Field -->
 <div class="form-group col-md-12">
     {!! Form::label('materia', 'Materia:') !!}
-    <p>{!! $estudiante->materia->materia.' Seccion: '.$estudiante->materia->seccion->seccion !!}</p>
+    <p>{!! $evaluacion->materia->materia !!}</p>
     <hr>
 </div>
+<!-- Estado field -->
 <div class="form-group col-md-12">
-    {!! Form::label('periodo', 'Periodo:') !!}
-    <p>{!! $estudiante->persona->cedula !!}</p>
+    {!! Form::label('estado', 'Estado:') !!}
+    <p>{!! $evaluacion->estado !!}</p>
     <hr>
 </div>
-
 <!-- Created At Field -->
 <div class="form-group col-md-12">
     {!! Form::label('created_at', 'Registrado el:') !!}
-    <p>{!! $estudiante->created_at !!}</p>
+    <p>{!! $evaluacion->created_at !!}</p>
     <hr>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group col-md-12">
     {!! Form::label('updated_at', 'Actualizado en:') !!}
-    <p>{!! $estudiante->updated_at !!}</p>
+    <p>{!! $evaluacion->updated_at !!}</p>
     <hr>
 </div>
 
