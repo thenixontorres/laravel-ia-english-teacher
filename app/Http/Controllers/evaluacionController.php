@@ -98,14 +98,17 @@ class evaluacionController extends AppBaseController
     public function edit($id)
     {
         $evaluacion = $this->evaluacionRepository->findWithoutFail($id);
+        $materias = materia::all();
 
         if (empty($evaluacion)) {
-            Flash::error('evaluacion not found');
+            Flash::error('Evaluacion no encontrada');
 
-            return redirect(route('evaluacions.index'));
+            return redirect(route('admin.evaluacion.index'));
         }
 
-        return view('evaluacions.edit')->with('evaluacion', $evaluacion);
+        return view('admin.evaluacion.edit')
+            ->with('evaluacion', $evaluacion)
+            ->with('materias', $materias);
     }
 
     /**
@@ -121,16 +124,16 @@ class evaluacionController extends AppBaseController
         $evaluacion = $this->evaluacionRepository->findWithoutFail($id);
 
         if (empty($evaluacion)) {
-            Flash::error('evaluacion not found');
+            Flash::error('Evaluacion no encontrada');
 
-            return redirect(route('evaluacions.index'));
+            return redirect(route('admin.evaluacion.index'));
         }
 
         $evaluacion = $this->evaluacionRepository->update($request->all(), $id);
 
-        Flash::success('evaluacion updated successfully.');
+        Flash::success('Evaluacion actualizada con exito.');
 
-        return redirect(route('evaluacions.index'));
+        return redirect(route('admin.evaluacion.index'));
     }
 
     /**

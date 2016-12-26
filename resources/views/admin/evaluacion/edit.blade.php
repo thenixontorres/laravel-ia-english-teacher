@@ -6,7 +6,7 @@
         <img class="img img-responsive " src="{{ asset('img/left.png') }}" alt="">
     </div>
     <div class="col-md-8">  
-        <h4 class="text-center"> {{ $estudiante->persona->nombre.' '.$estudiante->persona->apellido }} </h4>
+        <h4 class="text-center"> {{ $evaluacion->titulo }} </h4>
     </div>
     <div class="col-md-2 "> 
         <img class="img img-responsive " src="{{ asset('img/right.png') }}" alt="">
@@ -19,9 +19,9 @@
     <div class="col-md-10">
         <div class="row panel panel-default">
 
-            {!! Form::model($estudiante, ['route' => ['admin.estudiante.update', $estudiante->id], 'method' => 'patch', 'files' => true]) !!}
+            {!! Form::model($evaluacion, ['route' => ['admin.evaluacion.update', $evaluacion->id], 'method' => 'patch']) !!}
 
-            @include('admin.estudiante.fields')
+            @include('admin.evaluacion.fields')
 
             {!! Form::close() !!}
         </div>    
