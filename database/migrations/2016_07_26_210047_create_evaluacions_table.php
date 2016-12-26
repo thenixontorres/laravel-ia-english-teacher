@@ -16,7 +16,7 @@ class CreateevaluacionsTable extends Migration
         Schema::create('evaluacions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('titulo');
-            $table->enum('tipo', ['Practica', 'Evaluacion']);
+            $table->enum('tipo', ['Practica', 'Prueba']);
             $table->integer('materia_id')->unsigned();
             $table->foreign('materia_id')->references('id')->on('materias');
             $table->enum('estado', ['Activo', 'Inactivo']);

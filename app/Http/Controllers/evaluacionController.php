@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\materia;
 
 class evaluacionController extends AppBaseController
 {
@@ -43,7 +44,10 @@ class evaluacionController extends AppBaseController
      */
     public function create()
     {
-        return view('evaluacions.create');
+        $materias = materia::all();
+
+        return view('admin.evaluacion.create')
+            ->with('materias', $materias);
     }
 
     /**
@@ -59,9 +63,9 @@ class evaluacionController extends AppBaseController
 
         $evaluacion = $this->evaluacionRepository->create($input);
 
-        Flash::success('evaluacion saved successfully.');
+        Flash::success('Evaluacion registrada con exito.');
 
-        return redirect(route('evaluacions.index'));
+        return redirect(route('admin.evaluacion.index'));
     }
 
     /**

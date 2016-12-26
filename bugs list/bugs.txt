@@ -4,4 +4,5 @@ eliminar name de base de datos en tabla user
 falta pattern en formularios
 user no tiene deleted_at
 conflicto para obtener user->estado desde estudiante - estudiantes index
-agregar datatables
+mucho  a muchos en relacion evaluacion - materia
+agregar descripcion a evaluacion

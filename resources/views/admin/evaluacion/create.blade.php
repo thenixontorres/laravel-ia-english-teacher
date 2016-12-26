@@ -6,7 +6,7 @@
         <img class="img img-responsive " src="{{ asset('img/left.png') }}" alt="">
     </div>
     <div class="col-md-8">  
-        <h4 class="text-center"> REGISTRAR ESTUDIANTE </h4>
+        <h4 class="text-center"> REGISTRAR EVALUACION </h4>
     </div>
     <div class="col-md-2 "> 
         <img class="img img-responsive " src="{{ asset('img/right.png') }}" alt="">
@@ -18,15 +18,12 @@
         </div>
         <div class="col-md-10">
             <div class="row panel panel-default">
-                {!! Form::open(['route' => 'admin.estudiante.store', 'files' => true, 'onsubmit' => 'return contras();']) !!}
+                {!! Form::open(['route' => 'admin.evaluacion.store']) !!}
 
-                    @include('admin.estudiante.fields')
+                    @include('admin.evaluacion.fields')
 
                 {!! Form::close() !!}
             </div>    
         </div>
     </div>    
-@endsection
-@section('scripts')
-    <script src="{{ asset('/js/funciones.js') }}"></script>
 @endsection
