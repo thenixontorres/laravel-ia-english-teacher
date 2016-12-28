@@ -58,6 +58,42 @@ Route::delete('admin/estudiant/eliminar/{id}', [
     'as'    =>  'admin.estudiante.destroy',
 ]);
 
+//Persona-----------------------------------
+Route::get('admin/persona/', [
+  'uses'  =>  'personaController@index',
+  'as'    =>  'admin.persona.index',
+]);
+
+Route::get('admin/persona/create', [
+  'uses'  =>  'personaController@create',
+  'as'    =>  'admin.persona.create',
+]);
+
+Route::post('admin/persona/store', [
+  'uses'  =>  'personaController@store',
+  'as'    =>  'admin.persona.store',
+]);
+
+Route::get('admin/persona/show/{id}', [
+  'uses'  =>  'personaController@show',
+  'as'    =>  'admin.persona.show',
+]);
+
+Route::get('admin/persona/editar/{id}', [
+    'uses'  =>  'personaController@edit',
+    'as'    =>  'admin.persona.edit',
+]);
+
+Route::patch('admin/persona/update/{id}', [
+    'uses'  => 'personaController@update',
+    'as'    => 'admin.persona.update',
+]);
+
+Route::delete('admin/persona/eliminar/{id}', [
+    'uses'  =>  'personaController@destroy',
+    'as'    =>  'admin.persona.destroy',
+]);
+
 //Evaluacion-----------------------------------
 Route::get('admin/evaluacion/', [
   'uses'  =>  'evaluacionController@index',
