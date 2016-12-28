@@ -6,6 +6,8 @@ use App\Http\Requests;
 use App\Http\Requests\CreateestudianteRequest;
 use App\Http\Requests\UpdateestudianteRequest;
 use App\Repositories\estudianteRepository;
+use App\Repositories\personaRepository;
+use App\Repositories\userRepository;
 use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -22,6 +24,9 @@ class estudianteController extends AppBaseController
 {
     /** @var  estudianteRepository */
     private $estudianteRepository;
+    private $personaRepository;
+    private $userRepository;
+
 
     public function __construct(estudianteRepository $estudianteRepo)
     {
@@ -182,17 +187,26 @@ class estudianteController extends AppBaseController
     public function destroy($id)
     {
         $estudiante = $this->estudianteRepository->findWithoutFail($id);
-
+        
         if (empty($estudiante)) {
-            Flash::error('estudiante not found');
-
-            return redirect(route('estudiantes.index'));
+            Flash::error('Estudiante no encontrado');
+            return redirect(route('admin.estudiante.index'));
         }
 
-        $this->estudianteRepository->delete($id);
+            $persona_id = $estudiante->persona_id;
+            $persona = persona::where('id',$persona_id)->get();
+            $persona = $persona->first();
 
-        Flash::success('estudiante deleted successfully.');
+            $user_id = $persona->user_id;
+            $user = user::where('id',$user_id)->get();
+            $user = $user->first();
 
-        return redirect(route('estudiantes.index'));
+            $user->delete();
+            $persona->delete();
+            $this->estudianteRepository->delete($id);
+
+        Flash::success('Estudiante borrado exitosamente.');
+
+        return redirect(route('admin.estudiante.index'));
     }
 }
