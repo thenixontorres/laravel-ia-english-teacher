@@ -12,6 +12,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\persona;
 use App\Models\seccion;
+use App\User;
 
 
 class materiaController extends AppBaseController
@@ -35,7 +36,7 @@ class materiaController extends AppBaseController
         $this->materiaRepository->pushCriteria(new RequestCriteria($request));
         $materias = $this->materiaRepository->all();
 
-        return view('materias.index')
+        return view('admin.materia.index')
             ->with('materias', $materias);
     }
 
@@ -46,7 +47,12 @@ class materiaController extends AppBaseController
      */
     public function create()
     {
-        return view('materias.create');
+        $seccions = seccion::all();
+        $personas = persona::all();
+
+        return view('admin.materia.create')
+            ->with('seccions',$seccions)
+            ->with('personas',$personas);
     }
 
     /**
@@ -62,9 +68,9 @@ class materiaController extends AppBaseController
 
         $materia = $this->materiaRepository->create($input);
 
-        Flash::success('materia saved successfully.');
+        Flash::success('Materia registrada con exito.');
 
-        return redirect(route('materias.index'));
+        return redirect(route('admin.materia.index'));
     }
 
     /**
