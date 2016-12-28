@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\User;
+use App\Models\persona;
+
 
 class personaController extends AppBaseController
 {
@@ -42,8 +45,9 @@ class personaController extends AppBaseController
      * @return Response
      */
     public function create()
-    {
-        return view('personas.create');
+    {   
+
+        return view('admin.persona.create');
     }
 
     /**
@@ -57,11 +61,30 @@ class personaController extends AppBaseController
     {
         $input = $request->all();
 
-        $persona = $this->personaRepository->create($input);
+        $foto = $request->file('foto');
+        $nombre = $request->cedula.'.'.$foto->getClientOriginalExtension();
+        $ruta = public_path().'/img/fotos/';
+        $foto->move($ruta, $nombre);
 
-        Flash::success('persona saved successfully.');
+        $user = new user();
+        $user->email = $request->email;
+        $user->estado = $request->estado;
+        $user->tipo = 'Estudiante';
+        $user->password = bcrypt($request->password);
+        $user->save();
+        $user_id = $user->id;
 
-        return redirect(route('personas.index'));
+        $persona = new persona();
+        $persona->nombre = $request->nombre;
+        $persona->apellido = $request->apellido;
+        $persona->cedula = $request->cedula;
+        $persona->foto = '/img/fotos/'.$nombre;
+        $persona->user_id = $user_id;
+        $persona->save();
+        
+        Flash::success('Profesor registrado con exito.');
+
+        return redirect(route('admin.persona.index'));
     }
 
     /**
