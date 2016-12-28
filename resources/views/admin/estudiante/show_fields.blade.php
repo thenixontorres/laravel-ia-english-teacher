@@ -7,24 +7,22 @@
     </div>
 </center> 
 <!--De la tabla User -->
-<!-- Name Field -->
-<div class="form-group col-md-12">
-    {!! Form::label('name', 'Nombre de usuario:') !!}
-    <hr>
-</div>
 <!-- Email Field -->
 <div class="form-group col-md-12">
     {!! Form::label('email', 'Email:') !!}
+    <p>{!! $estudiante->persona->user->email !!}</p>
     <hr>
 </div>
 <!-- Tipo Field -->
 <div class="form-group col-md-12">
     {!! Form::label('tipo', 'Tipo:') !!}
+    <p>{!! $estudiante->persona->user->tipo !!}</p>
     <hr>
 </div>
 <!-- Estado Field -->
 <div class="form-group col-md-12">
     {!! Form::label('estado', 'Estado:') !!}
+    <p>{!! $estudiante->persona->user->estado !!}</p>
     <hr>
 </div>
 <!--De la tabla persona -->

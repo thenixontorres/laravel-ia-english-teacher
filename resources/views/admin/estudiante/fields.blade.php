@@ -1,10 +1,4 @@
 <!-- De la tabla user -->
-<!-- Name Field -->
-<div class="form-group col-md-12">
-    {!! Form::label('name', 'Nombre de usuario:') !!}
-    {!! Form::text('name', null, ['class' => 'form-control','required']) !!}
-</div>
-
 <!-- Email Field -->
 <div class="form-group col-md-12">
     {!! Form::label('email', 'Email:') !!}

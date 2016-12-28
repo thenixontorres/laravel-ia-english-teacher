@@ -38,7 +38,6 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $fillable = [
-        'name', 
         'email', 
         'password',
         'tipo',
@@ -52,7 +51,6 @@ class User extends Model implements AuthenticatableContract,
      */
 
     protected $casts = [
-        'name' => 'string',
         'email' => 'string',
         'password' => 'string',
         'tipo' => 'string',
@@ -75,7 +73,6 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     public static $rules = [
-        'name' => 'required',
         'email' => 'nullable',
         'password' => 'required',
         'tipo' => 'required',

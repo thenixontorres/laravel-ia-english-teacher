@@ -4,6 +4,7 @@
         <th>Apellido</th>
         <th>Cedula</th>
         <th>Materia</th>
+        <th>Estado</th>
         <th>Accion</th>
     </thead>
     <tbody>
@@ -13,6 +14,7 @@
             <td>{!! $estudiante->persona->apellido !!}</td>
             <td>{!! $estudiante->persona->cedula !!}</td>
             <td>{!! $estudiante->materia->materia.' Seccion '.$estudiante->materia->seccion->seccion !!}</td>
+            <td>{!! $estudiante->persona->user->estado !!}</td>
             <td>
                 {!! Form::open(['route' => ['admin.estudiante.destroy', $estudiante->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

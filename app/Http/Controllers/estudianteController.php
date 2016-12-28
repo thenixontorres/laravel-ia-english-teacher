@@ -73,7 +73,6 @@ class estudianteController extends AppBaseController
         $foto->move($ruta, $nombre);
 
         $user = new user();
-        $user->name = $request->name;
         $user->email = $request->email;
         $user->estado = $request->estado;
         $user->tipo = 'Estudiante';

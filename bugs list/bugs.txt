@@ -2,6 +2,5 @@ Inicio estudiantes - Lefts y rights se distorcionan con zoom a mas de 100%
 inicio estudiantes - Navbar no desplaza correctamente las secciones.  
 eliminar name de base de datos en tabla user
 falta pattern en formularios
-conflicto para obtener user->estado desde estudiante - estudiantes index
 mucho  a muchos en relacion evaluacion - materia
 agregar descripcion a evaluacion

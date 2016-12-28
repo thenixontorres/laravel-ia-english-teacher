@@ -17,11 +17,7 @@ class homeController extends Controller
      */
     public function index()
     {
-        $users = user::all();
-        dd($users);
-        return view('home')
-            ->with('user',$users);
-        
+        return view('home');        
     }
 
     /**
