@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\evaluacion;
 
 class casoController extends AppBaseController
 {
@@ -32,7 +33,7 @@ class casoController extends AppBaseController
         $this->casoRepository->pushCriteria(new RequestCriteria($request));
         $casos = $this->casoRepository->all();
 
-        return view('casos.index')
+        return view('admin.caso.index')
             ->with('casos', $casos);
     }
 
@@ -43,7 +44,9 @@ class casoController extends AppBaseController
      */
     public function create()
     {
-        return view('casos.create');
+        $evaluacions = evaluacion::all();
+        return view('admin.caso.create')
+            ->with('evaluacions', $evaluacions);
     }
 
     /**
@@ -59,9 +62,9 @@ class casoController extends AppBaseController
 
         $caso = $this->casoRepository->create($input);
 
-        Flash::success('caso saved successfully.');
+        Flash::success('Bot registrado con exito.');
 
-        return redirect(route('casos.index'));
+        return redirect(route('admin.caso.index'));
     }
 
     /**

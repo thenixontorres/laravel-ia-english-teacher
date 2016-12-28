@@ -8,6 +8,7 @@
     </thead>
     <tbody>
     @foreach($personas as $persona)
+        @if($persona->user->tipo == 'Profesor')
         <tr>
             <td>{!! $persona->nombre !!}</td>
             <td>{!! $persona->apellido !!}</td>
@@ -23,6 +24,7 @@
                 {!! Form::close() !!}
             </td>
         </tr>
+        @endif
     @endforeach
     </tbody>
 </table>

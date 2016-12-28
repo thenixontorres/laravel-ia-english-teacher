@@ -60,7 +60,6 @@ class personaController extends AppBaseController
     public function store(CreatepersonaRequest $request)
     {
         $input = $request->all();
-
         $foto = $request->file('foto');
         $nombre = $request->cedula.'.'.$foto->getClientOriginalExtension();
         $ruta = public_path().'/img/fotos/';
@@ -69,7 +68,7 @@ class personaController extends AppBaseController
         $user = new user();
         $user->email = $request->email;
         $user->estado = $request->estado;
-        $user->tipo = 'Estudiante';
+        $user->tipo = 'Profesor';
         $user->password = bcrypt($request->password);
         $user->save();
         $user_id = $user->id;
@@ -81,7 +80,6 @@ class personaController extends AppBaseController
         $persona->foto = '/img/fotos/'.$nombre;
         $persona->user_id = $user_id;
         $persona->save();
-        
         Flash::success('Profesor registrado con exito.');
 
         return redirect(route('admin.persona.index'));
@@ -119,12 +117,12 @@ class personaController extends AppBaseController
         $persona = $this->personaRepository->findWithoutFail($id);
 
         if (empty($persona)) {
-            Flash::error('persona not found');
+            Flash::error('Persona no encontrada.');
 
-            return redirect(route('personas.index'));
+            return redirect(route('admin.persona.index'));
         }
 
-        return view('personas.edit')->with('persona', $persona);
+        return view('admin.persona.edit')->with('persona', $persona);
     }
 
     /**
@@ -140,16 +138,16 @@ class personaController extends AppBaseController
         $persona = $this->personaRepository->findWithoutFail($id);
 
         if (empty($persona)) {
-            Flash::error('persona not found');
+            Flash::error('Profesor no encntrado');
 
-            return redirect(route('personas.index'));
+            return redirect(route('admin.persona.index'));
         }
 
         $persona = $this->personaRepository->update($request->all(), $id);
 
-        Flash::success('persona updated successfully.');
+        Flash::success('Profesor actualizado con exito.');
 
-        return redirect(route('personas.index'));
+        return redirect(route('admin.persona.index'));
     }
 
     /**
@@ -164,15 +162,15 @@ class personaController extends AppBaseController
         $persona = $this->personaRepository->findWithoutFail($id);
 
         if (empty($persona)) {
-            Flash::error('persona not found');
+            Flash::error('Profesor no encontrado.');
 
-            return redirect(route('personas.index'));
+            return redirect(route('admin.persona.index'));
         }
 
         $this->personaRepository->delete($id);
 
-        Flash::success('persona deleted successfully.');
+        Flash::success('Persona borrada con exito.');
 
-        return redirect(route('personas.index'));
+        return redirect(route('admin.persona.index'));
     }
 }

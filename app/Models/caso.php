@@ -71,6 +71,7 @@ class caso extends Model
     }
 
     public $fillable = [
+        'titulo',
         'enunciado',
         'evaluacion_id',
     ];
@@ -81,6 +82,7 @@ class caso extends Model
      * @var array
      */
     protected $casts = [
+        'titulo' => 'string',
         'enunciado' => 'string',
         'evaluacion_id' => 'integer',
     ];
@@ -91,6 +93,7 @@ class caso extends Model
      * @var array
      */
     public static $rules = [
+        'titulo' => 'required',
         'enunciado' => 'required|max:255',
         'evaluacion_id' => 'required',
     ];
