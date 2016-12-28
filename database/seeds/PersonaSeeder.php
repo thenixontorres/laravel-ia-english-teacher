@@ -14,6 +14,14 @@ class PersonaSeeder extends Seeder
     {
         DB::table('users')->insert([
 
+                'email'  => 'admin@example.com',
+                'password'  => bcrypt('admin'),
+                'tipo' => 'Admin',
+                'estado' => 'Activo'
+        ]);
+
+        DB::table('users')->insert([
+
                 'email'  => 'profesor@example.com',
                 'password'  => bcrypt('profesor'),
                 'tipo' => 'Profesor',
@@ -26,7 +34,7 @@ class PersonaSeeder extends Seeder
                 'apellido'  => 'Profesor',
                 'cedula'  => '00000001',
                 'foto' => 'img/fotos/profesor.jpg',
-                'user_id' => '1'
+                'user_id' => '2'
         ]);
     }
 }
