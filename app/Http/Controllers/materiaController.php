@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\persona;
+use App\Models\seccion;
+
 
 class materiaController extends AppBaseController
 {

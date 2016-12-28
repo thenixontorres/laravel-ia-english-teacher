@@ -2,5 +2,4 @@ Inicio estudiantes - Lefts y rights se distorcionan con zoom a mas de 100%
 inicio estudiantes - Navbar no desplaza correctamente las secciones.  
 falta pattern en formularios
 mucho  a muchos en relacion evaluacion - materia
-agregar descripcion a evaluacion
 editar estudiantes no carga la informacion del estudiante

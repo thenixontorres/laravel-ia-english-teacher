@@ -94,6 +94,42 @@ Route::delete('admin/evaluacion/eliminar/{id}', [
     'as'    =>  'admin.evaluacion.destroy',
 ]);
 
+//Materia-----------------------------------
+Route::get('admin/materia/', [
+  'uses'  =>  'materiaController@index',
+  'as'    =>  'admin.materia.index',
+]);
+
+Route::get('admin/materia/create', [
+  'uses'  =>  'materiaController@create',
+  'as'    =>  'admin.materia.create',
+]);
+
+Route::post('admin/materia/store', [
+  'uses'  =>  'materiaController@store',
+  'as'    =>  'admin.materia.store',
+]);
+
+Route::get('admin/materia/show/{id}', [
+  'uses'  =>  'materiaController@show',
+  'as'    =>  'admin.materia.show',
+]);
+
+Route::get('admin/materia/editar/{id}', [
+    'uses'  =>  'materiaController@edit',
+    'as'    =>  'admin.materia.edit',
+]);
+
+Route::patch('admin/materia/update/{id}', [
+    'uses'  => 'materiaController@update',
+    'as'    => 'admin.materia.update',
+]);
+
+Route::delete('admin/materia/eliminar/{id}', [
+    'uses'  =>  'materiaController@destroy',
+    'as'    =>  'admin.materia.destroy',
+]);
+
 //Login------------------------------------------
 
 Route::get('/login', [
