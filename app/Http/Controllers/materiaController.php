@@ -105,12 +105,16 @@ class materiaController extends AppBaseController
         $materia = $this->materiaRepository->findWithoutFail($id);
 
         if (empty($materia)) {
-            Flash::error('materia not found');
+            Flash::error('Materia no encontrada.');
 
-            return redirect(route('materias.index'));
+            return redirect(route('admin.materia.index'));
         }
-
-        return view('materias.edit')->with('materia', $materia);
+        $seccions = seccion::all();
+        $personas = persona::all();
+        return view('admin.materia.edit')
+        ->with('materia', $materia)
+        ->with('seccions',$seccions)
+        ->with('personas',$personas);
     }
 
     /**
@@ -126,16 +130,16 @@ class materiaController extends AppBaseController
         $materia = $this->materiaRepository->findWithoutFail($id);
 
         if (empty($materia)) {
-            Flash::error('materia not found');
+            Flash::error('Materia no encntrada.');
 
-            return redirect(route('materias.index'));
+            return redirect(route('admin.materia.index'));
         }
 
         $materia = $this->materiaRepository->update($request->all(), $id);
 
-        Flash::success('materia updated successfully.');
+        Flash::success('Materia editada con exito.');
 
-        return redirect(route('materias.index'));
+        return redirect(route('admin.materia.index'));
     }
 
     /**
