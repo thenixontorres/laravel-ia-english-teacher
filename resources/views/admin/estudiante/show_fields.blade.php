@@ -10,7 +10,6 @@
 <!-- Name Field -->
 <div class="form-group col-md-12">
     {!! Form::label('name', 'Nombre de usuario:') !!}
-    <p>{!! $estudiante->persona->User->name !!}</p>
     <hr>
 </div>
 <!-- Email Field -->

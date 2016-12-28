@@ -24,8 +24,13 @@
                 	<a href="{{ route('home') }}#evaluaciones">EVALUACIONES</a>
                 </li>
                 <li>
-                	<a href="#">SALIR</a>
+                    <a href="{{ route('admin.estudiante.index') }}">PANEL DE CONTROL</a>
                 </li>
+                @if(Auth::user())
+                <li><a href="{{ route('auth.logout') }}"> SALIR </a>
+                </li>    
+                @endif     
+  
             </ul>
         </div>
     </div>

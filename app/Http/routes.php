@@ -94,7 +94,7 @@ Route::delete('admin/evaluacion/eliminar/{id}', [
     'as'    =>  'admin.evaluacion.destroy',
 ]);
 
-//------------------------------------------
+//Login------------------------------------------
 
 Route::get('/login', [
     'uses'  => 'Auth\AuthController@getLogin',
