@@ -76,12 +76,12 @@ class personaController extends AppBaseController
         $persona = $this->personaRepository->findWithoutFail($id);
 
         if (empty($persona)) {
-            Flash::error('persona not found');
+            Flash::error('Profesor no encontrado.');
 
-            return redirect(route('personas.index'));
+            return redirect(route('admin.persona.index'));
         }
 
-        return view('personas.show')->with('persona', $persona);
+        return view('admin.persona.show')->with('persona', $persona);
     }
 
     /**

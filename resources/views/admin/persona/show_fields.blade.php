@@ -13,12 +13,6 @@
     <p>{!! $persona->user->email !!}</p>
     <hr>
 </div>
-<!-- Tipo Field -->
-<div class="form-group col-md-12">
-    {!! Form::label('tipo', 'Tipo:') !!}
-    <p>{!! $persona->user->tipo !!}</p>
-    <hr>
-</div>
 <!-- Estado Field -->
 <div class="form-group col-md-12">
     {!! Form::label('estado', 'Estado:') !!}
