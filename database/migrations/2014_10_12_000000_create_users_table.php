@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateUsersTable extends Migration
 {
@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->enum('estado', ['Activo', 'Inactivo']);
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

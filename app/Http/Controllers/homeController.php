@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class homeController extends Controller
 {
@@ -16,7 +17,10 @@ class homeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $users = user::all();
+        dd($users);
+        return view('home')
+            ->with('user',$users);
         
     }
 

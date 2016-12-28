@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
-
+use App\User;
 class userController extends AppBaseController
 {
     /** @var  userRepository */
