@@ -85,12 +85,12 @@ class materiaController extends AppBaseController
         $materia = $this->materiaRepository->findWithoutFail($id);
 
         if (empty($materia)) {
-            Flash::error('materia not found');
+            Flash::error('Materia no encontrada');
 
-            return redirect(route('materias.index'));
+            return redirect(route('admin.materia.index'));
         }
 
-        return view('materias.show')->with('materia', $materia);
+        return view('admin.materia.show')->with('materia', $materia);
     }
 
     /**
