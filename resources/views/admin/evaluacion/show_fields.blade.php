@@ -4,6 +4,12 @@
     <p>{!! $evaluacion->titulo !!}</p>
     <hr>
 </div>
+<!-- Titulo Field -->
+<div class="form-group col-md-12">
+    {!! Form::label('descripcion', 'Descripcion:') !!}
+    <p>{!! $evaluacion->descripcion !!}</p>
+    <hr>
+</div>
 <!--Tipo Field -->
 <div class="form-group col-md-12">
     {!! Form::label('tipo', 'Tipo:') !!}

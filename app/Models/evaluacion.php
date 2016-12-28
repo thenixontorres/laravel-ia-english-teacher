@@ -79,6 +79,7 @@ class evaluacion extends Model
 
     public $fillable = [
         'titulo',
+        'descripcion',
         'tipo',
         'materia_id',
         'estado'
@@ -91,6 +92,7 @@ class evaluacion extends Model
      */
     protected $casts = [
         'titulo' => 'string',
+        'descripcion' => 'string',
         'tipo' => 'string',
         'materia_id' => 'integer',
         'estado' => 'string'
@@ -103,6 +105,7 @@ class evaluacion extends Model
      */
     public static $rules = [
         'titulo' => 'required|max:30',
+        'descripcion' => 'required',
         'tipo' => 'required',
         'materia_id' => 'required',
         'estado' => 'required'

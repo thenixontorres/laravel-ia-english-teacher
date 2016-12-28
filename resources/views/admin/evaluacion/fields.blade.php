@@ -4,6 +4,12 @@
     {!! Form::text('titulo', null, ['class' => 'form-control','required']) !!}
 </div>
 
+<!-- descripcion Field -->
+<div class="form-group col-md-12">
+    {!! Form::label('descripcion', 'Descripcion:') !!}
+    {!! Form::textarea('descripcion', null, ['class' => 'form-control','required']) !!}
+</div>
+
 <!-- tipo Field -->
 <div class="form-group col-md-12">
     {!! Form::label('tipo', 'Tipo:') !!}
