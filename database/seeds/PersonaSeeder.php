@@ -14,7 +14,6 @@ class PersonaSeeder extends Seeder
     {
         DB::table('users')->insert([
 
-                'name'  => 'profesor',
                 'email'  => 'profesor@example.com',
                 'password'  => bcrypt('profesor'),
                 'tipo' => 'Profesor',
