@@ -154,15 +154,15 @@ class materiaController extends AppBaseController
         $materia = $this->materiaRepository->findWithoutFail($id);
 
         if (empty($materia)) {
-            Flash::error('materia not found');
+            Flash::error('Materia no encontrada.');
 
-            return redirect(route('materias.index'));
+            return redirect(route('admin.materia.index'));
         }
 
         $this->materiaRepository->delete($id);
 
-        Flash::success('materia deleted successfully.');
+        Flash::success('Materia borrada con exito.');
 
-        return redirect(route('materias.index'));
+        return redirect(route('admin.materia.index'));
     }
 }
