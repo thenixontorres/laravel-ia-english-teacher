@@ -32,7 +32,7 @@ class personaController extends AppBaseController
         $this->personaRepository->pushCriteria(new RequestCriteria($request));
         $personas = $this->personaRepository->all();
 
-        return view('personas.index')
+        return view('admin.persona.index')
             ->with('personas', $personas);
     }
 
