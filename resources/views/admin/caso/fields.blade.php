@@ -1,18 +1,6 @@
 <div class="form-group col-md-12">
     <div class="row">
-        {!! Form::open(['route' => 'admin.contexto.store']) !!}
-            <!-- contexto Field -->
-            <div class="form-group col-md-6">
-                {!! Form::label('contexto', 'Nuevo contexto:') !!}
-                {!! Form::text('contexto', null, ['class' => 'form-control','required']) !!}
-            </div>
-            <!-- caso_id Field -->
-                {!! Form::hidden('caso_id', $caso->id, ['class' => 'form-control','required']) !!}
-            <!-- Submit Field -->
-            <div class="form-group col-md-6">
-                {!! Form::submit('Agregar', ['class' => 'btn btn-default']) !!}
-            </div>                           
-        {!! Form::close() !!}
+        @include('admin.caso.contexto_form')
     </div>
     <hr>
     <div class="row">
