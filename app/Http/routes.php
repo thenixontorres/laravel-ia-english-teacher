@@ -200,6 +200,34 @@ Route::delete('admin/caso/eliminar/{id}', [
     'uses'  =>  'casoController@destroy',
     'as'    =>  'admin.caso.destroy',
 ]);
+
+//Contexto
+Route::post('admin/contexto/store', [
+  'uses'  =>  'contextoController@store',
+  'as'    =>  'admin.contexto.store',
+]);
+
+Route::delete('admin/contexto/eliminar/{id}', [
+    'uses'  =>  'contextoController@destroy',
+    'as'    =>  'admin.contexto.destroy',
+]);
+
+Route::get('admin/contexto/editar/{id}', [
+    'uses'  =>  'contextoController@edit',
+    'as'    =>  'admin.contexto.edit',
+]);
+
+Route::patch('admin/contexto/update/{id}', [
+    'uses'  => 'contextoController@update',
+    'as'    => 'admin.contexto.update',
+]);
+
+//Reglas
+Route::post('admin/regla/store', [
+  'uses'  =>  'contextoController@store',
+  'as'    =>  'admin.contexto.store',
+]);
+
 //Login------------------------------------------
 
 Route::get('/login', [

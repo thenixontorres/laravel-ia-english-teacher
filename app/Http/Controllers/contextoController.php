@@ -59,9 +59,9 @@ class contextoController extends AppBaseController
 
         $contexto = $this->contextoRepository->create($input);
 
-        Flash::success('contexto saved successfully.');
+        Flash::success('Contexto agregado con exito.');
 
-        return redirect(route('contextos.index'));
+        return redirect(route('admin.caso.edit',$request->caso_id));
     }
 
     /**
@@ -141,15 +141,15 @@ class contextoController extends AppBaseController
         $contexto = $this->contextoRepository->findWithoutFail($id);
 
         if (empty($contexto)) {
-            Flash::error('contexto not found');
+            Flash::error('Contexto no encontrado');
 
-            return redirect(route('contextos.index'));
+            return redirect()->back();
         }
 
         $this->contextoRepository->delete($id);
 
-        Flash::success('contexto deleted successfully.');
+        Flash::success('Contexto borrado con exito.');
 
-        return redirect(route('contextos.index'));
+        return redirect()->back();
     }
 }

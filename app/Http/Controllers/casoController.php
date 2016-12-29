@@ -11,6 +11,7 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\evaluacion;
+use App\Models\contexto;
 
 class casoController extends AppBaseController
 {
@@ -99,12 +100,16 @@ class casoController extends AppBaseController
         $caso = $this->casoRepository->findWithoutFail($id);
 
         if (empty($caso)) {
-            Flash::error('caso not found');
+            Flash::error('Bot no encontrado.');
 
-            return redirect(route('casos.index'));
+            return redirect(route('admin.caso.index'));
         }
 
-        return view('casos.edit')->with('caso', $caso);
+        $contextos = contexto::where('caso_id',$caso->id)->get();
+        
+        return view('admin.caso.edit')
+            ->with('caso', $caso)
+            ->with('contextos', $contextos);
     }
 
     /**

@@ -71,6 +71,20 @@ background-color: #cb2f33;
 border-color: #cb2f33;
 }
 
+.btn-primary {
+color: #efebe0;
+text-align: center;
+border-color: #c8a418;
+background-color: #c8a418;
+}
+
+.btn-primary:hover {
+color: #efebe0;
+text-align: center;
+border-color: #c8a418;
+background-color: #c8a418;
+}
+
 .footer{
 background-color: #251313;
 color: #efebe0;
