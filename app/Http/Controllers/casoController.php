@@ -12,6 +12,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\evaluacion;
 use App\Models\contexto;
+use App\Models\reaccion;
 
 class casoController extends AppBaseController
 {
@@ -106,10 +107,14 @@ class casoController extends AppBaseController
         }
 
         $contextos = contexto::where('caso_id',$caso->id)->get();
-        
+        $apuntadors = contexto::where('caso_id',$caso->id)->get();
+        $reaccions = reaccion::all();
+
         return view('admin.caso.edit')
             ->with('caso', $caso)
-            ->with('contextos', $contextos);
+            ->with('contextos', $contextos)
+            ->with('apuntadors', $apuntadors)
+            ->with('reaccions', $reaccions);
     }
 
     /**
