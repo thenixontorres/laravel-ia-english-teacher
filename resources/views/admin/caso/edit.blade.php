@@ -25,3 +25,14 @@
     </div>
 </div>    
 @endsection
+@section('scripts')
+<script type="text/javascript">
+
+function editar(id,contexto) {
+    var contexto_name = document.getElementById('contexto_name');
+    var contexto_id = document.getElementById('contexto_id');
+    contexto_name.value = contexto;
+    contexto_id.value = id;                
+} 
+</script>
+@endsection

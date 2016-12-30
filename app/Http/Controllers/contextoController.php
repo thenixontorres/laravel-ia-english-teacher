@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\contexto;
 
 class contextoController extends AppBaseController
 {
@@ -64,6 +65,21 @@ class contextoController extends AppBaseController
         return redirect(route('admin.caso.edit',$request->caso_id));
     }
 
+    public function update(CreatecontextoRequest $request)
+    {
+        $input = $request->all();
+        $contexto = contexto::where('id',$request->contexto_id)->get();
+        $contexto = $contexto->first();
+
+        $contexto->contexto = $request->contexto;
+
+        $contexto->save();
+
+        Flash::success('Contexto actualizado con exito.');
+
+        return redirect(route('admin.caso.edit',$request->caso_id));
+    }
+
     /**
      * Display the specified contexto.
      *
@@ -91,6 +107,7 @@ class contextoController extends AppBaseController
      *
      * @return Response
      */
+    /*
     public function edit($id)
     {
         $contexto = $this->contextoRepository->findWithoutFail($id);
@@ -103,6 +120,7 @@ class contextoController extends AppBaseController
 
         return view('contextos.edit')->with('contexto', $contexto);
     }
+    */
 
     /**
      * Update the specified contexto in storage.
@@ -112,7 +130,8 @@ class contextoController extends AppBaseController
      *
      * @return Response
      */
-    public function update($id, UpdatecontextoRequest $request)
+    
+    /*public function update($id, UpdatecontextoRequest $request)
     {
         $contexto = $this->contextoRepository->findWithoutFail($id);
 
@@ -128,7 +147,7 @@ class contextoController extends AppBaseController
 
         return redirect(route('contextos.index'));
     }
-
+    */
     /**
      * Remove the specified contexto from storage.
      *

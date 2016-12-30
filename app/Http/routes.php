@@ -212,12 +212,7 @@ Route::delete('admin/contexto/eliminar/{id}', [
     'as'    =>  'admin.contexto.destroy',
 ]);
 
-Route::get('admin/contexto/editar/{id}', [
-    'uses'  =>  'contextoController@edit',
-    'as'    =>  'admin.contexto.edit',
-]);
-
-Route::patch('admin/contexto/update/{id}', [
+Route::post('admin/contexto/update/', [
     'uses'  => 'contextoController@update',
     'as'    => 'admin.contexto.update',
 ]);
