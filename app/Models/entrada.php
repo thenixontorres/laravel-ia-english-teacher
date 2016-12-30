@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @SWG\Definition(
- *      definition="reaccion",
- *      required={reaccion, cliente_id},
+ *      definition="tip",
+ *      required={tip, contexto_id},
  *      @SWG\Property(
  *          property="id",
  *          description="id",
@@ -16,13 +16,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          format="int32"
  *      ),
  *      @SWG\Property(
- *          property="reaccion",
- *          description="reaccion",
+ *          property="tip",
+ *          description="tip",
  *          type="string"
  *      ),
  *      @SWG\Property(
- *          property="cliente_id",
- *          description="cliente_id",
+ *          property="contexto_id",
+ *          description="contexto_id",
  *          type="integer",
  *          format="int32"
  *      ),
@@ -40,24 +40,30 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *      )
  * )
  */
-class reaccion extends Model
+class entrada extends Model
 {
     use SoftDeletes;
 
-    public $table = 'reaccions';
+    public $table = 'entradas';
     
 
     protected $dates = ['deleted_at'];
 
     //hasMany----------------------------------
-    public function reglas()
+    public function logs()
     {
-        return $this->hasMany('App\Models\regla');
+        return $this->hasMany('App\Models\log');
+    }
+
+    //BelongsTo----------------------------------
+    public function regla()
+    {
+        return $this->BelongsTo('App\Models\regla');
     }
 
     public $fillable = [
-        'titulo',
-        'reaccion'
+        'entrada',
+        'regla_id'
     ];
 
     /**
@@ -66,8 +72,8 @@ class reaccion extends Model
      * @var array
      */
     protected $casts = [
-        'titulo' => 'string',
-        'reaccion' => 'string',
+        'entrada' => 'string',
+        'regla_id' => 'integer'
     ];
 
     /**
@@ -76,7 +82,7 @@ class reaccion extends Model
      * @var array
      */
     public static $rules = [
-        'titulo' => 'required',
-        'reaccion' => 'required',
+        'entrada' => 'required|max:140',
+        'regla_id' => 'required'
     ];
 }

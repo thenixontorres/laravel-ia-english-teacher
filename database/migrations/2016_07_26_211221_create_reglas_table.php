@@ -21,6 +21,8 @@ class CreatereglasTable extends Migration
             $table->foreign('contexto_id')->references('id')->on('contextos');
             $table->integer('apuntador_id')->unsigned();
             $table->foreign('apuntador_id')->references('id')->on('contextos');
+            $table->integer('reaccion_id')->unsigned();
+            $table->foreign('reaccion_id')->references('id')->on('reaccions');
             $table->timestamps();
             $table->softDeletes();
         });

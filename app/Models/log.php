@@ -83,7 +83,7 @@ class log extends Model
 
 
     public $fillable = [
-        'mensaje',
+        'entrada_id',
         'puntos',
         'estudiante_id',
         'respuesta_id',
@@ -96,7 +96,7 @@ class log extends Model
      * @var array
      */
     protected $casts = [
-        'mensaje' => 'string',
+        'entrada_id' => 'integer',
         'puntos' => 'string',
         'estudiante_id' => 'integer',
         'respuesta_id' => 'integer',
@@ -109,7 +109,7 @@ class log extends Model
      * @var array
      */
     public static $rules = [
-        'mensaje' => 'required|max:140',
+        'entrada_id' => 'required',
         'puntos' => 'required|numeric',
         'estudiante_id' => 'required',
         'respuesta_id' => 'required',

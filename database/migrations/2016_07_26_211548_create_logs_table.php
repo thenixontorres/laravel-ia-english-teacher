@@ -15,10 +15,11 @@ class CreatelogsTable extends Migration
     {
         Schema::create('logs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('mensaje');
             $table->string('puntos');
             $table->integer('estudiante_id')->unsigned();
             $table->foreign('estudiante_id')->references('id')->on('estudiantes');
+            $table->integer('entrada_id')->unsigned();
+            $table->foreign('entrada_id')->references('id')->on('entradas');
             $table->integer('respuesta_id')->unsigned();
             $table->foreign('respuesta_id')->references('id')->on('respuestas');
             $table->integer('caso_id')->unsigned();
@@ -35,6 +36,6 @@ class CreatelogsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('registros');
+        Schema::drop('logs');
     }
 }

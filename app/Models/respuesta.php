@@ -60,15 +60,10 @@ class respuesta extends Model
     {
         return $this->BelongsTo('App\Models\regla');
     }
-    public function reaccion()
-    {
-        return $this->BelongsTo('App\Models\reaccion');
-    }
 
     public $fillable = [
         'respuesta',
         'regla_id',
-        'reaccion_id'
     ];
 
     /**
@@ -78,8 +73,7 @@ class respuesta extends Model
      */
     protected $casts = [
         'respuesta' => 'string',
-        'regla_id' => 'integer',
-        'reaccion_id' => 'integer'   
+        'regla_id' => 'integer',   
     ];
 
     /**
@@ -89,7 +83,6 @@ class respuesta extends Model
      */
     public static $rules = [
         'respuesta' => 'required|max:140',
-        'regla_id' => 'required',
-        'reaccion_id' => 'required'
+        'regla_id' => 'required'
     ];
 }

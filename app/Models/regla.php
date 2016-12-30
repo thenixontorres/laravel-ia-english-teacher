@@ -74,9 +74,13 @@ class regla extends Model
     {
         return $this->BelongsTo('App\Models\contexto');
     }
+    public function reaccion()
+    {
+        return $this->BelongsTo('App\Models\reaccion');
+    }
 
     public $fillable = [
-        'regla',
+        'reaccion_id',
         'puntos',
         'contexto_id',
         'apuntador_id'
@@ -88,7 +92,7 @@ class regla extends Model
      * @var array
      */
     protected $casts = [
-        'regla' => 'string',
+        'reaccion_id' => 'integer',
         'puntos' => 'string',
         'contexto_id' => 'integer',
         'apuntador_id' => 'integer'
@@ -100,7 +104,7 @@ class regla extends Model
      * @var array
      */
     public static $rules = [
-        'regla' => 'required|max:140',
+        'reaccion_id' => 'required',
         'puntos' => 'required|numeric',
         'contexto_id' => 'required',
         'apuntador_id' => 'required'

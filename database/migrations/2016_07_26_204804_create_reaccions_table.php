@@ -15,6 +15,7 @@ class CreatereaccionsTable extends Migration
     {
         Schema::create('reaccions', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('titulo');
             $table->string('reaccion');
             $table->timestamps();
             $table->softDeletes();

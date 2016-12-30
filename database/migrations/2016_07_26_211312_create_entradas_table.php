@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreaterespuestasTable extends Migration
+class CreateentradasTable extends Migration
 {
 
     /**
@@ -13,9 +13,9 @@ class CreaterespuestasTable extends Migration
      */
     public function up()
     {
-        Schema::create('respuestas', function (Blueprint $table) {
+        Schema::create('entradas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('respuesta');
+            $table->string('entrada');
             $table->integer('regla_id')->unsigned();
             $table->foreign('regla_id')->references('id')->on('reglas');
             $table->timestamps();
@@ -30,6 +30,6 @@ class CreaterespuestasTable extends Migration
      */
     public function down()
     {
-        Schema::drop('respuestas');
+        Schema::drop('entradas');
     }
 }
