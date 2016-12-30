@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\reaccion;
 
 class reaccionController extends AppBaseController
 {
@@ -32,7 +33,7 @@ class reaccionController extends AppBaseController
         $this->reaccionRepository->pushCriteria(new RequestCriteria($request));
         $reaccions = $this->reaccionRepository->all();
 
-        return view('reaccions.index')
+        return view('admin.reaccion.index')
             ->with('reaccions', $reaccions);
     }
 
@@ -43,7 +44,7 @@ class reaccionController extends AppBaseController
      */
     public function create()
     {
-        return view('reaccions.create');
+        return view('admin.reaccion.create');
     }
 
     /**
@@ -56,12 +57,20 @@ class reaccionController extends AppBaseController
     public function store(CreatereaccionRequest $request)
     {
         $input = $request->all();
+        
+        $reaccion = $request->file('reaccion');
+        $nombre = $request->titulo.'.'.$reaccion->getClientOriginalExtension();
+        $ruta = public_path().'/img/reaccions/';
+        $reaccion->move($ruta, $nombre);
 
-        $reaccion = $this->reaccionRepository->create($input);
+        $x = new reaccion();
+        $x->titulo = $request->titulo;
+        $x->reaccion = '/img/reaccions/'.$nombre;
+        $x->save();
+        
+        Flash::success('Reaccion guardada con exito.');
 
-        Flash::success('reaccion saved successfully.');
-
-        return redirect(route('reaccions.index'));
+        return redirect(route('admin.reaccion.index'));
     }
 
     /**

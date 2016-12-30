@@ -165,6 +165,44 @@ Route::delete('admin/materia/eliminar/{id}', [
     'uses'  =>  'materiaController@destroy',
     'as'    =>  'admin.materia.destroy',
 ]);
+
+
+//Reaccion-----------------------------------
+Route::get('admin/reaccion/', [
+  'uses'  =>  'reaccionController@index',
+  'as'    =>  'admin.reaccion.index',
+]);
+
+Route::get('admin/reaccion/create', [
+  'uses'  =>  'reaccionController@create',
+  'as'    =>  'admin.reaccion.create',
+]);
+
+Route::post('admin/reaccion/store', [
+  'uses'  =>  'reaccionController@store',
+  'as'    =>  'admin.reaccion.store',
+]);
+
+Route::get('admin/reaccion/show/{id}', [
+  'uses'  =>  'reaccionController@show',
+  'as'    =>  'admin.reaccion.show',
+]);
+
+Route::get('admin/reaccion/editar/{id}', [
+    'uses'  =>  'reaccionController@edit',
+    'as'    =>  'admin.reaccion.edit',
+]);
+
+Route::patch('admin/reaccion/update/{id}', [
+    'uses'  => 'reaccionController@update',
+    'as'    => 'admin.reaccion.update',
+]);
+
+Route::delete('admin/reaccion/eliminar/{id}', [
+    'uses'  =>  'reaccionController@destroy',
+    'as'    =>  'admin.reaccion.destroy',
+]);
+
 //Caso-----------------------------------
 Route::get('admin/caso/', [
   'uses'  =>  'casoController@index',
