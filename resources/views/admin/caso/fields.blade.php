@@ -19,10 +19,11 @@
         </div>
         <div class="row">
             <div class="form-group col-md-12">
-                <a href="#" data-toggle="modal" data-target="#reglaCreate" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-plus"></i>
+               Nueva Regla <a href="#" data-toggle="modal" data-target="#reglaCreate" class='btn btn-default btn-xs' onclick="crear({{ $contexto->id }});"><i class="glyphicon glyphicon-plus"></i>
                 </a>
             </div>
-        </div>    
+        </div>
+        <hr>    
         @endforeach
     <div class="row">
         @include('admin.caso.contexto_edit')

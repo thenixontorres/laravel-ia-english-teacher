@@ -34,5 +34,10 @@ function editar(id,contexto) {
     contexto_name.value = contexto;
     contexto_id.value = id;                
 } 
+
+function crear(id) {
+    var regla_contexto_id = document.getElementById('regla_contexto_id');
+    regla_contexto_id.value = id;                
+} 
 </script>
 @endsection

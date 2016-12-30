@@ -257,8 +257,8 @@ Route::post('admin/contexto/update/', [
 
 //Reglas
 Route::post('admin/regla/store', [
-  'uses'  =>  'contextoController@store',
-  'as'    =>  'admin.contexto.store',
+  'uses'  =>  'reglaController@store',
+  'as'    =>  'admin.regla.store',
 ]);
 
 //Login------------------------------------------

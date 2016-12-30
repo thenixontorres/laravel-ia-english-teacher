@@ -1,32 +1,29 @@
-<!-- materia Field -->
+
+<br>
+<center>
+    <div class="col-md-6">
+        <img class="img img-responsive " src="{{ asset($reaccion->reaccion) }}" alt="">
+        <hr>
+    </div>
+</center> 
+
+<!-- titulo Field -->
 <div class="form-group col-md-12">
-    {!! Form::label('materia', 'Materia:') !!}
-    <p>{!! $materia->materia !!}</p>
-    <hr>
-</div>
-<!-- Seccion Field -->
-<div class="form-group col-md-12">
-    {!! Form::label('seccion', 'Seccion:') !!}
-    <p>{!! $materia->seccion->seccion !!}</p>
-    <hr>
-</div>
-<!--persona Field -->
-<div class="form-group col-md-12">
-    {!! Form::label('persona', 'Profesor:') !!}
-    <p>{!! $materia->persona->nombre.' '.$materia->persona->apellido.' '.$materia->persona->cedula !!}</p>
+    {!! Form::label('titulo', 'Titulo:') !!}
+    <p>{!! $reaccion->titulo !!}</p>
     <hr>
 </div>
 <!-- Created At Field -->
 <div class="form-group col-md-12">
     {!! Form::label('created_at', 'Registrado el:') !!}
-    <p>{!! $materia->created_at !!}</p>
+    <p>{!! $reaccion->created_at !!}</p>
     <hr>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group col-md-12">
     {!! Form::label('updated_at', 'Actualizado en:') !!}
-    <p>{!! $materia->updated_at !!}</p>
+    <p>{!! $reaccion->updated_at !!}</p>
     <hr>
 </div>
 

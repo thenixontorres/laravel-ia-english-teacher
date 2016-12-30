@@ -6,16 +6,16 @@
                 <h4 class="modal-title" id="reglaCreateLabel">Agregar regla</h4>
             </div>
             <div class="modal-body">
-                {!! Form::open(['route' => 'admin.contexto.update']) !!}
+                {!! Form::open(['route' => 'admin.regla.store']) !!}
                     <!--entradas field -->
                     <div class="form-group col-md-6">
                         {!! Form::label('entrada', 'Si el estudiante escribe:') !!}
                         {!! Form::textarea('entrada', null, ['class' => 'form-control','required']) !!}
                     </div>
-                    <!--salidas field -->
+                    <!--respuesta field -->
                     <div class="form-group col-md-6">
-                        {!! Form::label('salida', 'El bot respondera:') !!}
-                        {!! Form::textarea('salida', null, ['class' => 'form-control','required']) !!}
+                        {!! Form::label('respuesta', 'El bot respondera:') !!}
+                        {!! Form::textarea('respuesta', null, ['class' => 'form-control','required']) !!}
                     </div>
                     <!-- reaccion Field -->
                     <div class="form-group col-md-12">
@@ -30,7 +30,7 @@
                     <!-- apuntador_id Field -->
                     <div class="form-group col-md-12">
                         {!! Form::label('apuntador', 'Ira al contexto:') !!}
-                        <select name="reaccion_id" class="form-control">
+                        <select name="apuntador_id" class="form-control">
                             @foreach ($apuntadors as $apuntador)
                                 <option value="{{ $apuntador->id }}">{{ $apuntador->contexto }} 
                                 </option>
@@ -49,7 +49,7 @@
                     </div>
                     <!--contexto_id field -->
                     <div class="form-group">
-                         <input class="form-control" required="required" name="contexto_id" type="hidden" id="contexto_id" value="?">
+                         <input class="form-control" required="required" name="contexto_id" type="hidden" id="regla_contexto_id" value="?">
                     </div>
                     <div class="form-group">
                         {!! Form::submit('Agregar', ['class' => 'btn btn-default']) !!}

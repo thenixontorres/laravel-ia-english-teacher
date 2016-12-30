@@ -85,12 +85,12 @@ class reaccionController extends AppBaseController
         $reaccion = $this->reaccionRepository->findWithoutFail($id);
 
         if (empty($reaccion)) {
-            Flash::error('reaccion not found');
+            Flash::error('Reaccion no encontrada.');
 
-            return redirect(route('reaccions.index'));
+            return redirect(route('admin.reaccion.index'));
         }
 
-        return view('reaccions.show')->with('reaccion', $reaccion);
+        return view('admin.reaccion.show')->with('reaccion', $reaccion);
     }
 
     /**

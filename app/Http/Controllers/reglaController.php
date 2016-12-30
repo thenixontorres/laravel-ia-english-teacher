@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\regla;
+use App\Models\entrada;
+use App\Models\respuesta;
 
 class reglaController extends AppBaseController
 {
@@ -56,12 +59,29 @@ class reglaController extends AppBaseController
     public function store(CreatereglaRequest $request)
     {
         $input = $request->all();
+        $regla = new regla();
+        $regla->reaccion_id = $request->reaccion_id;
+        $regla->puntos = $request->puntos;
+        $regla->contexto_id = $request->contexto_id;
+        $regla->apuntador_id = $request->apuntador_id;
+        $regla->save();
 
-        $regla = $this->reglaRepository->create($input);
+        $regla_id = $regla->id;
 
-        Flash::success('regla saved successfully.');
+        $entrada = new entrada();
+        $entrada->entrada = $request->entrada;
+        $entrada->regla_id = $regla_id;
+        $entrada->save();
 
-        return redirect(route('reglas.index'));
+        $respuesta = new respuesta();
+        $respuesta->respuesta = $request->respuesta;
+        $respuesta->regla_id = $regla_id;
+        $respuesta->save();
+
+        
+        Flash::success('Regla registrada con exito.');
+
+        return redirect()->back();
     }
 
     /**
