@@ -6,7 +6,7 @@
         <img class="img img-responsive " src="{{ asset('img/left.png') }}" alt="">
     </div>
     <div class="col-md-8">  
-        <h4 class="text-center"> {{ $materia->titulo }} </h4>
+        <h4 class="text-center"> {{ $reaccion->titulo }} </h4>
     </div>
     <div class="col-md-2 "> 
         <img class="img img-responsive " src="{{ asset('img/right.png') }}" alt="">
@@ -19,9 +19,9 @@
     <div class="col-md-10">
         <div class="row panel panel-default">
 
-            {!! Form::model($materia, ['route' => ['admin.materia.update', $materia->id], 'method' => 'patch']) !!}
+            {!! Form::model($reaccion, ['route' => ['admin.reaccion.update', $reaccion->id], 'method' => 'patch']) !!}
 
-            @include('admin.materia.fields')
+            @include('admin.reaccion.fields')
 
             {!! Form::close() !!}
         </div>    

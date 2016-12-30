@@ -67,7 +67,7 @@ class reaccionController extends AppBaseController
         $x->titulo = $request->titulo;
         $x->reaccion = '/img/reaccions/'.$nombre;
         $x->save();
-        
+
         Flash::success('Reaccion guardada con exito.');
 
         return redirect(route('admin.reaccion.index'));
@@ -105,12 +105,12 @@ class reaccionController extends AppBaseController
         $reaccion = $this->reaccionRepository->findWithoutFail($id);
 
         if (empty($reaccion)) {
-            Flash::error('reaccion not found');
+            Flash::error('Reaccion no encontrada.');
 
-            return redirect(route('reaccions.index'));
+            return redirect(route('admin.reaccion.index'));
         }
 
-        return view('reaccions.edit')->with('reaccion', $reaccion);
+        return view('admin.reaccion.edit')->with('reaccion', $reaccion);
     }
 
     /**
@@ -126,16 +126,16 @@ class reaccionController extends AppBaseController
         $reaccion = $this->reaccionRepository->findWithoutFail($id);
 
         if (empty($reaccion)) {
-            Flash::error('reaccion not found');
+            Flash::error('Reaccion no encontrada.');
 
-            return redirect(route('reaccions.index'));
+            return redirect(route('admin.reaccion.index'));
         }
 
         $reaccion = $this->reaccionRepository->update($request->all(), $id);
 
-        Flash::success('reaccion updated successfully.');
+        Flash::success('Reaccion actualizada con exito.');
 
-        return redirect(route('reaccions.index'));
+        return redirect(route('admin.reaccion.index'));
     }
 
     /**
@@ -150,15 +150,15 @@ class reaccionController extends AppBaseController
         $reaccion = $this->reaccionRepository->findWithoutFail($id);
 
         if (empty($reaccion)) {
-            Flash::error('reaccion not found');
+            Flash::error('Reaccion no encontrada');
 
-            return redirect(route('reaccions.index'));
+            return redirect(route('admin.reaccion.index'));
         }
 
         $this->reaccionRepository->delete($id);
 
-        Flash::success('reaccion deleted successfully.');
+        Flash::success('Reaccion eliminada con exito.');
 
-        return redirect(route('reaccions.index'));
+        return redirect(route('admin.reaccion.index'));
     }
 }
