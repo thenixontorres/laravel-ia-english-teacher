@@ -261,6 +261,11 @@ Route::post('admin/regla/store', [
   'as'    =>  'admin.regla.store',
 ]);
 
+Route::delete('admin/regla/eliminar/{id}', [
+    'uses'  =>  'reglaController@destroy',
+    'as'    =>  'admin.regla.destroy',
+]);
+
 //Login------------------------------------------
 
 Route::get('/login', [

@@ -11,6 +11,9 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\contexto;
+use App\Models\entrada;
+use App\Models\respuesta;
+use App\Models\regla;
 
 class contextoController extends AppBaseController
 {
@@ -163,6 +166,22 @@ class contextoController extends AppBaseController
             Flash::error('Contexto no encontrado');
 
             return redirect()->back();
+        }
+        //eliminar reglas del contexto
+        $reglas = regla::where('contexto_id', $id)->get();
+        foreach ($reglas as $regla) {
+            
+            $entradas = entrada::where('regla_id',$regla->id)->get();
+            foreach ($entradas as $entrada) {
+                 $entrada->delete();
+            }
+
+            $respuestas = respuesta::where('regla_id',$regla->id)->get();
+
+            foreach ($respuestas as $respuesta) {
+                 $respuesta->delete();
+            } 
+            $regla->delete();
         }
 
         $this->contextoRepository->delete($id);

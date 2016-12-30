@@ -161,15 +161,26 @@ class reglaController extends AppBaseController
         $regla = $this->reglaRepository->findWithoutFail($id);
 
         if (empty($regla)) {
-            Flash::error('regla not found');
+            Flash::error('Regla no encontrada.');
 
-            return redirect(route('reglas.index'));
+            return redirect()->back();
         }
+
+        $entradas = entrada::where('regla_id',$id)->get();
+            foreach ($entradas as $entrada) {
+                 $entrada->delete();
+            }
+
+        $respuestas = respuesta::where('regla_id',$id)->get();
+
+            foreach ($respuestas as $respuesta) {
+                 $respuesta->delete();
+            }    
 
         $this->reglaRepository->delete($id);
 
-        Flash::success('regla deleted successfully.');
+        Flash::success('Regla eliminada con exito.');
 
-        return redirect(route('reglas.index'));
+        return redirect()->back();
     }
 }
