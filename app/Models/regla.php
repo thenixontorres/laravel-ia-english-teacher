@@ -65,6 +65,10 @@ class regla extends Model
     {
         return $this->hasMany('App\Models\respuesta');
     }
+    public function entradas()
+    {
+        return $this->hasMany('App\Models\entrada');
+    }
     //BelongsTo----------------------------------
     public function contexto()
     {
