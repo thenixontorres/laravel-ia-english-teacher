@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             $this->call(SeccionSeeder::class);
             $this->call(MateriaSeeder::class);
             $this->call(PeriodoSeeder::class);
+            $this->call(ReaccionSeeder::class);
+            $this->call(EvaluacionSeeder::class);
 
         Model::reguard();
     }
