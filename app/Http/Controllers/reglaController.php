@@ -68,16 +68,22 @@ class reglaController extends AppBaseController
 
         $regla_id = $regla->id;
 
-        $entrada = new entrada();
-        $entrada->entrada = $request->entrada;
-        $entrada->regla_id = $regla_id;
-        $entrada->save();
+        $entradas = explode('#', $request->entrada);
+        foreach ($entradas as $entrada) {
+            $nueva = new entrada();
+            $nueva->entrada = $entrada;
+            $nueva->regla_id = $regla_id;
+            $nueva->save();
+        }
 
-        $respuesta = new respuesta();
-        $respuesta->respuesta = $request->respuesta;
-        $respuesta->regla_id = $regla_id;
-        $respuesta->save();
-
+        $respuestas = explode('#', $request->respuesta);
+        foreach ($respuestas as $respuesta) {
+            $nueva = new respuesta();
+            $nueva->respuesta = $respuesta;
+            $nueva->regla_id = $regla_id;
+            $nueva->save();        
+        }    
+            
         
         Flash::success('Regla registrada con exito.');
 
