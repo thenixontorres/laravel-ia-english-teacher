@@ -27,7 +27,7 @@
 @endsection
 @section('scripts')
 <script type="text/javascript">
-
+//Editar Contexto
 function editar(id,contexto) {
     var contexto_name = document.getElementById('contexto_name');
     var contexto_id = document.getElementById('contexto_id');
@@ -35,9 +35,11 @@ function editar(id,contexto) {
     contexto_id.value = id;                
 } 
 
+//Crear Regla
 function crear(id) {
     var regla_contexto_id = document.getElementById('regla_contexto_id');
     regla_contexto_id.value = id;                
 } 
+ 
 </script>
 @endsection

@@ -262,6 +262,16 @@ Route::group(['middleware' => 'auth'], function () {
       'as'    =>  'admin.regla.store',
     ]);
 
+    Route::get('admin/regla/editar/{id}', [
+        'uses'  =>  'reglaController@edit',
+        'as'    =>  'admin.regla.edit',
+    ]);
+
+    Route::patch('admin/regla/update/{id}', [
+        'uses'  => 'reglaController@update',
+        'as'    => 'admin.regla.update',
+    ]);
+
     Route::delete('admin/regla/eliminar/{id}', [
         'uses'  =>  'reglaController@destroy',
         'as'    =>  'admin.regla.destroy',

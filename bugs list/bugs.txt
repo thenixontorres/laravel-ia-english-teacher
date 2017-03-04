@@ -4,3 +4,4 @@ mucho  a muchos en relacion evaluacion - materia
 editar estudiantes y personas no precarga carga la informacion
 campo cedula no esta validado como unico
 falta carrousel en el login
+Celda regla queda nula

@@ -59,7 +59,7 @@
                {{ $regla->puntos }}  
             </div>
             <div class="form-group col-md-2">
-                 <a href="#" data-toggle="modal" data-target="#reglaCreate" class='btn btn-primary btn-xs' onclick="crear({{ $contexto->id }});"><i class="glyphicon glyphicon-edit"></i>
+                 <a href="{!! route('admin.regla.edit', [$regla->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i>
                 </a>
                 {!! Form::open(['route' => ['admin.regla.destroy', $regla->id], 'method' => 'delete']) !!}
                 {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('¿Seguro que desea borrar esta regla?')"]) !!}
