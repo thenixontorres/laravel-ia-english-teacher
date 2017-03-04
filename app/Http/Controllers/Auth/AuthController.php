@@ -65,15 +65,15 @@ class AuthController extends Controller
 
     protected function getLogin()
     {
-        return view('auth.login');
+        return view('login');
     }
 
     public function loginPath()
     {
-        return route('auth.login');   
+        return route('auth.login');
     }
     public function redirectPath()
     {
-        return redirect()->guest('home');
+        return redirect()->guest('/');
     }
 }

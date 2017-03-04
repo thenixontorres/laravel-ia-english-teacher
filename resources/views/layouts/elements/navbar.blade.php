@@ -15,13 +15,13 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 	            <li>
-	            	<a href="{{ route('home') }}#inicio">INICIO</a>
+	            	<a href="{{ route('home') }}">INICIO</a>
 	            </li>
                 <li>
-                	<a href="{{ route('home') }}#practicas" >PRECTICAS</a>
+                	<a href="{{ route('home') }}" >PRECTICAS</a>
                 </li>
                 <li>
-                	<a href="{{ route('home') }}#evaluaciones">EVALUACIONES</a>
+                	<a href="{{ route('home') }}">EVALUACIONES</a>
                 </li>
                 <li>
                     <a href="{{ route('admin.estudiante.index') }}">PANEL DE CONTROL</a>
