@@ -82,7 +82,6 @@ class entrada extends Model
      * @var array
      */
     public static $rules = [
-        'entrada' => 'required|max:140',
         'regla_id' => 'required'
     ];
 }

@@ -14,7 +14,8 @@
                 </li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-	            <li>
+	            @if(Auth::user())
+                <li>
 	            	<a href="{{ route('home') }}">INICIO</a>
 	            </li>
                 <li>
@@ -26,11 +27,12 @@
                 <li>
                     <a href="{{ route('admin.estudiante.index') }}">PANEL DE CONTROL</a>
                 </li>
-                @if(Auth::user())
                 <li><a href="{{ route('auth.logout') }}"> SALIR </a>
-                </li>    
-                @endif     
-  
+                </li>  
+                @endif
+                 <li>
+                    <a href="{{ route('home') }}" >AYUDA</a>
+                </li>         
             </ul>
         </div>
     </div>

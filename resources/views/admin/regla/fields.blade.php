@@ -13,12 +13,12 @@
             @endforeach
         </select>
     </div>
-    <!--entradas field -->
+    <!--nuevas entradas field -->
     <div class="form-group col-md-6">
         {!! Form::label('entrada', 'Si el estudiante escribe:') !!}
         {!! Form::textarea('entrada', null, ['class' => 'form-control', 'placeholder'=> '#regla1 #regla2 #regla3 #etc','required']) !!}
     </div>
-    <!--respuesta field -->
+    <!-- nuevas respuesta field -->
     <div class="form-group col-md-6">
         {!! Form::label('respuesta', 'El bot respondera:') !!}
         {!! Form::textarea('respuesta', null, ['class' => 'form-control','placeholder'=> '#respuesta1 #respuesta2 #respuesta3 #etc','required']) !!}

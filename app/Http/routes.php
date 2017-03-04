@@ -276,6 +276,13 @@ Route::group(['middleware' => 'auth'], function () {
         'uses'  =>  'reglaController@destroy',
         'as'    =>  'admin.regla.destroy',
     ]);
+
+    Route::group(['prefix' => 'admin'], function () {
+
+        Route::resource('entradas', 'entradaController');
+        Route::resource('respuestas', 'respuestaController');
+
+    });    
 });
 //Login------------------------------------------
 

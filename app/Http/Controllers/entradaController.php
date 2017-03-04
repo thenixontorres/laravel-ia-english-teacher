@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
-
+use App\Models\entrada;
 class entradaController extends AppBaseController
 {
     /** @var  entradataRepository */
@@ -114,19 +114,14 @@ class entradaController extends AppBaseController
      */
     public function update($id, UpdateentradaRequest $request)
     {
-        $entrada = $this->entradaRepository->findWithoutFail($id);
+        $input = $request->all();
+        $entrada = entrada::where('id',$request->entrada_id)->get();
+        $entrada = $entrada->first();
+        $entrada->entrada = $request->entrada_name;
+        $entrada->save();    
+        Flash::success('Entrada actualizada con exito.');
 
-        if (empty($entrada)) {
-            Flash::error('entrada not found');
-
-            return redirect(route('entradas.index'));
-        }
-
-        $entrada = $this->entradaRepository->update($request->all(), $id);
-
-        Flash::success('entrada updated successfully.');
-
-        return redirect(route('entradas.index'));
+        return redirect()->back();
     }
 
     /**
@@ -141,15 +136,15 @@ class entradaController extends AppBaseController
         $entrada = $this->entradaRepository->findWithoutFail($id);
 
         if (empty($entrada)) {
-            Flash::error('entrada not found');
+            Flash::error('Entrada no encontrada.');
 
-            return redirect(route('entradas.index'));
+            return redirect()->back();
         }
 
         $this->entradaRepository->delete($id);
 
-        Flash::success('entrada deleted successfully.');
+        Flash::success('Entrada eliminada con exito.');
 
-        return redirect(route('entradas.index'));
+        return redirect()->back();
     }
 }
