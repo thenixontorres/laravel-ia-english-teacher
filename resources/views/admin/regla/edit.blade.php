@@ -44,6 +44,13 @@
                             </div>
                         </div>        
                         @endforeach
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                Agregar mas entradas <a href="#" data-toggle="modal" data-target="#entrada_create" class='btn btn-default btn-xs'>
+                                <i class="glyphicon glyphicon-plus"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <!--respuestas field -->
                     <div class="form-group col-md-6">
@@ -69,6 +76,13 @@
                             </div>
                         </div>        
                         @endforeach
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                Agregar mas respuestas <a href="#" data-toggle="modal" data-target="#respuesta_create" class='btn btn-default btn-xs'>
+                                <i class="glyphicon glyphicon-plus"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -84,7 +98,9 @@
         </div>    
     </div>
      <div class="row">
+        @include('admin.regla.entrada_create')
         @include('admin.regla.entrada_edit')
+        @include('admin.regla.respuesta_create')
         @include('admin.regla.respuesta_edit')
     </div>
 </div>    

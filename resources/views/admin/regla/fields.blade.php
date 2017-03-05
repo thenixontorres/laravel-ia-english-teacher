@@ -1,13 +1,4 @@
-    <!--nuevas entradas field -->
-    <div class="form-group col-md-6">
-        {!! Form::label('entrada', 'Agregar mas entradas:') !!}
-        {!! Form::textarea('entrada', null, ['class' => 'form-control', 'placeholder'=> '#regla1 #regla2 #regla3 #etc','required']) !!}
-    </div>
-    <!-- nuevas respuesta field -->
-    <div class="form-group col-md-6">
-        {!! Form::label('respuesta', 'Agregar mas respuestas:') !!}
-        {!! Form::textarea('respuesta', null, ['class' => 'form-control','placeholder'=> '#respuesta1 #respuesta2 #respuesta3 #etc','required']) !!}
-    </div>
+   
     <!-- contexto_id Field -->
     <div class="form-group col-md-12">
         {!! Form::label('contexto', 'Contexto actual:') !!}
@@ -80,6 +71,6 @@
 <div class="form-group col-md-12">
     <center>
     {!! Form::submit('Registrar', ['class' => 'btn btn-default']) !!}
-    <a href="{!! route('admin.caso.edit', $caso_id) !!}" class="btn btn-warning">Cancelar</a>
+    <a href="{!! route('admin.caso.edit', $caso_id) !!}" class="btn btn-warning">Volver</a>
     </center>
 </div>

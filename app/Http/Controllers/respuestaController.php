@@ -57,12 +57,17 @@ class respuestaController extends AppBaseController
     public function store(CreaterespuestaRequest $request)
     {
         $input = $request->all();
+        $respuestas = explode('#', $request->respuesta);
+        foreach ($respuestas as $respuesta) {
+            $nueva = new respuesta();
+            $nueva->respuesta = $respuesta;
+            $nueva->regla_id = $request->regla_id;
+            $nueva->save();
+        }
 
-        $respuesta = $this->respuestaRepository->create($input);
+        Flash::success('Respuesta guardade con exito.');
 
-        Flash::success('respuesta saved successfully.');
-
-        return redirect(route('respuestas.index'));
+        return redirect()->back();
     }
 
     /**

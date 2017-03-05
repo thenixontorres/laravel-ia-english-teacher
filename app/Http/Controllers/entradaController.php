@@ -57,11 +57,18 @@ class entradaController extends AppBaseController
     {
         $input = $request->all();
 
-        $entrada = $this->entradaRepository->create($input);
 
-        Flash::success('entrada saved successfully.');
+        $entradas = explode('#', $request->entrada);
+        foreach ($entradas as $entrada) {
+            $nueva = new entrada();
+            $nueva->entrada = $entrada;
+            $nueva->regla_id = $request->regla_id;
+            $nueva->save();
+        }
 
-        return redirect(route('entradas.index'));
+        Flash::success('Entrada guardade con exito.');
+
+        return redirect()->back();
     }
 
     /**

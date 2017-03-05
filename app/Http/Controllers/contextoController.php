@@ -167,6 +167,21 @@ class contextoController extends AppBaseController
 
             return redirect()->back();
         }
+        //Averiguar si otra regla apunta hacia aca
+        $reglas = regla::where('apuntador_id', $id)->get();
+        
+        if (empty($reglas) != true) {
+            $count = count($reglas);
+            $mensaje = " ";
+            for ($i=0; $i < $count; $i++) { 
+                $tag = $reglas[$i];
+                $contex = $tag->contexto->contexto;
+                $mensaje = $mensaje." ".$contex.", ";
+            }
+
+            dd($mensaje);
+        }        
+
         //eliminar reglas del contexto
         $reglas = regla::where('contexto_id', $id)->get();
         foreach ($reglas as $regla) {
@@ -175,7 +190,7 @@ class contextoController extends AppBaseController
             foreach ($entradas as $entrada) {
                  $entrada->delete();
             }
-            //eliminar respuesta
+            //eliminar respuestas del contexto
             $respuestas = respuesta::where('regla_id',$regla->id)->get();
 
             foreach ($respuestas as $respuesta) {
