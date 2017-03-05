@@ -1,6 +1,16 @@
-<!-- contexto_id Field -->
+    <!--nuevas entradas field -->
+    <div class="form-group col-md-6">
+        {!! Form::label('entrada', 'Agregar mas entradas:') !!}
+        {!! Form::textarea('entrada', null, ['class' => 'form-control', 'placeholder'=> '#regla1 #regla2 #regla3 #etc','required']) !!}
+    </div>
+    <!-- nuevas respuesta field -->
+    <div class="form-group col-md-6">
+        {!! Form::label('respuesta', 'Agregar mas respuestas:') !!}
+        {!! Form::textarea('respuesta', null, ['class' => 'form-control','placeholder'=> '#respuesta1 #respuesta2 #respuesta3 #etc','required']) !!}
+    </div>
+    <!-- contexto_id Field -->
     <div class="form-group col-md-12">
-        {!! Form::label('contexto', 'Contexto:') !!}
+        {!! Form::label('contexto', 'Contexto actual:') !!}
         <select name="contexto_id" class="form-control">
             @foreach ($contextos as $contexto)
                 @if($contexto->id == $regla->contexto_id)
@@ -12,16 +22,6 @@
                 @endif
             @endforeach
         </select>
-    </div>
-    <!--nuevas entradas field -->
-    <div class="form-group col-md-6">
-        {!! Form::label('entrada', 'Si el estudiante escribe:') !!}
-        {!! Form::textarea('entrada', null, ['class' => 'form-control', 'placeholder'=> '#regla1 #regla2 #regla3 #etc','required']) !!}
-    </div>
-    <!-- nuevas respuesta field -->
-    <div class="form-group col-md-6">
-        {!! Form::label('respuesta', 'El bot respondera:') !!}
-        {!! Form::textarea('respuesta', null, ['class' => 'form-control','placeholder'=> '#respuesta1 #respuesta2 #respuesta3 #etc','required']) !!}
     </div>
     <!-- reaccion Field -->
     <div class="form-group col-md-12">
@@ -68,9 +68,13 @@
             @endfor
         </select>
     </div>
+    <!--regla_id field -->
+    <div class="form-group">
+         <input class="form-control" required="required" name="regla_id" type="hidden" value="{{ $regla->id }}">
+    </div>
     <!--contexto_id field -->
     <div class="form-group">
-         <input class="form-control" required="required" name="contexto_id" type="hidden" id="regla_contexto_id" value="?">
+         <input class="form-control" required="required" name="contexto_id" type="hidden" value="{{ $regla->contexto->id }}">
     </div>
 <!-- Submit Field -->
 <div class="form-group col-md-12">

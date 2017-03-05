@@ -56,7 +56,7 @@
             {{ $regla->apuntador->contexto }} 
             </div>
             <div class="form-group col-md-1 text-center">
-               {{ $regla->puntos }}  
+            {{ $regla->puntos }}  
             </div>
             <div class="form-group col-md-2">
                  <a href="{!! route('admin.regla.edit', [$regla->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i>

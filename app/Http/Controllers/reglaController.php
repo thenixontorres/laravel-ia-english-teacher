@@ -157,19 +157,36 @@ class reglaController extends AppBaseController
      */
     public function update($id, UpdatereglaRequest $request)
     {
-        $regla = $this->reglaRepository->findWithoutFail($id);
+        $input = $request->all();
+        $regla = regla::where('id',$request->regla_id)->get();
+        $regla = $regla->first();
+        $regla->puntos = $request->puntos;
+        $regla->contexto_id = $request->contexto_id;
+        $regla->apuntador_id = $request->apuntador_id;
+        $regla->reaccion_id = $request->reaccion_id;
+        $regla->save(); 
 
-        if (empty($regla)) {
-            Flash::error('regla not found');
-
-            return redirect(route('reglas.index'));
+        if(empty($request->entrada) != true) {
+            $entradas = explode('#', $request->entrada);
+            foreach ($entradas as $entrada) {
+                $nueva = new entrada();
+                $nueva->entrada = $entrada;
+                $nueva->regla_id = $request->regla_id;
+                $nueva->save();
+            }   
         }
+        if(empty($request->respuesta) != true) {
+            $respuestas = explode('#', $request->respuesta);
+            foreach ($respuestas as $respuesta) {
+                $nueva = new respuesta();
+                $nueva->respuesta = $respuesta;
+                $nueva->regla_id = $request->regla_id;
+                $nueva->save();        
+            }
+        }     
 
-        $regla = $this->reglaRepository->update($request->all(), $id);
-
-        Flash::success('regla updated successfully.');
-
-        return redirect(route('reglas.index'));
+        Flash::success('Entrada actualizada con exito.');
+        return redirect()->back();
     }
 
     /**

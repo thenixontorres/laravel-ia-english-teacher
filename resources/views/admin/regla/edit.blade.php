@@ -18,61 +18,69 @@
     </div>
     <div class="col-md-10">
         <div class="row panel panel-default">
-    <!--entradas field -->
-    <div class="form-group col-md-6">
-        {!! Form::label('entrada', 'Entradas actuales:') !!}
-        <hr>
-        @foreach ($entradas as $entrada)
-        <div class="row">
-            <div class="form-group col-md-6">
-               <b>{{ $entrada->entrada }}</b>  
+            <div class="col-md-12">
+                <div class="row">
+                    <!--entradas field -->
+                    <div class="form-group col-md-6">
+                        {!! Form::label('entrada', 'Si el estudiante escribe:') !!}
+                        <hr>
+                        @foreach ($entradas as $entrada)
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                               <b>{{ $entrada->entrada }}</b>  
+                            </div>
+                            <div class="form-group col-md-3">
+                               <b>
+                                    <a href="#" data-toggle="modal" data-target="#entrada_edit" class='btn btn-primary btn-xs'> <i class="glyphicon glyphicon-edit" onclick="editar_entrada({{ $entrada->id }}, '{{ $entrada->entrada }}');"></i>
+                                    </a>
+                                </b>  
+                            </div>
+                            <div class="form-group col-md-3">
+                               <b>
+                                    {!! Form::open(['route' => ['admin.entradas.destroy', $entrada->id], 'method' => 'delete']) !!}
+                                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('¿Seguro que desea borrar esta entrada?')"]) !!}
+                                    {!! Form::close() !!}
+                               </b>  
+                            </div>
+                        </div>        
+                        @endforeach
+                    </div>
+                    <!--respuestas field -->
+                    <div class="form-group col-md-6">
+                        {!! Form::label('respuesta', 'El bot respondera:') !!}
+                        <hr>
+                        @foreach ($respuestas as $respuesta)
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                               <b>{{ $respuesta->respuesta }}</b>  
+                            </div>
+                            <div class="form-group col-md-3">
+                               <b>
+                                    <a href="#" data-toggle="modal" data-target="#respuesta_edit" class='btn btn-primary btn-xs'> <i class="glyphicon glyphicon-edit" onclick="editar_respuesta({{ $respuesta->id }}, '{{ $respuesta->respuesta }}');"></i>
+                                    </a>
+                                </b>  
+                            </div>
+                            <div class="form-group col-md-3">
+                               <b>
+                                    {!! Form::open(['route' => ['admin.respuestas.destroy', $respuesta->id], 'method' => 'delete']) !!}
+                                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('¿Seguro que desea borrar esta respuesta?')"]) !!}
+                                    {!! Form::close() !!}
+                               </b>  
+                            </div>
+                        </div>        
+                        @endforeach
+                    </div>
+                </div>
             </div>
-            <div class="form-group col-md-3">
-               <b>
-                    <a href="#" data-toggle="modal" data-target="#entrada_edit" class='btn btn-primary btn-xs'> <i class="glyphicon glyphicon-edit" onclick="editar_entrada({{ $entrada->id }}, '{{ $entrada->entrada }}');"></i>
-                    </a>
-                </b>  
-            </div>
-            <div class="form-group col-md-3">
-               <b>
-                    {!! Form::open(['route' => ['admin.entradas.destroy', $entrada->id], 'method' => 'delete']) !!}
-                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('¿Seguro que desea borrar esta entrada?')"]) !!}
-                    {!! Form::close() !!}
-               </b>  
-            </div>
-        </div>        
-        @endforeach
-    </div>
-    <!--respuestas field -->
-    <div class="form-group col-md-6">
-        {!! Form::label('respuesta', 'Respuestas actuales:') !!}
-        <hr>
-        @foreach ($respuestas as $respuesta)
-        <div class="row">
-            <div class="form-group col-md-6">
-               <b>{{ $respuesta->respuesta }}</b>  
-            </div>
-            <div class="form-group col-md-3">
-               <b>
-                    <a href="#" data-toggle="modal" data-target="#respuesta_edit" class='btn btn-primary btn-xs'> <i class="glyphicon glyphicon-edit" onclick="editar_respuesta({{ $respuesta->id }}, '{{ $respuesta->respuesta }}');"></i>
-                    </a>
-                </b>  
-            </div>
-            <div class="form-group col-md-3">
-               <b>
-                    {!! Form::open(['route' => ['admin.respuestas.destroy', $respuesta->id], 'method' => 'delete']) !!}
-                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('¿Seguro que desea borrar esta respuesta?')"]) !!}
-                    {!! Form::close() !!}
-               </b>  
-            </div>
-        </div>        
-        @endforeach
-    </div>
-            {!! Form::model($regla, ['route' => ['admin.regla.update', $regla->id], 'method' => 'patch']) !!}
+            <div class="col-md-12">
+                <div class="row">
+                {!! Form::model($regla, ['route' => ['admin.regla.update', $regla->id], 'method' => 'patch']) !!}
 
-            @include('admin.regla.fields')
+                @include('admin.regla.fields')
 
-            {!! Form::close() !!}
+                {!! Form::close() !!}
+                </div>
+            </div>    
         </div>    
     </div>
      <div class="row">

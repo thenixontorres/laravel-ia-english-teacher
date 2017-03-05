@@ -170,12 +170,12 @@ class contextoController extends AppBaseController
         //eliminar reglas del contexto
         $reglas = regla::where('contexto_id', $id)->get();
         foreach ($reglas as $regla) {
-            
+            //eliminar entradas del contexto
             $entradas = entrada::where('regla_id',$regla->id)->get();
             foreach ($entradas as $entrada) {
                  $entrada->delete();
             }
-
+            //eliminar respuesta
             $respuestas = respuesta::where('regla_id',$regla->id)->get();
 
             foreach ($respuestas as $respuesta) {

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\respuesta;
 
 class respuestaController extends AppBaseController
 {
@@ -114,19 +115,14 @@ class respuestaController extends AppBaseController
      */
     public function update($id, UpdaterespuestaRequest $request)
     {
-        $respuesta = $this->respuestaRepository->findWithoutFail($id);
+        $input = $request->all();
+        $respuesta = respuesta::where('id',$request->respuesta_id)->get();
+        $respuesta = $respuesta->first();
+        $respuesta->respuesta = $request->respuesta_name;
+        $respuesta->save();    
+        Flash::success('Respuesta actualizada con exito.');
 
-        if (empty($respuesta)) {
-            Flash::error('respuesta not found');
-
-            return redirect(route('respuestas.index'));
-        }
-
-        $respuesta = $this->respuestaRepository->update($request->all(), $id);
-
-        Flash::success('respuesta updated successfully.');
-
-        return redirect(route('respuestas.index'));
+        return redirect()->back();
     }
 
     /**
@@ -141,15 +137,15 @@ class respuestaController extends AppBaseController
         $respuesta = $this->respuestaRepository->findWithoutFail($id);
 
         if (empty($respuesta)) {
-            Flash::error('respuesta not found');
+            Flash::error('Respuesta no encontrada.');
 
-            return redirect(route('respuestas.index'));
+            return redirect()->back();
         }
 
         $this->respuestaRepository->delete($id);
 
-        Flash::success('respuesta deleted successfully.');
+        Flash::success('Respuesta eliminada con exito.');
 
-        return redirect(route('respuestas.index'));
+        return redirect()->back();
     }
 }

@@ -1,18 +1,18 @@
-<div class="modal fade" id="entrada_edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="respuesta_edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Editar Entrada</h4>
+                <h4 class="modal-title" id="myModalLabel">Editar Respuesta</h4>
             </div>
             <div class="modal-body">
-                {!! Form::open(['route' => 'admin.entradas.update', 'method' => 'patch']) !!}
+                {!! Form::open(['route' => 'admin.respuestas.update', 'method' => 'patch']) !!}
                     <div class="form-group">
-                        <label for="contexto">Entrada: </label>
-                        <!-- entrada_id Field -->
-                        <input class="form-control" required="required" name="entrada_id" type="hidden" id="entrada_id" value="?">
-                        <!-- Entrada name Field -->
-                        <input class="form-control" required="required" name="entrada_name" type="text" id="entrada_name" value="?">
+                        <label for="contexto">Respuesta: </label>
+                        <!-- respuesta_id Field -->
+                        <input class="form-control" required="required" name="respuesta_id" type="hidden" id="respuesta_id" value="?">
+                        <!-- respuesta name Field -->
+                        <input class="form-control" required="required" name="respuesta_name" type="text" id="respuesta_name" value="?">
                         <!-- Regla_id Field -->
                         {!! Form::hidden('regla_id', $regla->id, ['class' => 'form-control','required']) !!}
                     </div>
