@@ -128,8 +128,8 @@ class reglaController extends AppBaseController
         $respuestas = respuesta::where('regla_id', $regla->id)->get();
 
         $caso_id = $regla->contexto->caso->id;
-        $contextos = contexto::all();
-        $apuntadors = contexto::all();
+        $contextos = contexto::where('caso_id', $caso_id)->get();
+        $apuntadors = contexto::where('caso_id', $caso_id)->get();
         $reaccions = reaccion::all();
         if (empty($regla)) {
             Flash::error('Regla no encontrada.');
