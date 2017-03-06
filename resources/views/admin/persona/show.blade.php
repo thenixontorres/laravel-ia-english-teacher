@@ -21,7 +21,7 @@
    			@include('admin.persona.show_fields')
 		    <div class="form-group col-md-12">
 		           <center>
-		           		<a href="{!! route('admin.persona.index') !!}" class="btn btn-default">Volver</a>
+		           		<a href="{!! route('admin.personas.index') !!}" class="btn btn-default">Volver</a>
 		           </center>	
 		    </div>
 		</div>

@@ -12,6 +12,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\User;
 use App\Models\persona;
+use App\Models\materia;
 
 
 class personaController extends AppBaseController
@@ -82,7 +83,7 @@ class personaController extends AppBaseController
         $persona->save();
         Flash::success('Profesor registrado con exito.');
 
-        return redirect(route('admin.persona.index'));
+        return redirect(route('admin.personas.index'));
     }
 
     /**
@@ -99,7 +100,7 @@ class personaController extends AppBaseController
         if (empty($persona)) {
             Flash::error('Profesor no encontrado.');
 
-            return redirect(route('admin.persona.index'));
+            return redirect(route('admin.personas.index'));
         }
 
         return view('admin.persona.show')->with('persona', $persona);
@@ -119,7 +120,7 @@ class personaController extends AppBaseController
         if (empty($persona)) {
             Flash::error('Persona no encontrada.');
 
-            return redirect(route('admin.persona.index'));
+            return redirect(route('admin.personas.index'));
         }
 
         return view('admin.persona.edit')->with('persona', $persona);
@@ -140,14 +141,14 @@ class personaController extends AppBaseController
         if (empty($persona)) {
             Flash::error('Profesor no encntrado');
 
-            return redirect(route('admin.persona.index'));
+            return redirect(route('admin.personas.index'));
         }
 
         $persona = $this->personaRepository->update($request->all(), $id);
 
         Flash::success('Profesor actualizado con exito.');
 
-        return redirect(route('admin.persona.index'));
+        return redirect(route('admin.personas.index'));
     }
 
     /**
@@ -164,13 +165,27 @@ class personaController extends AppBaseController
         if (empty($persona)) {
             Flash::error('Profesor no encontrado.');
 
-            return redirect(route('admin.persona.index'));
+            return redirect(route('admin.personas.index'));
         }
 
+        $materias = materia::where('persona_id',$id)->get();
+        if (count($materias)>0) {
+             Flash::error('Este Profesor aun esta asignado a una materia.');
+
+            return redirect(route('admin.personas.index')); 
+        }else{
+
+        $user_id = $persona->user_id;
+        $user = user::where('id',$user_id)->get();
+        $user = $user->first();
+        $user->delete();    
+        
         $this->personaRepository->delete($id);
 
         Flash::success('Persona borrada con exito.');
 
-        return redirect(route('admin.persona.index'));
+        return redirect(route('admin.personas.index'));
+
+        }
     }
 }

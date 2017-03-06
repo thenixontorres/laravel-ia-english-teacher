@@ -22,44 +22,8 @@ Route::group(['middleware' => 'auth'], function () {
     'as'    =>  'home',
   ]);
 
-    //Rutas Admin------------------------------
-    //Estudiante
-    /*Route::get('admin/estudiante/', [
-      'uses'  =>  'estudianteController@index',
-      'as'    =>  'admin.estudiante.index',
-    ]);
-
-    Route::get('admin/estudiante/create', [
-      'uses'  =>  'estudianteController@create',
-      'as'    =>  'admin.estudiante.create',
-    ]);
-
-    Route::post('admin/estudiante/store', [
-      'uses'  =>  'estudianteController@store',
-      'as'    =>  'admin.estudiante.store',
-    ]);
-
-    Route::get('admin/estudiante/show/{id}', [
-      'uses'  =>  'estudianteController@show',
-      'as'    =>  'admin.estudiante.show',
-    ]);
-
-    Route::get('admin/estudiante/editar/{id}', [
-        'uses'  =>  'estudianteController@edit',
-        'as'    =>  'admin.estudiante.edit',
-    ]);
-
-    Route::patch('admin/estudiante/update/{id}', [
-        'uses'  => 'estudianteController@update',
-        'as'    => 'admin.estudiante.update',
-    ]);
-
-    Route::delete('admin/estudiant/eliminar/{id}', [
-        'uses'  =>  'estudianteController@destroy',
-        'as'    =>  'admin.estudiante.destroy',
-    ]);
-    */
     //Persona-----------------------------------
+    /*
     Route::get('admin/persona/', [
       'uses'  =>  'personaController@index',
       'as'    =>  'admin.persona.index',
@@ -94,7 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
         'uses'  =>  'personaController@destroy',
         'as'    =>  'admin.persona.destroy',
     ]);
-
+    */
     //Evaluacion-----------------------------------
     Route::get('admin/evaluacion/', [
       'uses'  =>  'evaluacionController@index',
@@ -280,7 +244,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'admin'], function () {
 
         Route::resource('estudiantes', 'estudianteController');
+        
+        Route::resource('personas', 'personaController');
+          
         Route::resource('entradas', 'entradaController');
+        
         Route::resource('respuestas', 'respuestaController');
 
     });    
