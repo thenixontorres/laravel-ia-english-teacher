@@ -102,10 +102,10 @@ class estudianteController extends AppBaseController
         
         if ($estudiante->save()) {
             Flash::success('Estudiante registrado correctamente.');
-            return redirect(route('admin.estudiante.index'));    
+            return redirect(route('admin.estudiantes.index'));    
         }else{
             Flash::error('Error al registrar el estudiante.');
-            return redirect(route('admin.estudiante.create'));
+            return redirect(route('admin.estudiantes.create'));
         }       
     }
 
@@ -123,7 +123,7 @@ class estudianteController extends AppBaseController
         if (empty($estudiante)) {
             Flash::error('Estudiante no encontrado');
 
-            return redirect(route('admin.estudiante.index'));
+            return redirect(route('admin.estudiantes.index'));
         }
         return view('admin.estudiante.show')->with('estudiante', $estudiante);
     }
@@ -142,7 +142,7 @@ class estudianteController extends AppBaseController
         if (empty($estudiante)) {
             Flash::error('Estudiante no encontrado');
 
-            return redirect(route('admin.estudiante.index'));
+            return redirect(route('admin.estudiantes.index'));
         }
         $materias = materia::all();
         $periodos = periodo::all();
@@ -190,7 +190,7 @@ class estudianteController extends AppBaseController
         
         if (empty($estudiante)) {
             Flash::error('Estudiante no encontrado');
-            return redirect(route('admin.estudiante.index'));
+            return redirect(route('admin.estudiantes.index'));
         }
 
             $persona_id = $estudiante->persona_id;
@@ -207,6 +207,6 @@ class estudianteController extends AppBaseController
 
         Flash::success('Estudiante borrado exitosamente.');
 
-        return redirect(route('admin.estudiante.index'));
+        return redirect(route('admin.estudiantes.index'));
     }
 }

@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Rutas Admin------------------------------
     //Estudiante
-    Route::get('admin/estudiante/', [
+    /*Route::get('admin/estudiante/', [
       'uses'  =>  'estudianteController@index',
       'as'    =>  'admin.estudiante.index',
     ]);
@@ -58,7 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
         'uses'  =>  'estudianteController@destroy',
         'as'    =>  'admin.estudiante.destroy',
     ]);
-
+    */
     //Persona-----------------------------------
     Route::get('admin/persona/', [
       'uses'  =>  'personaController@index',
@@ -279,6 +279,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'admin'], function () {
 
+        Route::resource('estudiantes', 'estudianteController');
         Route::resource('entradas', 'entradaController');
         Route::resource('respuestas', 'respuestaController');
 

@@ -5,4 +5,3 @@ editar estudiantes y personas no precarga carga la informacion
 campo cedula no esta validado como unico
 falta carrousel en el login
 Celda regla queda nula
-al borrar un contexto, hay conflicto si una regla tiene ese contexto como apuntador

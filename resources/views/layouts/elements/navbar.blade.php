@@ -25,7 +25,7 @@
                 	<a href="{{ route('home') }}">EVALUACIONES</a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.estudiante.index') }}">PANEL DE CONTROL</a>
+                    <a href="{{ route('admin.estudiantes.index') }}">PANEL DE CONTROL</a>
                 </li>
                 <li><a href="{{ route('auth.logout') }}"> SALIR </a>
                 </li>  

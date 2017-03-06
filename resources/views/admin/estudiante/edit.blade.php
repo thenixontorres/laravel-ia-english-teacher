@@ -19,7 +19,7 @@
     <div class="col-md-10">
         <div class="row panel panel-default">
 
-            {!! Form::model($estudiante, ['route' => ['admin.estudiante.update', $estudiante->id], 'method' => 'patch', 'files' => true]) !!}
+            {!! Form::model($estudiante, ['route' => ['admin.estudiantes.update', $estudiante->id], 'method' => 'patch', 'files' => true]) !!}
 
             @include('admin.estudiante.fields')
 
