@@ -88,7 +88,7 @@
             </div>
             <div class="col-md-12">
                 <div class="row">
-                {!! Form::model($regla, ['route' => ['admin.regla.update', $regla->id], 'method' => 'patch']) !!}
+                {!! Form::model($regla, ['route' => ['admin.reglas.update', $regla->id], 'method' => 'patch']) !!}
 
                 @include('admin.regla.fields')
 

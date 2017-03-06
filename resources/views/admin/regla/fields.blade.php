@@ -71,6 +71,6 @@
 <div class="form-group col-md-12">
     <center>
     {!! Form::submit('Registrar', ['class' => 'btn btn-default']) !!}
-    <a href="{!! route('admin.caso.edit', $caso_id) !!}" class="btn btn-warning">Volver</a>
+    <a href="{!! route('admin.casos.edit', $caso_id) !!}" class="btn btn-warning">Volver</a>
     </center>
 </div>

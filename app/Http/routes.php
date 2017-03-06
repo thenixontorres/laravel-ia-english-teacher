@@ -18,27 +18,6 @@ Route::group(['middleware' => 'auth'], function () {
     'as'    =>  'home',
   ]);
 
-    //Reglas
-    Route::post('admin/regla/store', [
-      'uses'  =>  'reglaController@store',
-      'as'    =>  'admin.regla.store',
-    ]);
-
-    Route::get('admin/regla/editar/{id}', [
-        'uses'  =>  'reglaController@edit',
-        'as'    =>  'admin.regla.edit',
-    ]);
-
-    Route::patch('admin/regla/update/{id}', [
-        'uses'  => 'reglaController@update',
-        'as'    => 'admin.regla.update',
-    ]);
-
-    Route::delete('admin/regla/eliminar/{id}', [
-        'uses'  =>  'reglaController@destroy',
-        'as'    =>  'admin.regla.destroy',
-    ]);
-
     Route::group(['prefix' => 'admin'], function () {
 
         Route::resource('estudiantes', 'estudianteController');
@@ -53,7 +32,8 @@ Route::group(['middleware' => 'auth'], function () {
         
         Route::resource('contextos', 'contextoController');
 
-        
+        Route::resource('reglas', 'reglaController');
+   
         Route::resource('reaccions', 'reaccionController');
     
         Route::resource('entradas', 'entradaController');

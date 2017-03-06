@@ -6,7 +6,7 @@
                 <h4 class="modal-title" id="reglaCreateLabel">Agregar regla</h4>
             </div>
             <div class="modal-body">
-                {!! Form::open(['route' => 'admin.regla.store']) !!}
+                {!! Form::open(['route' => 'admin.reglas.store']) !!}
                     <!--entradas field -->
                     <div class="form-group col-md-6">
                         {!! Form::label('entrada', 'Si el estudiante escribe:') !!}
