@@ -169,19 +169,18 @@ class contextoController extends AppBaseController
         }
         //Averiguar si otra regla apunta hacia aca
         $reglas = regla::where('apuntador_id', $id)->get();
-        
+
         if (empty($reglas) != true) {
-            $count = count($reglas);
-            $mensaje = " ";
-            for ($i=0; $i < $count; $i++) { 
-                $tag = $reglas[$i];
-                $contex = $tag->contexto->contexto;
-                $mensaje = $mensaje." ".$contex.", ";
+            foreach ($reglas as $regla) {
+                //si la regla pertenece a otro contexto
+                if ($regla->contexto_id != $id){
+                    $mensaje = $regla->contexto->contexto;
+                    Flash::error('No se puede borrar porque el contexto "'.$mensaje.'" contiene reglas que apuntan hasta este contexto.');
+
+                    return redirect()->back();
+                }   
             }
-
-            dd($mensaje);
         }        
-
         //eliminar reglas del contexto
         $reglas = regla::where('contexto_id', $id)->get();
         foreach ($reglas as $regla) {
