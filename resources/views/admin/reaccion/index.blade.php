@@ -17,7 +17,7 @@
             @include('layouts.elements.panel')
         </div>
         <div class="col-md-10 panel panel-default">  
-            <a class="btn btn-default pull-right nav-li" style="margin-top: 25px" href="{!! route('admin.reaccion.create') !!}">Agregar</a>
+            <a class="btn btn-default pull-right nav-li" style="margin-top: 25px" href="{!! route('admin.reaccions.create') !!}">Agregar</a>
             <div class="clearfix"></div>
             @include('admin.reaccion.table')
         </div>

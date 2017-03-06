@@ -17,7 +17,7 @@
 				<a class="nav-li text-center" href="{{ route('admin.caso.index') }}">Bots</a>
 			</li>
 			<li class="nav-li">
-				<a class="nav-li text-center" href="{{ route('admin.reaccion.index') }}">Reacciones</a>
+				<a class="nav-li text-center" href="{{ route('admin.reaccions.index') }}">Reacciones</a>
 			</li>
 		</ul>
 	</nav>

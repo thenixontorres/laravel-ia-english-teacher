@@ -11,6 +11,8 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\reaccion;
+use App\Models\regla;
+
 
 class reaccionController extends AppBaseController
 {
@@ -70,7 +72,7 @@ class reaccionController extends AppBaseController
 
         Flash::success('Reaccion guardada con exito.');
 
-        return redirect(route('admin.reaccion.index'));
+        return redirect(route('admin.reaccions.index'));
     }
 
     /**
@@ -87,7 +89,7 @@ class reaccionController extends AppBaseController
         if (empty($reaccion)) {
             Flash::error('Reaccion no encontrada.');
 
-            return redirect(route('admin.reaccion.index'));
+            return redirect(route('admin.reaccions.index'));
         }
 
         return view('admin.reaccion.show')->with('reaccion', $reaccion);
@@ -107,7 +109,7 @@ class reaccionController extends AppBaseController
         if (empty($reaccion)) {
             Flash::error('Reaccion no encontrada.');
 
-            return redirect(route('admin.reaccion.index'));
+            return redirect(route('admin.reaccions.index'));
         }
 
         return view('admin.reaccion.edit')->with('reaccion', $reaccion);
@@ -128,14 +130,14 @@ class reaccionController extends AppBaseController
         if (empty($reaccion)) {
             Flash::error('Reaccion no encontrada.');
 
-            return redirect(route('admin.reaccion.index'));
+            return redirect(route('admin.reaccions.index'));
         }
 
         $reaccion = $this->reaccionRepository->update($request->all(), $id);
 
         Flash::success('Reaccion actualizada con exito.');
 
-        return redirect(route('admin.reaccion.index'));
+        return redirect(route('admin.reaccions.index'));
     }
 
     /**
@@ -150,15 +152,21 @@ class reaccionController extends AppBaseController
         $reaccion = $this->reaccionRepository->findWithoutFail($id);
 
         if (empty($reaccion)) {
-            Flash::error('Reaccion no encontrada');
+            Flash::error('Reaccion no encontrada.');
 
-            return redirect(route('admin.reaccion.index'));
+            return redirect(route('admin.reaccions.index'));
         }
 
+        $reglas = regla::where('reaccion_id',$id)->get();
+        if (count($reglas)>0) {
+             Flash::error('Existen reglas que aun tienen esta reaccion.');
+
+            return redirect(route('admin.reaccions.index')); 
+        }
         $this->reaccionRepository->delete($id);
 
         Flash::success('Reaccion eliminada con exito.');
 
-        return redirect(route('admin.reaccion.index'));
+        return redirect(route('admin.reaccions.index'));
     }
 }

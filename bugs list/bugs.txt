@@ -5,3 +5,4 @@ editar estudiantes y personas no precarga carga la informacion
 campo cedula no esta validado como unico
 falta carrousel en el login
 Celda regla queda nula
+editar reacciones no guarda o carga imagenes

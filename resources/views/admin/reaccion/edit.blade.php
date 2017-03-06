@@ -19,7 +19,7 @@
     <div class="col-md-10">
         <div class="row panel panel-default">
 
-            {!! Form::model($reaccion, ['route' => ['admin.reaccion.update', $reaccion->id], 'method' => 'patch']) !!}
+            {!! Form::model($reaccion, ['route' => ['admin.reaccions.update', $reaccion->id], 'method' => 'patch']) !!}
 
             @include('admin.reaccion.fields')
 
