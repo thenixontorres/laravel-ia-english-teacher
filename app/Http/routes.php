@@ -18,22 +18,6 @@ Route::group(['middleware' => 'auth'], function () {
     'as'    =>  'home',
   ]);
 
-    //Contexto
-    Route::post('admin/contexto/store', [
-      'uses'  =>  'contextoController@store',
-      'as'    =>  'admin.contexto.store',
-    ]);
-
-    Route::delete('admin/contexto/eliminar/{id}', [
-        'uses'  =>  'contextoController@destroy',
-        'as'    =>  'admin.contexto.destroy',
-    ]);
-
-    Route::post('admin/contexto/update/', [
-        'uses'  => 'contextoController@update',
-        'as'    => 'admin.contexto.update',
-    ]);
-
     //Reglas
     Route::post('admin/regla/store', [
       'uses'  =>  'reglaController@store',
@@ -66,7 +50,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('evaluacions', 'evaluacionController');
 
         Route::resource('casos', 'casoController');
+        
+        Route::resource('contextos', 'contextoController');
 
+        
         Route::resource('reaccions', 'reaccionController');
     
         Route::resource('entradas', 'entradaController');

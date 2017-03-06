@@ -1,4 +1,4 @@
-{!! Form::open(['route' => 'admin.contexto.store']) !!}
+{!! Form::open(['route' => 'admin.contextos.store']) !!}
             <br>
             <div class="form-group row">
                 <div class="col-md-2 col-md-offset-1">

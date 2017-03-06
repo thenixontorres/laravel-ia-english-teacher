@@ -6,7 +6,7 @@
                 <h4 class="modal-title" id="myModalLabel">Editar Contexto</h4>
             </div>
             <div class="modal-body">
-                {!! Form::open(['route' => 'admin.contexto.update']) !!}
+                {!! Form::open(['route' => 'admin.contextos.update', 'method'=>'patch']) !!}
                     <div class="form-group">
                         <label for="contexto">Contexto: </label>
                         <input class="form-control" required="required" name="contexto" type="text" id="contexto_name" value="?">

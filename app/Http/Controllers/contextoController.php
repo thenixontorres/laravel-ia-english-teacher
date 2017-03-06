@@ -65,7 +65,7 @@ class contextoController extends AppBaseController
 
         Flash::success('Contexto agregado con exito.');
 
-        return redirect(route('admin.caso.edit',$request->caso_id));
+        return redirect(route('admin.casos.edit',$request->caso_id));
     }
 
     public function update(CreatecontextoRequest $request)
@@ -80,7 +80,7 @@ class contextoController extends AppBaseController
 
         Flash::success('Contexto actualizado con exito.');
 
-        return redirect(route('admin.caso.edit',$request->caso_id));
+        return redirect(route('admin.casos.edit',$request->caso_id));
     }
 
     /**
