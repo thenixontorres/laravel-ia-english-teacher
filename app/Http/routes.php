@@ -21,81 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
     'uses'  =>  'homeController@index',
     'as'    =>  'home',
   ]);
-
     
-    //Evaluacion-----------------------------------
-    Route::get('admin/evaluacion/', [
-      'uses'  =>  'evaluacionController@index',
-      'as'    =>  'admin.evaluacion.index',
-    ]);
-
-    Route::get('admin/evaluacion/create', [
-      'uses'  =>  'evaluacionController@create',
-      'as'    =>  'admin.evaluacion.create',
-    ]);
-
-    Route::post('admin/evaluacion/store', [
-      'uses'  =>  'evaluacionController@store',
-      'as'    =>  'admin.evaluacion.store',
-    ]);
-
-    Route::get('admin/evaluacion/show/{id}', [
-      'uses'  =>  'evaluacionController@show',
-      'as'    =>  'admin.evaluacion.show',
-    ]);
-
-    Route::get('admin/evaluacion/editar/{id}', [
-        'uses'  =>  'evaluacionController@edit',
-        'as'    =>  'admin.evaluacion.edit',
-    ]);
-
-    Route::patch('admin/evaluacion/update/{id}', [
-        'uses'  => 'evaluacionController@update',
-        'as'    => 'admin.evaluacion.update',
-    ]);
-
-    Route::delete('admin/evaluacion/eliminar/{id}', [
-        'uses'  =>  'evaluacionController@destroy',
-        'as'    =>  'admin.evaluacion.destroy',
-    ]);
-
-    //Materia-----------------------------------
-    /*Route::get('admin/materia/', [
-      'uses'  =>  'materiaController@index',
-      'as'    =>  'admin.materia.index',
-    ]);
-
-    Route::get('admin/materia/create', [
-      'uses'  =>  'materiaController@create',
-      'as'    =>  'admin.materia.create',
-    ]);
-
-    Route::post('admin/materia/store', [
-      'uses'  =>  'materiaController@store',
-      'as'    =>  'admin.materia.store',
-    ]);
-
-    Route::get('admin/materia/show/{id}', [
-      'uses'  =>  'materiaController@show',
-      'as'    =>  'admin.materia.show',
-    ]);
-
-    Route::get('admin/materia/editar/{id}', [
-        'uses'  =>  'materiaController@edit',
-        'as'    =>  'admin.materia.edit',
-    ]);
-
-    Route::patch('admin/materia/update/{id}', [
-        'uses'  => 'materiaController@update',
-        'as'    => 'admin.materia.update',
-    ]);
-
-    Route::delete('admin/materia/eliminar/{id}', [
-        'uses'  =>  'materiaController@destroy',
-        'as'    =>  'admin.materia.destroy',
-    ]);
-
-    */
     //Reaccion-----------------------------------
     Route::get('admin/reaccion/', [
       'uses'  =>  'reaccionController@index',
@@ -210,9 +136,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('estudiantes', 'estudianteController');
         
         Route::resource('personas', 'personaController');
-  
+        
+
         Route::resource('materias', 'materiaController');
-          
+        
+        Route::resource('evaluacions', 'evaluacionController');
+    
         Route::resource('entradas', 'entradaController');
         
         Route::resource('respuestas', 'respuestaController');

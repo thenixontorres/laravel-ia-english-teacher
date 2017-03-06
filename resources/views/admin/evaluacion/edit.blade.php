@@ -19,7 +19,7 @@
     <div class="col-md-10">
         <div class="row panel panel-default">
 
-            {!! Form::model($evaluacion, ['route' => ['admin.evaluacion.update', $evaluacion->id], 'method' => 'patch']) !!}
+            {!! Form::model($evaluacion, ['route' => ['admin.evaluacions.update', $evaluacion->id], 'method' => 'patch']) !!}
 
             @include('admin.evaluacion.fields')
 

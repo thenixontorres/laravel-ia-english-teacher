@@ -165,15 +165,20 @@ class materiaController extends AppBaseController
              Flash::error('Esta materia aun tiene evaluaciones.');
 
             return redirect(route('admin.materias.index')); 
-        }else{
+        }
 
-        
+        $estudiantes = estudiante::where('materia_id',$id)->get();
+        if (count($estudiantes)>0) {
+             Flash::error('Esta materia aun tiene estudiantes inscritos.');
+
+            return redirect(route('admin.materias.index')); 
+        }
+
         $this->materiaRepository->delete($id);
 
         Flash::success('Materia borrada con exito.');
 
         return redirect(route('admin.materias.index'));
 
-        }
     }
 }

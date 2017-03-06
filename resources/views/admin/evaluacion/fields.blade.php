@@ -43,6 +43,6 @@
 <div class="form-group col-md-12">
     <center>
     {!! Form::submit('Registrar', ['class' => 'btn btn-default']) !!}
-    <a href="{!! route('admin.evaluacion.index') !!}" class="btn btn-warning">Cancelar</a>
+    <a href="{!! route('admin.evaluacions.index') !!}" class="btn btn-warning">Cancelar</a>
     </center>
 </div>

@@ -21,7 +21,7 @@
    			@include('admin.evaluacion.show_fields')
 		    <div class="form-group col-md-12">
 		           <center>
-		           		<a href="{!! route('admin.evaluacion.index') !!}" class="btn btn-default">Volver</a>
+		           		<a href="{!! route('admin.evaluacions.index') !!}" class="btn btn-default">Volver</a>
 		           </center>	
 		    </div>
 		</div>

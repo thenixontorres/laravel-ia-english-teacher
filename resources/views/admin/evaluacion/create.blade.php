@@ -18,7 +18,7 @@
         </div>
         <div class="col-md-10">
             <div class="row panel panel-default">
-                {!! Form::open(['route' => 'admin.evaluacion.store']) !!}
+                {!! Form::open(['route' => 'admin.evaluacions.store']) !!}
 
                     @include('admin.evaluacion.fields')
 

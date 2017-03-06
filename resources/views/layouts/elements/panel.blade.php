@@ -11,7 +11,7 @@
 				<a class="nav-li text-center" href="{{ route('admin.materias.index') }}">Materias</a>
 			</li>
 			<li class="nav-li">
-				<a class="nav-li text-center" href="{{ route('admin.evaluacion.index') }}">Evaluaciones</a>
+				<a class="nav-li text-center" href="{{ route('admin.evaluacions.index') }}">Evaluaciones</a>
 			</li>
 			<li class="nav-li">
 				<a class="nav-li text-center" href="{{ route('admin.caso.index') }}">Bots</a>

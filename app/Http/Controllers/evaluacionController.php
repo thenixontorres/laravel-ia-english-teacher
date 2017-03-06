@@ -11,6 +11,8 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\materia;
+use App\Models\caso;
+
 
 class evaluacionController extends AppBaseController
 {
@@ -65,7 +67,7 @@ class evaluacionController extends AppBaseController
 
         Flash::success('Evaluacion registrada con exito.');
 
-        return redirect(route('admin.evaluacion.index'));
+        return redirect(route('admin.evaluacions.index'));
     }
 
     /**
@@ -82,7 +84,7 @@ class evaluacionController extends AppBaseController
         if (empty($evaluacion)) {
             Flash::error('Evaluacion no encontrada');
 
-            return redirect(route('admin.evaluacion.index'));
+            return redirect(route('admin.evaluacions.index'));
         }
 
         return view('admin.evaluacion.show')->with('evaluacion', $evaluacion);
@@ -103,7 +105,7 @@ class evaluacionController extends AppBaseController
         if (empty($evaluacion)) {
             Flash::error('Evaluacion no encontrada');
 
-            return redirect(route('admin.evaluacion.index'));
+            return redirect(route('admin.evaluacions.index'));
         }
 
         return view('admin.evaluacion.edit')
@@ -126,14 +128,14 @@ class evaluacionController extends AppBaseController
         if (empty($evaluacion)) {
             Flash::error('Evaluacion no encontrada');
 
-            return redirect(route('admin.evaluacion.index'));
+            return redirect(route('admin.evaluacions.index'));
         }
 
         $evaluacion = $this->evaluacionRepository->update($request->all(), $id);
 
         Flash::success('Evaluacion actualizada con exito.');
 
-        return redirect(route('admin.evaluacion.index'));
+        return redirect(route('admin.evaluacions.index'));
     }
 
     /**
@@ -150,13 +152,20 @@ class evaluacionController extends AppBaseController
         if (empty($evaluacion)) {
             Flash::error('Evaluacion no econtrada.');
 
-            return redirect(route('admin.evaluacion.index'));
+            return redirect(route('admin.evaluacions.index'));
+        }
+
+        $casos = caso::where('evaluacion_id',$id)->get();
+        if (count($casos)>0) {
+             Flash::error('Esta evaluacion aun tiene bots asignados.');
+
+            return redirect(route('admin.materias.index')); 
         }
 
         $this->evaluacionRepository->delete($id);
 
         Flash::success('Evaluacion borrada con exito.');
 
-        return redirect(route('admin.evaluacion.index'));
+        return redirect(route('admin.evaluacions.index'));
     }
 }
