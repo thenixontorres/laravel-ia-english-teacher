@@ -18,43 +18,6 @@ Route::group(['middleware' => 'auth'], function () {
     'as'    =>  'home',
   ]);
 
-    
-    //Caso-----------------------------------
-    Route::get('admin/caso/', [
-      'uses'  =>  'casoController@index',
-      'as'    =>  'admin.caso.index',
-    ]);
-
-    Route::get('admin/caso/create', [
-      'uses'  =>  'casoController@create',
-      'as'    =>  'admin.caso.create',
-    ]);
-
-    Route::post('admin/caso/store', [
-      'uses'  =>  'casoController@store',
-      'as'    =>  'admin.caso.store',
-    ]);
-
-    Route::get('admin/caso/show/{id}', [
-      'uses'  =>  'casoController@show',
-      'as'    =>  'admin.caso.show',
-    ]);
-
-    Route::get('admin/caso/editar/{id}', [
-        'uses'  =>  'casoController@edit',
-        'as'    =>  'admin.caso.edit',
-    ]);
-
-    Route::patch('admin/caso/update/{id}', [
-        'uses'  => 'casoController@update',
-        'as'    => 'admin.caso.update',
-    ]);
-
-    Route::delete('admin/caso/eliminar/{id}', [
-        'uses'  =>  'casoController@destroy',
-        'as'    =>  'admin.caso.destroy',
-    ]);
-
     //Contexto
     Route::post('admin/contexto/store', [
       'uses'  =>  'contextoController@store',
@@ -98,10 +61,11 @@ Route::group(['middleware' => 'auth'], function () {
         
         Route::resource('personas', 'personaController');
         
-
         Route::resource('materias', 'materiaController');
         
         Route::resource('evaluacions', 'evaluacionController');
+
+        Route::resource('casos', 'casoController');
 
         Route::resource('reaccions', 'reaccionController');
     

@@ -18,7 +18,7 @@
         </div>
         <div class="col-md-10">
             <div class="row panel panel-default">
-                {!! Form::open(['route' => 'admin.caso.store']) !!}
+                {!! Form::open(['route' => 'admin.casos.store']) !!}
 
             <!-- Evaluacion Field -->
             <div class="form-group col-md-12">
@@ -44,7 +44,7 @@
             <div class="form-group col-md-12">
             <center>
             {!! Form::submit('Registrar', ['class' => 'btn btn-default']) !!}
-            <a href="{!! route('admin.estudiante.index') !!}" class="btn btn-warning">Cancelar</a>
+            <a href="{!! route('admin.casos.index') !!}" class="btn btn-warning">Cancelar</a>
             </center>
             </div>
 

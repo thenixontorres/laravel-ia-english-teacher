@@ -13,6 +13,10 @@ use Response;
 use App\Models\evaluacion;
 use App\Models\contexto;
 use App\Models\reaccion;
+use App\Models\regla;
+use App\Models\caso;
+use App\Models\entrada;
+use App\Models\respuesta;
 
 class casoController extends AppBaseController
 {
@@ -66,7 +70,7 @@ class casoController extends AppBaseController
 
         Flash::success('Bot registrado con exito.');
 
-        return redirect(route('admin.caso.index'));
+        return redirect(route('admin.casos.index'));
     }
 
     /**
@@ -103,7 +107,7 @@ class casoController extends AppBaseController
         if (empty($caso)) {
             Flash::error('Bot no encontrado.');
 
-            return redirect(route('admin.caso.index'));
+            return redirect(route('admin.casos.index'));
         }
 
         $contextos = contexto::where('caso_id',$caso->id)->get();
@@ -154,15 +158,35 @@ class casoController extends AppBaseController
         $caso = $this->casoRepository->findWithoutFail($id);
 
         if (empty($caso)) {
-            Flash::error('caso not found');
+            Flash::error('Bot no encontrado.');
 
-            return redirect(route('casos.index'));
+            return redirect(route('admin.casos.index'));
         }
 
+        //eliminar contexto del caso
+        $contextos = contexto::where('caso_id', $id)->get();
+            foreach ($contextos as $contexto) {
+                //eliminar reglas del contexto
+                $reglas = regla::where('contexto_id', $contexto->id)->get();
+                foreach ($reglas as $regla) {
+                    //eliminar entradas del contexto
+                    $entradas = entrada::where('regla_id',$regla->id)->get();
+                    foreach ($entradas as $entrada){
+                        $entrada->delete();
+                     }
+                    //eliminar respuestas del contexto
+                    $respuestas = respuesta::where('regla_id',$regla->id)->get();
+                    foreach ($respuestas as $respuesta) {
+                         $respuesta->delete();
+                    } 
+                    $regla->delete();
+                }
+                $contexto->delete();
+            }
         $this->casoRepository->delete($id);
 
-        Flash::success('caso deleted successfully.');
+        Flash::success('Caso borrado con exito.');
 
-        return redirect(route('casos.index'));
+        return redirect(route('admin.casos.index'));
     }
 }
