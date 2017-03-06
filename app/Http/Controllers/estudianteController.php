@@ -72,6 +72,15 @@ class estudianteController extends AppBaseController
     {
         $input = $request->all();
 
+        $otra_persona = persona::where('cedula',$request->cedula)->get();
+
+        if (count($otra_persona) > 0) {
+            Flash::error('La cedula ya existe.');
+
+            return redirect()->back();    
+        }
+
+
         $foto = $request->file('foto');
         $nombre = $request->cedula.'.'.$foto->getClientOriginalExtension();
         $ruta = public_path().'/img/fotos/';

@@ -66,6 +66,14 @@ class personaController extends AppBaseController
         $ruta = public_path().'/img/fotos/';
         $foto->move($ruta, $nombre);
 
+        $persona = persona::where('cedula',$request->cedula)->get();
+
+        if (count($persona) > 0) {
+            Flash::error('La cedula ya existe.');
+
+            return redirect()->back();    
+        }
+
         $user = new user();
         $user->email = $request->email;
         $user->estado = $request->estado;
@@ -142,6 +150,14 @@ class personaController extends AppBaseController
             Flash::error('Profesor no encntrado');
 
             return redirect(route('admin.personas.index'));
+        }
+
+        $otra_persona = persona::where('cedula',$request->cedula)->get();
+
+        if (count($otra_persona) > 0) {
+            Flash::error('La cedula ya existe.');
+
+            return redirect()->back();    
         }
 
         $persona = $this->personaRepository->update($request->all(), $id);

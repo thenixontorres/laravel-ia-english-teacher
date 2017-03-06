@@ -1,8 +1,5 @@
 Inicio estudiantes - Lefts y rights se distorcionan con zoom a mas de 100%
 falta pattern en formularios
-mucho  a muchos en relacion evaluacion - materia
 editar estudiantes y personas no precarga carga la informacion
-campo cedula no esta validado como unico
 falta carrousel en el login
-Celda regla queda nula
 editar reacciones no guarda o carga imagenes

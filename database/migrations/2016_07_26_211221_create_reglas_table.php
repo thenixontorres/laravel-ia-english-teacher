@@ -15,7 +15,6 @@ class CreatereglasTable extends Migration
     {
         Schema::create('reglas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('regla');
             $table->string('puntos');
             $table->integer('contexto_id')->unsigned();
             $table->foreign('contexto_id')->references('id')->on('contextos');
