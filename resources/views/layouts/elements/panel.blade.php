@@ -8,7 +8,7 @@
 				<a class="nav-li text-center" href="{{ route('admin.personas.index') }}">Profesores</a>
 			</li>
 			<li class="nav-li">
-				<a class="nav-li text-center" href="{{ route('admin.materia.index') }}">Materias</a>
+				<a class="nav-li text-center" href="{{ route('admin.materias.index') }}">Materias</a>
 			</li>
 			<li class="nav-li">
 				<a class="nav-li text-center" href="{{ route('admin.evaluacion.index') }}">Evaluaciones</a>

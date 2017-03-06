@@ -19,7 +19,7 @@
     <div class="col-md-10">
         <div class="row panel panel-default">
 
-            {!! Form::model($materia, ['route' => ['admin.materia.update', $materia->id], 'method' => 'patch']) !!}
+            {!! Form::model($materia, ['route' => ['admin.materias.update', $materia->id], 'method' => 'patch']) !!}
 
             @include('admin.materia.fields')
 

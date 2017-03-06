@@ -13,6 +13,7 @@ use Response;
 use App\Models\persona;
 use App\Models\seccion;
 use App\User;
+use App\Models\evaluacion;
 
 
 class materiaController extends AppBaseController
@@ -70,7 +71,7 @@ class materiaController extends AppBaseController
 
         Flash::success('Materia registrada con exito.');
 
-        return redirect(route('admin.materia.index'));
+        return redirect(route('admin.materias.index'));
     }
 
     /**
@@ -87,7 +88,7 @@ class materiaController extends AppBaseController
         if (empty($materia)) {
             Flash::error('Materia no encontrada');
 
-            return redirect(route('admin.materia.index'));
+            return redirect(route('admin.materias.index'));
         }
 
         return view('admin.materia.show')->with('materia', $materia);
@@ -107,7 +108,7 @@ class materiaController extends AppBaseController
         if (empty($materia)) {
             Flash::error('Materia no encontrada.');
 
-            return redirect(route('admin.materia.index'));
+            return redirect(route('admin.materias.index'));
         }
         $seccions = seccion::all();
         $personas = persona::all();
@@ -132,14 +133,14 @@ class materiaController extends AppBaseController
         if (empty($materia)) {
             Flash::error('Materia no encntrada.');
 
-            return redirect(route('admin.materia.index'));
+            return redirect(route('admin.materias.index'));
         }
 
         $materia = $this->materiaRepository->update($request->all(), $id);
 
         Flash::success('Materia editada con exito.');
 
-        return redirect(route('admin.materia.index'));
+        return redirect(route('admin.materias.index'));
     }
 
     /**
@@ -156,13 +157,23 @@ class materiaController extends AppBaseController
         if (empty($materia)) {
             Flash::error('Materia no encontrada.');
 
-            return redirect(route('admin.materia.index'));
+            return redirect(route('admin.materias.index'));
         }
 
+        $evaluacions = evaluacion::where('materia_id',$id)->get();
+        if (count($evaluacions)>0) {
+             Flash::error('Esta materia aun tiene evaluaciones.');
+
+            return redirect(route('admin.materias.index')); 
+        }else{
+
+        
         $this->materiaRepository->delete($id);
 
         Flash::success('Materia borrada con exito.');
 
-        return redirect(route('admin.materia.index'));
+        return redirect(route('admin.materias.index'));
+
+        }
     }
 }

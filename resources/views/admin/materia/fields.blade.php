@@ -32,6 +32,6 @@
 <div class="form-group col-md-12">
     <center>
     {!! Form::submit('Registrar', ['class' => 'btn btn-default']) !!}
-    <a href="{!! route('admin.materia.index') !!}" class="btn btn-warning">Cancelar</a>
+    <a href="{!! route('admin.materias.index') !!}" class="btn btn-warning">Cancelar</a>
     </center>
 </div>

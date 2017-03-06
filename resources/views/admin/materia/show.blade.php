@@ -21,7 +21,7 @@
    			@include('admin.materia.show_fields')
 		    <div class="form-group col-md-12">
 		           <center>
-		           		<a href="{!! route('admin.materia.index') !!}" class="btn btn-default">Volver</a>
+		           		<a href="{!! route('admin.materias.index') !!}" class="btn btn-default">Volver</a>
 		           </center>	
 		    </div>
 		</div>
