@@ -109,7 +109,6 @@ class persona extends Model
         'nombre' => 'required|max:20',
         'apellido' => 'required|max:20',
         'cedula' => 'required|numeric',
-        'foto' => 'required',
         'user_id' => 'nullable'
     ];
 }

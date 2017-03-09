@@ -61,11 +61,16 @@ class personaController extends AppBaseController
     public function store(CreatepersonaRequest $request)
     {
         $input = $request->all();
+        //si no carga una foto
+        if (empty($request->foto)) {
+            $nombre = 'default.png';
+        }else{
+        //si si carga la foto    
         $foto = $request->file('foto');
-        $nombre = $request->cedula.'.'.$foto->getClientOriginalExtension();
-        $ruta = public_path().'/img/fotos/';
-        $foto->move($ruta, $nombre);
-
+            $nombre = $request->cedula.'.'.$foto->getClientOriginalExtension();
+            $ruta = public_path().'/img/fotos/';
+            $foto->move($ruta, $nombre);
+        }
         $persona = persona::where('cedula',$request->cedula)->get();
 
         if (count($persona) > 0) {

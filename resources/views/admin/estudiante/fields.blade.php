@@ -48,7 +48,7 @@
 <!-- Foto Field -->
 <div class="form-group col-md-12">
     {!! Form::label('foto', 'foto:') !!}
-    {!! Form::file('foto', ['class' => 'form-control','required']) !!}
+    {!! Form::file('foto', ['class' => 'form-control']) !!}
 </div>
 <!-- De la tabla estudiante -->
 <!-- materia Field -->
