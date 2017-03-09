@@ -212,6 +212,10 @@ class estudianteController extends AppBaseController
             $persona = persona::where('id',$persona_id)->get();
             $persona = $persona->first();
 
+            if (file_exists(public_path().$persona->foto) && $persona->foto != '/img/fotos/default.png' ){
+                unlink(public_path().$persona->foto);        
+            }
+            
             $user_id = $persona->user_id;
             $user = user::where('id',$user_id)->get();
             $user = $user->first();

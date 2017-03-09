@@ -199,8 +199,11 @@ class personaController extends AppBaseController
         $user_id = $persona->user_id;
         $user = user::where('id',$user_id)->get();
         $user = $user->first();
-        $user->delete();    
-        
+        $user->delete();
+
+        if (file_exists(public_path().$persona->foto) && $persona->foto != '/img/fotos/default.png' ){
+                unlink(public_path().$persona->foto);        
+            }            
         $this->personaRepository->delete($id);
 
         Flash::success('Persona borrada con exito.');
