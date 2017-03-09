@@ -125,19 +125,40 @@ class reaccionController extends AppBaseController
      */
     public function update($id, UpdatereaccionRequest $request)
     {
-        $reaccion = $this->reaccionRepository->findWithoutFail($id);
+        $x = $this->reaccionRepository->findWithoutFail($id);
 
-        if (empty($reaccion)) {
+        if (empty($x)) {
             Flash::error('Reaccion no encontrada.');
 
             return redirect(route('admin.reaccions.index'));
         }
+        
+        //si no carga una foto nueva
+        if (empty($request->reaccion)) {
+            $x->titulo = $request->titulo;
+            $x->save();
+            Flash::success('Reaccion actualizada con exito.');
 
-        $reaccion = $this->reaccionRepository->update($request->all(), $id);
+            return redirect(route('admin.reaccions.index'));
+        }else{
+        //si carga una nueva foto
+            $reaccion = $request->file('reaccion');
+            $nombre = $request->titulo.'.'.$reaccion->getClientOriginalExtension();
+            $ruta = public_path().'/img/reaccions/';
+            $reaccion->move($ruta, $nombre);
 
-        Flash::success('Reaccion actualizada con exito.');
+            $x->titulo = $request->titulo;
+            
+            if (file_exists(public_path().$x->reccion)) {
+                unlink(public_path().$x->reaccion);        
+            }
+            
+            $x->reaccion = '/img/reaccions/'.$nombre;
+            $x->save();
+            Flash::success('Reaccion actualizada con exito.');
 
-        return redirect(route('admin.reaccions.index'));
+            return redirect(route('admin.reaccions.index'));
+        }
     }
 
     /**
@@ -163,6 +184,12 @@ class reaccionController extends AppBaseController
 
             return redirect(route('admin.reaccions.index')); 
         }
+        
+        $x = $this->reaccionRepository->findWithoutFail($id);
+
+        if (file_exists(public_path().$x->reccion)) {
+                unlink(public_path().$x->reaccion);        
+            }
         $this->reaccionRepository->delete($id);
 
         Flash::success('Reaccion eliminada con exito.');

@@ -77,6 +77,5 @@ class reaccion extends Model
      */
     public static $rules = [
         'titulo' => 'required',
-        'reaccion' => 'required',
     ];
 }
