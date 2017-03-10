@@ -178,18 +178,71 @@ class estudianteController extends AppBaseController
     public function update($id, UpdateestudianteRequest $request)
     {
         $estudiante = $this->estudianteRepository->findWithoutFail($id);
+        $persona = persona::where('id',$estudiante->persona_id)->get();
+        $persona = $persona->first();
+        $user = user::where('id',$persona->user_id)->get();
+        $user = $user->first();
 
         if (empty($estudiante)) {
-            Flash::error('estudiante not found');
+            Flash::error('Estudiante no encontrado.');
 
-            return redirect(route('estudiantes.index'));
+            return redirect(route('admin.estudiantes.index'));
         }
 
-        $estudiante = $this->estudianteRepository->update($request->all(), $id);
+        //si la cedula cambio...
+        if ($persona->cedula != $request->cedula) {
+            //conseguir otras personas con la misma cedula
+            $otras_personas = persona::where('cedula',$request->cedula)->get();
+            //si otra persona posee esa cedula..
+            if (count($otras_personas) > 0) {
+                Flash::error('La cedula ya existe.');
 
-        Flash::success('estudiante updated successfully.');
+                return redirect()->back();    
+            }   
+        }
 
-        return redirect(route('estudiantes.index'));
+            $user->email = $request->email;
+            $user->estado = $request->estado;
+            if (empty($request->password) == false) {
+                $user->password = bcrypt($request->password);
+            }
+            $user->save();
+            
+            $estudiante->materia_id = $request->materia_id;
+            $estudiante->periodo_id = $request->periodo_id;
+            $estudiante->save();        
+
+            $persona->nombre = $request->nombre;
+            $persona->apellido = $request->apellido;
+            $persona->cedula = $request->cedula;
+
+            //si no carga una foto nueva
+            if (empty($request->foto)) {
+                $persona->save();
+                Flash::success('Estudiante actualizado con exito.');
+
+                return redirect(route('admin.estudiantes.index'));
+            }else{
+            //si carga una nueva foto
+                if (file_exists(public_path().$persona->foto)) {
+                    unlink(public_path().$persona->foto);        
+                }
+
+                $foto = $request->file('foto');
+                $nombre = $request->cedula.'.'.$foto->getClientOriginalExtension();
+                $ruta = public_path().'/img/fotos/';
+                $foto->move($ruta, $nombre);
+                $persona->foto = '/img/fotos/'.$nombre;
+                $persona->save();
+                Flash::success('Estudiante actualizado con exito.');
+
+                return redirect(route('admin.estudiantes.index'));
+            }
+
+        
+        Flash::success('Estudiante actualizado con exito.');
+
+        return redirect(route('admin.estudiantes.index'));
     }
 
     /**

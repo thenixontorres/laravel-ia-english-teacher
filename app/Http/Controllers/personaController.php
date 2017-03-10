@@ -154,7 +154,7 @@ class personaController extends AppBaseController
         $user = $user->first();
 
         if (empty($persona)) {
-            Flash::error('Profesor no encntrado');
+            Flash::error('Profesor no encontrado');
 
             return redirect(route('admin.personas.index'));
         }
