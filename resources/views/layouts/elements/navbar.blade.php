@@ -19,7 +19,7 @@
 	            	<a href="{{ route('home') }}">INICIO</a>
 	            </li>
                 <li>
-                	<a href="{{ route('home') }}" >PRECTICAS</a>
+                	<a href="{{ route('home') }}" >PRACTICAS</a>
                 </li>
                 <li>
                 	<a href="{{ route('home') }}">EVALUACIONES</a>

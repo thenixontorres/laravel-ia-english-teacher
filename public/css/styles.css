@@ -1,26 +1,6 @@
 @font-face {
-    font-family: "BrookeS8";
-    src: url(../fonts/BrookeS8/BrookeS8.ttf) format("truetype");
-}
-
-@font-face {
-    font-family: "CarnevaleeFreakShow";
-    src: url(../fonts/CarnevaleeFreakShow/CarnevaleeFreakShow.ttf) format("truetype");
-}
-
-@font-face {
-    font-family: "LoveSweets";
-    src: url(../fonts/LoveSweets/LoveSweets.ttf) format("truetype");
-}
-
-@font-face {
-    font-family: "PassionTea";
-    src: url(../fonts/PassionTea/PassionTea.ttf) format("truetype");
-}
-
-@font-face {
-    font-family: "Enso";
-    src: url(../fonts/Enso/enso.ttf) format("truetype");
+    font-family: "Prequel";
+    src: url(../fonts/Prequel/Prequel.ttf) format("truetype");
 }
 
 @font-face {
@@ -32,71 +12,67 @@ body{
 	font-family: "MankSans";
 	padding-bottom: 30px;
 	padding-top: 70px; 
-	background-color: #f2eee5;
+	background-color: #f5feff;
 }
 
-h1, h2, h3, h4, h5, h6{
-    font-family: "CarnevaleeFreakShow";
-}
 
 .btn{
 border-radius: 0px;
 }
 
 .btn-default{
-color: #efebe0;
+color: #fff;
 text-align: center;
-background-color: #78a6a4;
-border-color: #78a6a4;
+background-color: #97c9d1;;
+border-color: #97c9d1;;
 }
 
 .btn-default:hover{
-color: #efebe0;
+color: #fff;
 text-align: center;
-background-color: #78a6a4;
-border-color: #78a6a4;
+background-color: #97c9d1;;
+border-color: #97c9d1;;
 }
 
 .btn-warning{
-color: #efebe0;
+color: #fff;
 text-align: center;
 background-color: #cb2f33;
 border-color: #cb2f33;
 }
 
 .btn-warning:hover{
-color: #efebe0;
+color: #fff;
 text-align: center;
 background-color: #cb2f33;
 border-color: #cb2f33;
 }
 
 .btn-primary {
-color: #efebe0;
+color: #fff;
 text-align: center;
 border-color: #c8a418;
 background-color: #c8a418;
 }
 
 .btn-primary:hover {
-color: #efebe0;
+color: #fff;
 text-align: center;
 border-color: #c8a418;
 background-color: #c8a418;
 }
 
 .footer{
-background-color: #251313;
-color: #efebe0;
+background-color: #97c9d1;
+color: #fff;
 }
 
 .footer-a{
-color: #78a6a4;
+color: #fff;
 text-decoration: none;
 }
 
 .footer-a:hover{
-color: #78a6a4;
 text-decoration: none;	
 }
 
@@ -126,20 +102,18 @@ text-decoration: none;
 .navbar-inverse {
     margin: 0!important;
     border: 0!important;
-	background-color: #251313;
+	background-color: #97c9d1;
 }
 
 .navbar-inverse .navbar-nav > li > a {
-    color: #efebe0;  
-    font-family: "CarnevaleeFreakShow";
+    color: #fff;  
     padding: 20px 10px;
-    border-bottom: 4px solid #efebe0;
     transition: all .3s; 
+    font-family: 'Prequel';
 }
 
 .navbar-inverse  .navbar-nav > li > a:hover{
-    color: #78a6a4;
-    border-bottom: 4px solid #78a6a4;
+    border-bottom: 4px solid #fff;
 }
 	.navbar-social-pc > li > a{
 		font-size: 30px;
@@ -184,23 +158,23 @@ text-decoration: none;
 }
 
 .nav-li{
-	color: #efebe0;
+	color: #fff;
 	text-align: center;
-	background-color: #78a6a4;
+	background-color: #97c9d1;;
 }
 
 .nav-li:hover{
 	color: #59a19d;
 	text-align: center;
-	background-color: #78a6a4;
+	background-color: #97c9d1;;
 }
 
 .indicador{
-	color: #efebe0;
+	color: #fff;
 	text-align: center;
 }
 .indicador-azul{
-	background-color: #78a6a4;
+	background-color: #97c9d1;;
 }
 .indicador-rojo{
 	background-color: #cb2f33;
@@ -213,15 +187,18 @@ text-decoration: none;
 	background-color:  #bcb6a8;
 }
 
+.panel{
+	box-shadow: 0px 5px 6px 1px;
+}
+
 .panel-header{
 	background-color: #251313;
-	color: #efebe0;  
-	font-family: "CarnevaleeFreakShow";
+	color: #fff;  
 	text-align: center;
 }
 .panel-header:hover{
-    color: #78a6a4;
-    border-bottom: 4px solid #78a6a4;
+    color: #97c9d1;;
+    border-bottom: 4px solid #97c9d1;;
 }
 
 @media (max-width: 1199px){
@@ -280,4 +257,9 @@ text-decoration: none;
     	font-size: 20px;
     	padding: 15px 10px!important;
     }
+}
+
+h1, h2, h3, h4, h5{
+	font-family: "Prequel";
+	color: #41848f;
 }

@@ -1,4 +1,4 @@
 Inicio estudiantes - Lefts y rights se distorcionan con zoom a mas de 100%
 falta pattern en formularios
-editar estudiantes y personas no precarga carga la informacion
 falta carrousel en el login
+validar si el usuario esta activo en el login
