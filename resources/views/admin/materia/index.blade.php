@@ -1,28 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row" id="inicio">
-    <div class="col-md-2 "> 
-        <img class="img img-responsive " src="{{ asset('img/left.png') }}" alt="">
-    </div>
-    <div class="col-md-8">  
-        <h4 class="text-center"> MATERIAS </h4>
-    </div>
-    <div class="col-md-2 "> 
-        <img class="img img-responsive " src="{{ asset('img/right.png') }}" alt="">
-    </div>      
-</div>
-	 <div class="row row-fluid">	
-	  	<div class="col-md-2">
-            @include('layouts.elements.panel')
-        </div>
-        <div class="col-md-10 panel panel-default">  
-            <a class="btn btn-default pull-right nav-li" style="margin-top: 25px" href="{!! route('admin.materias.create') !!}">Agregar</a>
-            <div class="clearfix"></div>
+<div class="row">
+    <div class="col-lg-6 col-md-12">
+        <div class="card">
+            <div class="card-header" data-background-color="orange">
+                <h4 class="title">Materias</h4>
+               <a href="{!! route('admin.materias.create') !!}">Agregar nueva Materia</a>
+            </div>
+            <div class="card-content table-responsive">                   
             @include('admin.materia.table')
+            </div>  
         </div>
-    </div>
-    <br>    
+    </div>   
+</div>            
 @endsection
 
 @section('scripts')

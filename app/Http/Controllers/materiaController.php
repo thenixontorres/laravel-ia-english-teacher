@@ -14,6 +14,7 @@ use App\Models\persona;
 use App\Models\seccion;
 use App\User;
 use App\Models\evaluacion;
+use App\Models\estudiante;
 
 
 class materiaController extends AppBaseController
