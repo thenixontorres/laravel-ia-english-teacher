@@ -4,8 +4,8 @@
     <div class="col-lg-6 col-md-12">
         <div class="card">
             <div class="card-header" data-background-color="orange">
-                <h4 class="title">Estudiantes</h4>
-               <a href="{!! route('admin.estudiantes.create') !!}">Agregar nuevo Estudiante</a>
+                    <h4 class="title">Estudiantes</h4>
+                <a href="{!! route('admin.estudiantes.create') !!}">Agregar nuevo Estudiante</a>
             </div>
             <div class="card-content table-responsive">                   
                 @include('admin.estudiante.table')

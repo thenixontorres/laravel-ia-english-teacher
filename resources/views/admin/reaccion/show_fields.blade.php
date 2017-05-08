@@ -27,3 +27,8 @@
     <hr>
 </div>
 
+<div class="form-group col-md-12">
+<center>
+    <a href="{!! route('admin.reaccions.index') !!}" class="btn btn-default">Volver</a>
+</center>	
+</div>
