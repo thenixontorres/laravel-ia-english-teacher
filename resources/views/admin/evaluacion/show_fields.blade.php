@@ -42,3 +42,8 @@
     <hr>
 </div>
 
+<div class="form-group col-md-12">
+<center>
+    <a href="{!! route('admin.evaluacions.index') !!}" class="btn btn-default">Volver</a>
+</center>	
+</div>
