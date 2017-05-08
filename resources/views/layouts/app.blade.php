@@ -7,40 +7,54 @@
 		<title>@yield('titulo', 'Bienvenido')</title>
 		<link rel="shortcut icon" href="{{ asset('img/logo.png') }}" />
     	<link rel="apple-touch-icon" href="{{ asset('img/logo.png') }}" />
-   	 	<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-    	<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    	<link rel="stylesheet" href="{{ asset('css/icon.css') }}">
+   	 	<link rel="stylesheet" href="{{ asset('/css/theme/assets/css/bootstrap.min.css') }}">
+   	 	<link rel="stylesheet" href="{{ asset('/css/theme/assets/css/demo.css') }}">
+    	<link rel="stylesheet" href="{{ asset('/css/theme/assets/css/material-dashboard.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/icon.css') }}">
     	<!--Data table -->
-    	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/dataTables/css/dataTables.bootstrap.css') }}">
 
-    	<script src=" {{ asset('js/jquery.js') }}"></script>
+    	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/dataTables/css/jquery.dataTables.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('plugins/dataTables/css/jquery.dataTables.min.css') }}">
+    	<!-- <script src=" {{ asset('js/jquery.js') }}"></script> -->
+		<script src="{{ asset('/css/theme/assets/js/jquery-3.1.0.min.js') }}"></script>
+
 		@yield('css')
 	</head>
 	<body>
-		<div class="container">
-			@include('layouts.elements.navbar')	
-			<div class="row row-fluid">
-				<div class="col-md-10 col-sm-offset-1">
-					@include('flash::message')
-					@if(count($errors) > 0)
-						<div class="alert alert-danger" role="alert">
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
+		<div class="wrapper">
+			@include('layouts.elements.panel')				
+	   			<div class="main-panel">
+					@include('layouts.elements.navbar')
+					<div class="content">
+						<div class="container-fluid">
+						<div class="row row-fluid">
+							<div class="col-md-10 col-sm-offset-1">
+								@include('flash::message')
+								@if(count($errors) > 0)
+								<div class="alert alert-danger" role="alert">
+									<ul>
+										@foreach ($errors->all() as $error)
+											<li>{{ $error }}</li>
+										@endforeach
+									</ul>
+								</div>
+								@endif
+							</div>
+						</div>	
+						@yield('content')
 						</div>
-					@endif
-				</div>
-			</div>	
-			<div class="row">
-				<div class="col-md-10 col-md-offset-1">
-					@yield('content')	
+					</div>		
 				</div>
 			</div>
 		</div>
 		@include('layouts.elements.footer')	
-		<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+		<script src="{{ asset('/css/theme/assets/js/bootstrap.min.js') }}"></script>
+		<script src="{{ asset('/css/theme/assets/js/bootstrap-notify.js') }}"></script>
+		<script src="{{ asset('/css/theme/assets/js/chartist.min.js') }}"></script>
+		<script src="{{ asset('/css/theme/assets/js/demo.js') }}"></script>
+		<script src="{{ asset('/css/theme/assets/js/material.min.js') }}"></script>
+		<script src="{{ asset('/css/theme/assets/js/material-dashboard.js') }}"></script>
+
 		<script src="{{ asset('js/main.js') }}"></script>
 		<!--Data tables -->
 		<script type="text/javascript" src="{{ asset('plugins/dataTables/js/jquery.dataTables.js') }}"></script>

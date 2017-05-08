@@ -66,4 +66,8 @@
     <p>{!! $estudiante->updated_at !!}</p>
     <hr>
 </div>
-
+<div class="form-group col-md-12">
+<center>
+    <a href="{!! route('admin.estudiantes.index') !!}" class="btn btn-default">Volver</a>
+</center>	
+</div>

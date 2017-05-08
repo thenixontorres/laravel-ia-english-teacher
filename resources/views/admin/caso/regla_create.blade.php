@@ -1,4 +1,4 @@
-<div class="modal fade" id="reglaCreate" tabindex="-1" role="dialog" aria-labelledby="reglaCreateLabel">
+<div style="z-index:99999" class="modal fade" id="reglaCreate" tabindex="-1" role="dialog" aria-labelledby="reglaCreateLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

@@ -5,9 +5,7 @@
 	<div class="col-md-3 panel panel-default">
 		<div class="row">
 			<div class="col-md-12 ">
-				<center>
-				<h4>Nombre y Apellido </h4>
-				</center>
+				
 			</div> 
 		</div>
 		<div class="row">

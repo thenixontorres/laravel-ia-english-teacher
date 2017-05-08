@@ -1,24 +1,31 @@
-<div class="row">
-	<nav>
-		<ul class="nav nav-pills nav-stacked">
-			<li class="nav-li">
-				<a class="nav-li text-center" href="{{ route('admin.estudiantes.index') }}">Estudiantes</a>
+<div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-1.jpg">
+	<div class="sidebar-wrapper">
+		<ul class="nav">
+			<li class="active">
+				<a href="{{ route('admin.estudiantes.index') }}">Estudiantes</a>
+				</a>
 			</li>
-			<li class="nav-li">
-				<a class="nav-li text-center" href="{{ route('admin.personas.index') }}">Profesores</a>
+			<li>
+				<a href="{{ route('admin.personas.index') }}">Profesores</a>
+				</a>
 			</li>
-			<li class="nav-li">
-				<a class="nav-li text-center" href="{{ route('admin.materias.index') }}">Materias</a>
+			<li>
+				<a href="{{ route('admin.materias.index') }}">Materias</a>
+				</a>
 			</li>
-			<li class="nav-li">
-				<a class="nav-li text-center" href="{{ route('admin.evaluacions.index') }}">Evaluaciones</a>
+			<li>
+				<a href="{{ route('admin.evaluacions.index') }}">Evaluaciones</a>
+				</a>
 			</li>
-			<li class="nav-li">
-				<a class="nav-li text-center" href="{{ route('admin.casos.index') }}">Bots</a>
+			<li>
+				<a href="{{ route('admin.casos.index') }}">Bots</a>
+				</a>
 			</li>
-			<li class="nav-li">
-				<a class="nav-li text-center" href="{{ route('admin.reaccions.index') }}">Reacciones</a>
+			<li>
+				<a href="{{ route('admin.reaccions.index') }}">Reacciones</a>
+				</a>
 			</li>
 		</ul>
-	</nav>
-</div>	
+	</div>
+</div>
+

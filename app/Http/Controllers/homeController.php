@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Models\persona;
+use App\Models\estudiante;
 
 class homeController extends Controller
 {
@@ -16,7 +18,7 @@ class homeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
         return view('home');        
     }
 
