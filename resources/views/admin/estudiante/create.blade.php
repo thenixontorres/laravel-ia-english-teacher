@@ -4,7 +4,7 @@
     <div class="col-lg-6 col-md-12">
         <div class="card">
             <div class="card-header" data-background-color="orange">
-                <h4 class="title">Registrar Caso</h4>
+                <h4 class="title">Registrar Estudiante</h4>
             </div>
             <div class="card-content table-responsive">                   
                 {!! Form::open(['route' => 'admin.estudiantes.store', 'files' => true, 'onsubmit' => 'return contras();']) !!}
