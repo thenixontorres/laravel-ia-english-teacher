@@ -1,4 +1,4 @@
-<div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-1.jpg">
+<div class="sidebar" data-color="black" data-image= "{{ asset('css/theme/assets/img/paper.jpg') }}" >
 	<div class="sidebar-wrapper">
 		<ul class="nav">
 			<li class="active">

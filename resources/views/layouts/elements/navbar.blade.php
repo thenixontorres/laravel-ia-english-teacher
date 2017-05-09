@@ -13,12 +13,12 @@
             <ul class="nav navbar-nav navbar-right">
                 @if(Auth::user())
                 <li>
-                    <a href="{{ route('home') }}" class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="{{ route('home') }}">
                         <i class="icon-home"> Inicio</i>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('auth.logout') }}" class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="{{ route('auth.logout') }}">
                         <i class="icon-power-off"> Salir</i>
                     </a>
                 </li>

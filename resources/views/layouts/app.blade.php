@@ -10,15 +10,9 @@
    	 	<link rel="stylesheet" href="{{ asset('/css/theme/assets/css/bootstrap.min.css') }}">
    	 	<link rel="stylesheet" href="{{ asset('/css/theme/assets/css/demo.css') }}">
     	<link rel="stylesheet" href="{{ asset('/css/theme/assets/css/material-dashboard.css') }}">
-		<link rel="stylesheet" href="{{ asset('css/assets/css/style.css') }}">
-    	<!--Data table -->
-
-		<style>
-			.modal-backdrop {
-				z-index: 1!important;
-			}
-		</style>
-
+		<link rel="stylesheet" href="{{ asset('css/assets/css/icons.css') }}">
+    	<link rel="stylesheet" href="{{ asset('css/assets/css/style.css') }}">
+		<!--Data table -->
     	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/dataTables/css/jquery.dataTables.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('plugins/dataTables/css/jquery.dataTables.min.css') }}">
     	<!-- <script src=" {{ asset('js/jquery.js') }}"></script> -->
@@ -57,6 +51,8 @@
 				</div>
 			</div>
 		</div>
+		<br>
+		<br>
 		@include('layouts.elements.footer')	
 		<script src="{{ asset('/css/theme/assets/js/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('/css/theme/assets/js/bootstrap-notify.js') }}"></script>
