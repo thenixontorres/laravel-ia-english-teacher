@@ -2,10 +2,10 @@
 @section('content')
 <div class="row">
     <div class="col-lg-6 col-md-12">
+        <a class="btn btn-default" href="{!! route('admin.personas.create') !!}">Agregar Nuevo Profesor</a>
         <div class="card">
             <div class="card-header" data-background-color="orange">
                 <h4 class="title">Profesores</h4>
-               <a href="{!! route('admin.personas.create') !!}">Agregar nuevo Profesor</a>
             </div>
             <div class="card-content table-responsive">                   
             @include('admin.persona.table')

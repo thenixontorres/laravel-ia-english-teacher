@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "MankSans";
+    src: url(../../../fonts/MankSans/MankSans.ttf) format("truetype");
+}
+
+body{ 
+	font-family: "MankSans";
+}
+
+
 .modal-backdrop {
 	z-index: 1!important;
 }
@@ -9,6 +19,8 @@
 
 .footer{
   background-color:#2d2d2d;
+  background: url(../../../img/footer-bg.jpg) no-repeat center top;
+    background-size: cover;
   color: #E7E7E7;
 }
 
@@ -19,6 +31,6 @@
 .navbar .navbar-nav > li > a.btn.btn-default.dropdown-toggle, .open >
 .navbar .navbar-nav > li > a.btn.btn-default.dropdown-toggle:focus, .open >
 .navbar .navbar-nav > li > a.btn.btn-default.dropdown-toggle:hover{
-  background-color:#9C27B0;
+  background-color: #02AEF8;
   color: #E7E7E7;
 }

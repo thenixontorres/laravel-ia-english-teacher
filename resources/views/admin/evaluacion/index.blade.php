@@ -3,10 +3,10 @@
 @section('content')
 <div class="row">
     <div class="col-lg-6 col-md-12">
+        <a class="btn btn-default" href="{!! route('admin.evaluacions.create') !!}">Agregar Nueva Evaluacion</a>
         <div class="card">
             <div class="card-header" data-background-color="orange">
                 <h4 class="title">Evaluaciones</h4>
-               <a href="{!! route('admin.evaluacions.create') !!}">Agregar nueva Evaluacion</a>
             </div>
             <div class="card-content table-responsive"> 
             @include('admin.evaluacion.table')

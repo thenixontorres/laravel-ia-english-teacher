@@ -3,10 +3,10 @@
 @section('content')
 <div class="row">
     <div class="col-lg-6 col-md-12">
+        <a href="{!! route('admin.materias.create') !!}" class="btn btn-default">Agregar Nueva Materia</a>
         <div class="card">
             <div class="card-header" data-background-color="orange">
                 <h4 class="title">Materias</h4>
-               <a href="{!! route('admin.materias.create') !!}">Agregar nueva Materia</a>
             </div>
             <div class="card-content table-responsive">                   
             @include('admin.materia.table')

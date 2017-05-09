@@ -14,12 +14,12 @@
                 @if(Auth::user())
                 <li>
                     <a href="{{ route('home') }}">
-                        <i class="icon-home"> Inicio</i>
+                        <i class="icon-home"></i> Inicio
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('auth.logout') }}">
-                        <i class="icon-power-off"> Salir</i>
+                        <i class="icon-power-off"></i> Salir
                     </a>
                 </li>
                 @endif

@@ -60,7 +60,7 @@
 		<script src="{{ asset('/css/theme/assets/js/demo.js') }}"></script>
 		<script src="{{ asset('/css/theme/assets/js/material.min.js') }}"></script>
 		<script src="{{ asset('/css/theme/assets/js/material-dashboard.js') }}"></script>
-
+		<!--Mis funciones -->
 		<script src="{{ asset('js/main.js') }}"></script>
 		<!--Data tables -->
 		<script type="text/javascript" src="{{ asset('plugins/dataTables/js/jquery.dataTables.js') }}"></script>
