@@ -1,14 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row" id="inicio">
-    <div class="col-md-2 "> 
-        <img class="img img-responsive " src="{{ asset('img/left.png') }}" alt="">
-    </div>
-    <div class="col-md-8">  
-        <h4 class="text-center"> Editar Regla </h4>
-    </div>
-    <div class="col-md-2 "> 
+<div class="row">
+    <div class="col-lg-6 col-md-12">
+        <div class="card">
+            <div class="card-header" data-background-color="orange">
+                <h4 class="title"> Editar Regla </h4>
+             </div>
+        <div class="col-md-2 "> 
         <img class="img img-responsive " src="{{ asset('img/right.png') }}" alt="">
     </div>      
 </div>

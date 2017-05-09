@@ -10,8 +10,14 @@
    	 	<link rel="stylesheet" href="{{ asset('/css/theme/assets/css/bootstrap.min.css') }}">
    	 	<link rel="stylesheet" href="{{ asset('/css/theme/assets/css/demo.css') }}">
     	<link rel="stylesheet" href="{{ asset('/css/theme/assets/css/material-dashboard.css') }}">
-		<link rel="stylesheet" href="{{ asset('css/icon.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/assets/css/style.css') }}">
     	<!--Data table -->
+
+		<style>
+			.modal-backdrop {
+				z-index: 1!important;
+			}
+		</style>
 
     	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/dataTables/css/jquery.dataTables.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('plugins/dataTables/css/jquery.dataTables.min.css') }}">
@@ -22,9 +28,13 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			@include('layouts.elements.panel')				
+			@if(Auth::user())
+			@include('layouts.elements.panel')
+			@endif				
 	   			<div class="main-panel">
+					@if(Auth::user())
 					@include('layouts.elements.navbar')
+					@endif				
 					<div class="content">
 						<div class="container-fluid">
 						<div class="row row-fluid">
