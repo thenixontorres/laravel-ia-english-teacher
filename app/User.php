@@ -26,10 +26,10 @@ class User extends Model implements AuthenticatableContract,
 
     protected $table = 'users';
 
-    //hasMany----------------------------------
-    public function personas()
+    //hasOne----------------------------------
+    public function persona()
     {
-        return $this->hasMany('App\Models\persona');
+        return $this->hasOne('App\Models\persona');
     }
 
     /**

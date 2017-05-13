@@ -1,85 +1,39 @@
 @extends('layouts.app')
 @section('content')
-	<div class="row" id="inicio">
-	<!-- perfil -->
-	<div class="col-md-3 panel panel-default">
+ <div class="content">
+	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-12 ">
-				
-			</div> 
-		</div>
-		<div class="row">
-			<div class="col-md-12 ">
-				<center>
-				<img class="img img-responsive " src="{{ asset('img/avatar.jpg') }}" alt="">
-				</center> 
-			</div>
-		</div>
-		<br>
-		<div class="row">
-			<div class="col-md-4 ">
-				Meteria: 
-			</div>
-			<div class="col-md-8 ">
-				Ingles 
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4 ">
-				Seccion: 
-			</div>
-			<div class="col-md-8 ">
-				II 
-			</div>
-		</div>
-		<br>
-		<div class="row">
-			<div class="col-md-12 indicador indicador-azul">
-				 <h4 class="indicador"> <button class="btn btn-default">Actualizar Perfil </button></h4> 
-			</div>
-		</div>
-	</div>
-	<!-- parte derecha -->
-	<div class="col-md-8 col-md-offset-1">
-		<!--panel de ev terminadas --> 
-		<div class="row  panel panel-default">
-			<div class="col-md-12">	
-				<div class="row">
-					<div class="col-md-12 ">
-						<center>
-						<h4>Evaluaciones Terminadas </h4>
-						</center>
-					</div> 
+			<div class="col-md-4">
+				<div class="card card-profile">
+					<div class="card-avatar">
+							<img class="img" src="{{ asset(Auth::user()->persona->foto)}}" />
+					</div>
+					<div class="content">
+						<h6 class="category text-gray">{{ Auth::user()->tipo }}</h6>
+						<h4 class="card-title">{{ Auth::user()->persona->nombre.' '.Auth::user()->persona->apellido }}</h4>
+						<a href="#" class="btn btn-default">Actualizar Perfil</a>
+					</div>
 				</div>
-				<hr>
-				<div class="row">
-					<div class="col-md-6">
-						TITULO DE LA EVALUACION. 
+			</div>
+			<div class="col-md-8">
+				<div class="card">
+					<div class="card-header" data-background-color="orange">
+						<h4 class="title">Mis Materias</h4>
 					</div>
-					<div class="col-md-3">
-						100/100
+					<div class="card-content">
+						Contenido de la seccion
 					</div>
-					<div class="col-md-1">
-						<button class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span></button> 
-					</div> 
+					<br>
+					<div class="card-header" data-background-color="orange">
+						<h4 class="title">Mis Evaluaciones</h4>
+					</div>
+					<div class="card-content">
+						Contenido de la seccion
+					</div>
+					<br>
 				</div>
-				<br>
-				<div class="row">
-					<div class="col-md-6">
-						TITULO DE LA EVALUACION. 
-					</div>
-					<div class="col-md-3">
-						100/100
-					</div>
-					<div class="col-md-1">
-						<button class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span></button> 
-					</div> 
-				</div>
-				<br>
-			</div>	
+			</div>
 		</div>
-		@include('sections.evaluaciones')
-		@include('sections.practicas')
 	</div>
 </div>	
 @endsection
