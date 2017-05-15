@@ -1,8 +1,8 @@
-@extends('layouts.app')	
+@extends('layouts.login')	
 @section('title','Iniciar Sesion')
 @section('content')		
 <div class="row">
-    <div class="col-lg-6 col-md-12">
+    <div class="col-lg-6 col-md-10 col-md-offset-1">
         <div class="card">
             <div class="card-header" data-background-color="orange">
                 <h4 class="title text-center" >Iniciar Sesion</h4>
