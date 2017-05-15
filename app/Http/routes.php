@@ -13,13 +13,12 @@
 
 Route::group(['middleware' => 'auth'], function () {
 
-  Route::get('inicio/', [
-    'uses'  =>  'homeController@index',
-    'as'    =>  'home',
-  ]);
-
+    Route::get('inicio/', [
+        'uses'  =>  'homeController@index',
+        'as'    =>  'home',
+    ]);
+    //Rutas Admin--------------------------------------------------
     Route::group(['prefix' => 'admin'], function () {
-
         Route::resource('estudiantes', 'estudianteController');
         
         Route::resource('personas', 'personaController');
@@ -39,10 +38,17 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('entradas', 'entradaController');
         
         Route::resource('respuestas', 'respuestaController');
-
-    });    
+    });  
+    //Rutas Profesor--------------------------------------------------       
+    Route::group(['prefix' => 'profesor'], function () {
+    Route::resource('estudiantes', 'estudianteController');
+    Route::get('estudiantes/show/{id}', [
+        'uses'  =>  'estudianteController@mis_estudiantes_show',
+        'as'    =>  'profesor.estudiantes.mis_estudiantes_show',
+    ]);    
+    });  
 });
-//Login------------------------------------------
+//Login-----------------------------------------------------------
 
 Route::get('/', [
     'uses'  => 'Auth\AuthController@getLogin',

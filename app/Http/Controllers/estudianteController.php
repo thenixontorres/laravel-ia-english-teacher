@@ -18,7 +18,7 @@ use App\Models\persona;
 use App\Models\materia;
 use App\Models\seccion;
 use App\Models\periodo;
-
+use Auth;
 
 class estudianteController extends AppBaseController
 {
@@ -47,18 +47,21 @@ class estudianteController extends AppBaseController
             ->with('estudiantes', $estudiantes);
     }
 
-    /**
-     * Show the form for creating a new estudiante.
-     *
-     * @return Response
-     */
+    //Admin - Profesor
     public function create()
-    {
-        $materias = materia::all();
+    {   
         $periodos = periodo::all();
+        if(Auth::User()->tipo=="Admin"){
+            $materias = materia::all();
         return view('admin.estudiante.create')
             ->with('materias', $materias)
             ->with('periodos', $periodos);
+        }elseif(Auth::User()->tipo=="Profesor"){
+            $materias = Auth::User()->persona->materias;
+            return view('profesor.estudiante.create')
+            ->with('materias', $materias)
+            ->with('periodos', $periodos);
+        }     
     }
 
     /**
@@ -114,23 +117,26 @@ class estudianteController extends AppBaseController
         $estudiante->periodo_id = $request->periodo_id;
         $estudiante->persona_id = $persona_id;
         $estudiante->save();
-        
-        if ($estudiante->save()) {
-            Flash::success('Estudiante registrado correctamente.');
-            return redirect(route('admin.estudiantes.index'));    
-        }else{
-            Flash::error('Error al registrar el estudiante.');
-            return redirect(route('admin.estudiantes.create'));
-        }       
+        if(Auth::User()->tipo=="Admin"){
+            if ($estudiante->save()) {
+                Flash::success('Estudiante registrado correctamente.');
+                return redirect(route('admin.estudiantes.index'));    
+            }else{
+                Flash::error('Error al registrar el estudiante.');
+                return redirect(route('admin.estudiantes.create'));
+            } 
+        }elseif(Auth::User()->tipo=="Profesor"){
+            if ($estudiante->save()) {
+                Flash::success('Estudiante registrado correctamente.');
+                return redirect()->back();    
+            }else{
+                Flash::error('Error al registrar el estudiante.');
+                return redirect()->back();
+            }
+        }           
     }
 
-    /**
-     * Display the specified estudiante.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
+    //Admin
     public function show($id)
     {
         $estudiante = $this->estudianteRepository->findWithoutFail($id);
@@ -143,28 +149,44 @@ class estudianteController extends AppBaseController
         return view('admin.estudiante.show')->with('estudiante', $estudiante);
     }
 
-    /**
-     * Show the form for editing the specified estudiante.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
+    //Profesor
+    public function mis_estudiantes_show($id)
+    {
+        $estudiantes = estudiante::where('materia_id', $id)->get();
+        $materia = materia::where('id',$id)->get();
+        $materia = $materia->first();
+        if (empty($estudiantes)) {
+            Flash::error('Esta materia no tiene Estudiantes Inscritos');
+
+            return redirect()->back();
+        }
+        return view('profesor.estudiante.show')
+            ->with('estudiantes', $estudiantes)
+            ->with('materia', $materia);
+    }
+
+    //Admin - Profesor
     public function edit($id)
     {
         $estudiante = $this->estudianteRepository->findWithoutFail($id);
 
         if (empty($estudiante)) {
             Flash::error('Estudiante no encontrado');
-
-            return redirect(route('admin.estudiantes.index'));
+                return redirect()->back();
         }
         $materias = materia::all();
         $periodos = periodo::all();
+        if(Auth::User()->tipo=="Admin"){
         return view('admin.estudiante.edit')
             ->with('estudiante', $estudiante)
             ->with('materias', $materias)
             ->with('periodos', $periodos);
+       }elseif(Auth::User()->tipo=="Profesor"){
+            return view('profesor.estudiante.edit')
+            ->with('estudiante', $estudiante)
+            ->with('materias', $materias)
+            ->with('periodos', $periodos);
+       }     
     }
 
     /**
@@ -185,8 +207,7 @@ class estudianteController extends AppBaseController
 
         if (empty($estudiante)) {
             Flash::error('Estudiante no encontrado.');
-
-            return redirect(route('admin.estudiantes.index'));
+            return redirect()->back();
         }
 
         //si la cedula cambio...
@@ -207,8 +228,6 @@ class estudianteController extends AppBaseController
                 $user->password = bcrypt($request->password);
             }
             $user->save();
-            
-            $estudiante->materia_id = $request->materia_id;
             $estudiante->periodo_id = $request->periodo_id;
             $estudiante->save();        
 
@@ -220,8 +239,11 @@ class estudianteController extends AppBaseController
             if (empty($request->foto)) {
                 $persona->save();
                 Flash::success('Estudiante actualizado con exito.');
-
-                return redirect(route('admin.estudiantes.index'));
+                if(Auth::User()->tipo=="Admin"){
+                    return redirect(route('admin.estudiantes.index'));
+                }elseif(Auth::User()->tipo=="Profesor"){
+                    return redirect()->back();
+                }
             }else{
             //si carga una nueva foto
                 if (file_exists(public_path().$persona->foto)) {
@@ -235,14 +257,21 @@ class estudianteController extends AppBaseController
                 $persona->foto = '/img/fotos/'.$nombre;
                 $persona->save();
                 Flash::success('Estudiante actualizado con exito.');
-
-                return redirect(route('admin.estudiantes.index'));
+                
+                if(Auth::User()->tipo=="Admin"){
+                    return redirect(route('admin.estudiantes.index'));
+                }elseif(Auth::User()->tipo=="Profesor"){
+                    return redirect()->back();
+                }
             }
 
-        
         Flash::success('Estudiante actualizado con exito.');
-
-        return redirect(route('admin.estudiantes.index'));
+      
+        if(Auth::User()->tipo=="Admin"){
+            return redirect(route('admin.estudiantes.index'));
+        }elseif(Auth::User()->tipo=="Profesor"){
+            return redirect()->back();
+        }
     }
 
     /**
