@@ -20,6 +20,15 @@ class PersonaSeeder extends Seeder
                 'estado' => 'Activo'
         ]);
 
+        DB::table('personas')->insert([
+
+                'nombre'  => 'Admin',
+                'apellido'  => 'Admin',
+                'cedula'  => '00000001',
+                'foto' => 'img/fotos/admin.jpg',
+                'user_id' => '1'
+        ]);
+
         DB::table('users')->insert([
 
                 'email'  => 'profesor@example.com',

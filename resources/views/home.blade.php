@@ -26,20 +26,25 @@
 								<thead>
 									<th>Materia</th>
 									<th>Seccion</th>
-									<th>Ver Estudiantes</th>
+									<th>Acciones</th>
 								</thead>
 								<tbody>
 								@foreach(Auth::user()->persona->materias as $materia)
 									<tr>
 										<td>{!! $materia->materia !!}</td>
 										<td>{!! $materia->seccion->seccion !!}</td>
+										{!! Form::open(['route' => ['profesor.materias.destroy', $materia->id], 'method' => 'delete']) !!}
 										<td> 
 											<a href="{!! route('profesor.estudiantes.mis_estudiantes_show', [$materia->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+											<a href="{!! route('profesor.materias.edit', [$materia->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+											{!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Seguro que desea borrar esta materia?')"]) !!}
 										</td>
+										{!! Form::close() !!}
 									</tr>
 								@endforeach
 								</tbody>
 							</table>
+							<a class="btn btn-default" href="{!! route('profesor.materias.create') !!}"><i class="glyphicon glyphicon-plus"></i></a>
 						</div>
 						<br>
 					<div class="card-header" data-background-color="orange">
@@ -55,18 +60,7 @@
 								<th>Editar</th>
 							</thead>
 							<tbody>
-							@foreach(Auth::user()->persona->materias as $materia)
-								<tr>
-									<td>{!! $materia->materia !!}</td>
-									<td>{!! $materia->seccion->seccion !!}</td>
-									<td> 
-										<a href="#" class='btn btn-primary btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-									</td>
-									<td>
-											<a href="#" class='btn btn-primary btn-xs'><i class="glyphicon glyphicon-plus"></i/></a>	
-									</td>
-								</tr>
-							@endforeach
+							
 							</tbody>
 						</table>
 					</div>

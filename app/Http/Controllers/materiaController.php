@@ -15,7 +15,7 @@ use App\Models\seccion;
 use App\User;
 use App\Models\evaluacion;
 use App\Models\estudiante;
-
+use Auth;
 
 class materiaController extends AppBaseController
 {
@@ -48,13 +48,19 @@ class materiaController extends AppBaseController
      * @return Response
      */
     public function create()
-    {
+    {   
         $seccions = seccion::all();
-        $personas = persona::all();
-
-        return view('admin.materia.create')
+        if (Auth::user()->tipo == 'Admin') {
+            $personas = persona::all();
+            return view('admin.materia.create')
             ->with('seccions',$seccions)
             ->with('personas',$personas);
+        }else{
+            return view('profesor.materia.create')
+            ->with('seccions',$seccions);
+        }
+
+        
     }
 
     /**
@@ -71,8 +77,11 @@ class materiaController extends AppBaseController
         $materia = $this->materiaRepository->create($input);
 
         Flash::success('Materia registrada con exito.');
-
-        return redirect(route('admin.materias.index'));
+        if (Auth::user()->tipo == 'Admin') {
+            return redirect(route('admin.materias.index'));
+        }else{
+            return redirect(route('home'));
+        }
     }
 
     /**
@@ -108,15 +117,25 @@ class materiaController extends AppBaseController
 
         if (empty($materia)) {
             Flash::error('Materia no encontrada.');
-
+            if (Auth::User()->tipo=='Admin') {
             return redirect(route('admin.materias.index'));
+            }else{
+            return redirect(route('home'));
+            }
         }
         $seccions = seccion::all();
-        $personas = persona::all();
-        return view('admin.materia.edit')
-        ->with('materia', $materia)
-        ->with('seccions',$seccions)
-        ->with('personas',$personas);
+
+        if (Auth::user()->tipo == 'Admin') {
+            $personas = persona::all();
+            return view('admin.materia.edit')
+            ->with('seccions',$seccions)
+            ->with('personas',$personas)
+            ->with('materia', $materia);
+        }else{
+            return view('profesor.materia.edit')
+            ->with('seccions',$seccions)
+            ->with('materia', $materia);
+        }
     }
 
     /**
@@ -133,15 +152,22 @@ class materiaController extends AppBaseController
 
         if (empty($materia)) {
             Flash::error('Materia no encntrada.');
-
-            return redirect(route('admin.materias.index'));
+            if (Auth::user()->tipo == 'Admin') {
+                return redirect(route('admin.materias.index'));
+            }else{
+                return redirect(route('home'));
+            }
         }
 
         $materia = $this->materiaRepository->update($request->all(), $id);
 
         Flash::success('Materia editada con exito.');
 
-        return redirect(route('admin.materias.index'));
+        if (Auth::user()->tipo == 'Admin') {
+            return redirect(route('admin.materias.index'));
+        }else{
+            return redirect(route('home'));
+        }
     }
 
     /**
@@ -157,29 +183,43 @@ class materiaController extends AppBaseController
 
         if (empty($materia)) {
             Flash::error('Materia no encontrada.');
-
-            return redirect(route('admin.materias.index'));
+            if (Auth::user()->tipo == 'Admin') {
+                return redirect(route('admin.materias.index'));
+            }else{
+                return redirect(route('home'));
+            }
         }
 
         $evaluacions = evaluacion::where('materia_id',$id)->get();
         if (count($evaluacions)>0) {
              Flash::error('Esta materia aun tiene evaluaciones.');
 
-            return redirect(route('admin.materias.index')); 
+            if (Auth::user()->tipo == 'Admin') {
+                return redirect(route('admin.materias.index'));
+            }else{
+                return redirect(route('home'));
+            }
         }
 
         $estudiantes = estudiante::where('materia_id',$id)->get();
         if (count($estudiantes)>0) {
              Flash::error('Esta materia aun tiene estudiantes inscritos.');
 
-            return redirect(route('admin.materias.index')); 
+            if (Auth::user()->tipo == 'Admin') {
+                return redirect(route('admin.materias.index'));
+            }else{
+                return redirect(route('home'));
+            }
         }
 
         $this->materiaRepository->delete($id);
 
         Flash::success('Materia borrada con exito.');
 
-        return redirect(route('admin.materias.index'));
-
+        if (Auth::user()->tipo == 'Admin') {
+            return redirect(route('admin.materias.index'));
+        }else{
+            return redirect(route('home'));
+        }
     }
 }

@@ -47,6 +47,11 @@ Route::group(['middleware' => 'auth'], function () {
             'as'    =>  'profesor.estudiantes.mis_estudiantes_show',
         ]);
         Route::resource('personas', 'personaController');
+
+        Route::resource('materias', 'materiaController');
+        
+        Route::resource('evaluacions', 'evaluacionController');
+
     });  
 });
 //Login-----------------------------------------------------------
