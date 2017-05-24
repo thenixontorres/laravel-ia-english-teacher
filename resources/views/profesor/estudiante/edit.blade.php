@@ -69,6 +69,22 @@
                     <input id="ctr2" class="form-control" type="password" name="password2" placeholder="Repita su Contraseña">
             </div>
 
+            <!-- materia Field -->
+            <div class="form-group col-md-12">
+                {!! Form::label('materia', 'Materia:') !!}
+                <select name="periodo_id" class="form-control">
+                    @foreach ($materias as $materia)
+                        @if ($estudiante->materia->id == $materia->id)
+                            <option value="{{ $materia->id }}" selected>{{ $materia->materia.' '.$materia->seccion->seccion }} 
+                            </option>    
+                        @else
+                            <option value="{{ $materia->id }}">{{ $materia->materia.' '.$materia->seccion->seccion }} 
+                            </option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+
             <!-- Periodo Field -->
             <div class="form-group col-md-12">
                 {!! Form::label('periodo', 'Periodo:') !!}

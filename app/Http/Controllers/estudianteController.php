@@ -83,6 +83,13 @@ class estudianteController extends AppBaseController
             return redirect()->back();    
         }
 
+        $otro_email = user::where('email',$request->email)->get();
+
+        if (count($otro_email) > 0) {
+            Flash::error('El email ya existe.');
+
+            return redirect()->back();    
+        }
 
         //si no carga una foto
         if (empty($request->foto)) {
@@ -174,15 +181,16 @@ class estudianteController extends AppBaseController
             Flash::error('Estudiante no encontrado');
                 return redirect()->back();
         }
-        $materias = materia::all();
         $periodos = periodo::all();
         if(Auth::User()->tipo=="Admin"){
+        $materias = materia::all();    
         return view('admin.estudiante.edit')
             ->with('estudiante', $estudiante)
             ->with('materias', $materias)
             ->with('periodos', $periodos);
        }elseif(Auth::User()->tipo=="Profesor"){
-            return view('profesor.estudiante.edit')
+        $materias = Auth::user()->persona->materias;
+        return view('profesor.estudiante.edit')
             ->with('estudiante', $estudiante)
             ->with('materias', $materias)
             ->with('periodos', $periodos);
@@ -287,7 +295,11 @@ class estudianteController extends AppBaseController
         
         if (empty($estudiante)) {
             Flash::error('Estudiante no encontrado');
-            return redirect(route('admin.estudiantes.index'));
+            if(Auth::User()->tipo=="Admin"){
+                return redirect(route('admin.estudiantes.index'));
+            }elseif(Auth::User()->tipo=="Profesor"){
+                return redirect()->back();
+            }        
         }
 
             $persona_id = $estudiante->persona_id;
@@ -308,6 +320,10 @@ class estudianteController extends AppBaseController
 
         Flash::success('Estudiante borrado exitosamente.');
 
-        return redirect(route('admin.estudiantes.index'));
+        if(Auth::User()->tipo=="Admin"){
+            return redirect(route('admin.estudiantes.index'));
+        }elseif(Auth::User()->tipo=="Profesor"){
+            return redirect()->back();
+        }
     }
 }

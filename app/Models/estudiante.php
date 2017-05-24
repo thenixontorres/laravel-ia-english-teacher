@@ -102,8 +102,6 @@ class estudiante extends Model
      * @var array
      */
     public static $rules = [
-        'materia_id' => 'nullable',
-        'persona_id' => 'nullable',
         'periodo_id' => 'required'
     ];
 }
