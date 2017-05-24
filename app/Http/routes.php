@@ -41,11 +41,12 @@ Route::group(['middleware' => 'auth'], function () {
     });  
     //Rutas Profesor--------------------------------------------------       
     Route::group(['prefix' => 'profesor'], function () {
-    Route::resource('estudiantes', 'estudianteController');
-    Route::get('estudiantes/show/{id}', [
-        'uses'  =>  'estudianteController@mis_estudiantes_show',
-        'as'    =>  'profesor.estudiantes.mis_estudiantes_show',
-    ]);    
+        Route::resource('estudiantes', 'estudianteController');
+        Route::get('estudiantes/show/{id}', [
+            'uses'  =>  'estudianteController@mis_estudiantes_show',
+            'as'    =>  'profesor.estudiantes.mis_estudiantes_show',
+        ]);
+        Route::resource('personas', 'personaController');
     });  
 });
 //Login-----------------------------------------------------------

@@ -13,6 +13,7 @@ use Response;
 use App\User;
 use App\Models\persona;
 use App\Models\materia;
+use Auth;
 
 
 class personaController extends AppBaseController
@@ -47,7 +48,6 @@ class personaController extends AppBaseController
      */
     public function create()
     {   
-
         return view('admin.persona.create');
     }
 
@@ -99,6 +99,7 @@ class personaController extends AppBaseController
         return redirect(route('admin.personas.index'));
     }
 
+
     /**
      * Display the specified persona.
      *
@@ -127,16 +128,17 @@ class personaController extends AppBaseController
      * @return Response
      */
     public function edit($id)
-    {
+    {   
         $persona = $this->personaRepository->findWithoutFail($id);
-
         if (empty($persona)) {
             Flash::error('Persona no encontrada.');
-
-            return redirect(route('admin.personas.index'));
+            return redirect()->back();
         }
-
-        return view('admin.persona.edit')->with('persona', $persona);
+        if(Auth::user()->tipo=="Admin"){
+            return view('admin.persona.edit')->with('persona', $persona);
+        }elseif(Auth::user()->tipo=="Profesor"){
+            return view('profesor.persona.edit')->with('persona', $persona);
+        }
     }
 
     /**
@@ -155,8 +157,11 @@ class personaController extends AppBaseController
 
         if (empty($persona)) {
             Flash::error('Profesor no encontrado');
-
-            return redirect(route('admin.personas.index'));
+            if(Auth::user()->tipo=="Admin"){
+                return redirect(route('admin.personas.index'));
+            }elseif(Auth::user()->tipo=="Profesor"){
+                return redirect()->back();   
+            }    
         }
 
         //si la cedula cambio...
@@ -171,7 +176,9 @@ class personaController extends AppBaseController
             }   
         }
             $user->email = $request->email;
-            $user->estado = $request->estado;
+            if($request->estado != null){
+                $user->estado = $request->estado;
+            }
             if (empty($request->password) == false) {
                 $user->password = bcrypt($request->password);
             }
@@ -183,9 +190,13 @@ class personaController extends AppBaseController
         //si no carga una foto nueva
         if (empty($request->foto)) {
             $persona->save();
-            Flash::success('Profesor actualizado con exito.');
-
-            return redirect(route('admin.personas.index'));
+            if(Auth::user()->tipo=="Admin"){
+                Flash::success('Profesor actualizado con exito.');
+                return redirect(route('admin.personas.index'));
+            }elseif(Auth::user()->tipo=="Profesor"){
+                Flash::success('Perfil actualizado con exito.');
+                return redirect()->route('home');   
+            }    
         }else{
         //si carga una nueva foto
             if (file_exists(public_path().$persona->foto)) {
@@ -198,14 +209,23 @@ class personaController extends AppBaseController
             $foto->move($ruta, $nombre);
             $persona->foto = '/img/fotos/'.$nombre;;
             $persona->save();
-            Flash::success('Profesor actualizado con exito.');
 
-            return redirect(route('admin.personas.index'));
+            if(Auth::user()->tipo=="Admin"){
+                Flash::success('Profesor actualizado con exito.');
+                return redirect(route('admin.personas.index'));
+            }elseif(Auth::user()->tipo=="Profesor"){
+                Flash::success('Perfil actualizado con exito.');
+                return redirect()->route('home');   
+            }   
         }    
 
-        Flash::success('Profesor actualizado con exito.');
-
-        return redirect(route('admin.personas.index'));
+        if(Auth::user()->tipo=="Admin"){
+            Flash::success('Profesor actualizado con exito.');
+            return redirect(route('admin.personas.index'));
+        }elseif(Auth::user()->tipo=="Profesor"){
+            Flash::success('Perfil actualizado con exito.');
+            return redirect()->route('home');   
+        }   
     }
 
     /**

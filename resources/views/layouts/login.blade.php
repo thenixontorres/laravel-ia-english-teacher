@@ -22,24 +22,23 @@
 	</head>
 	<body>
 		<div class="wrapper">
-						<div class="container-fluid">
-						<div class="row row-fluid">
-							<div class="col-md-10 col-sm-offset-1">
-								@include('flash::message')
-								@if(count($errors) > 0)
-								<div class="alert alert-danger" role="alert">
-									<ul>
-										@foreach ($errors->all() as $error)
-											<li>{{ $error }}</li>
-										@endforeach
-									</ul>
-								</div>
-								@endif
-							</div>
-						</div>	
-						@yield('content')
+			<div class="container-fluid">
+				<div class="row row-fluid">
+					<div class="col-md-10 col-sm-offset-1">
+						@include('flash::message')
+						@if(count($errors) > 0)
+						<div class="alert alert-danger" role="alert">
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
 						</div>
-					
+						@endif
+					</div>
+				</div>	
+				@yield('content')
+				</div>
 			</div>
 		</div>
 		<br>
