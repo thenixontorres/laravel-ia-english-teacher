@@ -12,7 +12,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\materia;
 use App\Models\caso;
-
+use Auth;
 
 class evaluacionController extends AppBaseController
 {
@@ -46,10 +46,15 @@ class evaluacionController extends AppBaseController
      */
     public function create()
     {
-        $materias = materia::all();
-
-        return view('admin.evaluacion.create')
+        if(Auth::user()->tipo == 'Admin'){
+            $materias = materia::all();
+            return view('admin.evaluacion.create')
             ->with('materias', $materias);
+        }else{
+            $materias = Auth::User()->persona->materias;
+            return view('profesor.evaluacion.create')
+            ->with('materias', $materias);
+        }
     }
 
     /**
@@ -67,7 +72,11 @@ class evaluacionController extends AppBaseController
 
         Flash::success('Evaluacion registrada con exito.');
 
-        return redirect(route('admin.evaluacions.index'));
+        if (Auth::user()->tipo=='Admin') {
+            return redirect(route('admin.evaluacions.index'));
+        }else{
+            return redirect(route('home'));
+        }
     }
 
     /**
@@ -100,17 +109,23 @@ class evaluacionController extends AppBaseController
     public function edit($id)
     {
         $evaluacion = $this->evaluacionRepository->findWithoutFail($id);
-        $materias = materia::all();
-
+       
         if (empty($evaluacion)) {
             Flash::error('Evaluacion no encontrada');
 
             return redirect(route('admin.evaluacions.index'));
         }
-
-        return view('admin.evaluacion.edit')
+        if(Auth::User()->tipo=='Admin'){
+            $materias = materia::all();
+            return view('admin.evaluacion.edit')
             ->with('evaluacion', $evaluacion)
             ->with('materias', $materias);
+        }else{
+            $materias = Auth::User()->persona->materias;
+             return view('profesor.evaluacion.edit')
+            ->with('evaluacion', $evaluacion)
+            ->with('materias', $materias);
+        }    
     }
 
     /**
@@ -135,7 +150,11 @@ class evaluacionController extends AppBaseController
 
         Flash::success('Evaluacion actualizada con exito.');
 
-        return redirect(route('admin.evaluacions.index'));
+        if (Auth::user()->tipo=='Admin') {
+            return redirect(route('admin.evaluacions.index'));
+        }else{
+            return redirect(route('home'));
+        }
     }
 
     /**

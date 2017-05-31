@@ -53,16 +53,31 @@
 					<div class="card-content">
 						<table class="table table-responsive" id="table">
 							<thead>
-								<th>Evaluacion</th>
+								<th>Titulo</th>
 								<th>Tipo</th>
 								<th>Estado</th>
-								<th>Ver Detalles</th>
-								<th>Editar</th>
+								<th>Materia</th>
+								<th>Acciones</th>
 							</thead>
 							<tbody>
-							
+							@foreach(Auth::user()->persona->materias as $materia)
+								@foreach($materia->evaluacions as $evaluacion)
+									<tr>
+									<td>{{ $evaluacion->titulo }}</td>
+									<td>{{ $evaluacion->tipo }}</td>
+									<td>{{ $evaluacion->estado }}</td>
+									<td>{{ $evaluacion->materia->materia }}</td>
+									<td>
+										 <a href="{!! route('profesor.evaluacions.show', [$evaluacion->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                   						 <a href="{!! route('profesor.evaluacions.edit', [$evaluacion->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                   
+									</td>
+									</tr>
+								@endforeach
+							@endforeach
 							</tbody>
 						</table>
+						<a class="btn btn-default" href="{!! route('profesor.evaluacions.create') !!}"><i class="glyphicon glyphicon-plus"></i></a>
 					</div>
 					<br>
 					@endif

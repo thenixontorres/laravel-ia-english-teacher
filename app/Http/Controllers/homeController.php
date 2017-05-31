@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\persona;
 use App\Models\estudiante;
+use Auth;
 
 class homeController extends Controller
 {
