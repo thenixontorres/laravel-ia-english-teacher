@@ -5,7 +5,7 @@
     {!! Form::text('email', null, ['class' => 'form-control','required']) !!}
 </div>
 
-<!-- Estado Field -->
+<!-- Estado Field 
 <div class="form-group col-md-12">
     {!! Form::label('estado', 'Estado:') !!}
     <select name="estado" class="form-control">
@@ -13,19 +13,20 @@
         <option value="Inactivo">Inactivo</option>
     </select>       
 </div>
-
-<!-- Password Field -->
+-->
+<!-- Password Field 
 <div class="form-group col-md-12">
     {!! Form::label('password', 'Clave:') !!}
         <input id="ctr1" class="form-control" type="password" name="password" required>
 </div>
+-->
 
-<!-- Clave confirm Field -->
+<!-- Clave confirm Field 
 <div class="form-group col-md-12">
         {!! Form::label('password2', 'Confirmar Clave:') !!}
         <input id="ctr2" class="form-control" type="password" name="password2" placeholder="Repita su Contraseña" required>
 </div>
-
+-->
 <!-- De la tabla persona -->
 <!-- Nombre Field -->
 <div class="form-group col-md-12">
@@ -45,11 +46,12 @@
     {!! Form::text('cedula', null, ['class' => 'form-control','required']) !!}
 </div>
 
-<!-- Foto Field -->
+<!-- Foto Field
 <div class="form-group col-md-12">
     {!! Form::label('foto', 'foto:') !!}
     {!! Form::file('foto', ['class' => 'form-control']) !!}
 </div>
+-->
 <!-- De la tabla estudiante -->
 <!-- materia Field -->
 <div class="form-group col-md-12">

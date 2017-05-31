@@ -104,9 +104,17 @@ class estudianteController extends AppBaseController
 
         $user = new user();
         $user->email = $request->email;
+        if(empty($request->estado)){
+        $user->estado = 'Activo';
+        }else{
         $user->estado = $request->estado;
+        }
         $user->tipo = 'Estudiante';
+        if(empty($request->password)){
+        $user->password = bcrypt($request->email);
+        }else{    
         $user->password = bcrypt($request->password);
+        }
         $user->save();
         $user_id = $user->id;
 
@@ -229,7 +237,6 @@ class estudianteController extends AppBaseController
                 return redirect()->back();    
             }   
         }
-
             $user->email = $request->email;
             $user->estado = $request->estado;
             if (empty($request->password) == false) {

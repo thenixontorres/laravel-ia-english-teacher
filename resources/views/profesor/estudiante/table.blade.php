@@ -5,6 +5,7 @@
         <th>Cedula</th>
         <th>Materia</th>
         <th>Estado</th>
+        <th>Periodo</th>
         <th>Acciones</th>
         <th>Ver Notas</th>
     </thead>
@@ -16,14 +17,15 @@
             <td>{!! $estudiante->persona->cedula !!}</td>
             <td>{!! $estudiante->materia->materia.' Seccion '.$estudiante->materia->seccion->seccion !!}</td>
             <td>{!! $estudiante->persona->user->estado !!}</td>
+            <td>{!! $estudiante->periodo->periodo !!}</td>
             {!! Form::open(['route' => ['profesor.estudiantes.destroy', $estudiante->id], 'method' => 'delete']) !!}
             <td>
                 <div class='btn-group'>
                     <a href="{!! route('profesor.estudiantes.edit', [$estudiante->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                 </div>
-                {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Seguro que desea borrar este estudiante?')"]) !!}
+            <!-- {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Seguro que desea borrar este estudiante?')"]) !!}
             </td>
-            {!! Form::close() !!} 
+            {!! Form::close() !!} --> 
             <td>
                 <div class='btn-group'>
                     <a href="{!! route('profesor.estudiantes.edit', [$estudiante->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>

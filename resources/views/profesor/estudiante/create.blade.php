@@ -7,7 +7,7 @@
                 <h4 class="title">Registrar Estudiante</h4>
             </div>
             <div class="card-content table-responsive">                   
-                {!! Form::open(['route' => 'profesor.estudiantes.store', 'files' => true, 'onsubmit' => 'return contras();']) !!}
+                {!! Form::open(['route' => 'profesor.estudiantes.store', 'files' => true]) !!}
 
                     @include('profesor.estudiante.fields')
 

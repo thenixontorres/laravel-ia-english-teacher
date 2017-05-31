@@ -9,39 +9,21 @@
             </div>
             <div class="card-content table-responsive">                   
                     
-            {!! Form::model($estudiante, ['route' => ['profesor.estudiantes.update', $estudiante->id], 'method' => 'patch', 'files' => true ,'onsubmit' => 'return contras();']) !!}
+            {!! Form::model($estudiante, ['route' => ['profesor.estudiantes.update', $estudiante->id], 'method' => 'patch', 'files' => true]) !!}
 
             <!-- De la tabla persona -->
             <!-- Nombre Field -->
-            <div class="form-group col-md-12">
-                {!! Form::label('nombre', 'Nombre:') !!}
-                {!! Form::text('nombre', $estudiante->persona->nombre, ['class' => 'form-control','required']) !!}
-            </div>
+                {!! Form::hidden('nombre', $estudiante->persona->nombre, ['class' => ' ','required']) !!}
 
             <!-- Apellido Field -->
-            <div class="form-group col-md-12">
-                {!! Form::label('apellido', 'Apellido:') !!}
-                {!! Form::text('apellido', $estudiante->persona->apellido, ['class' => 'form-control','required']) !!}
-            </div>
+                {!! Form::hidden('apellido', $estudiante->persona->apellido, ['class' => ' ','required']) !!}
 
             <!-- Cedula Field -->
-            <div class="form-group col-md-12">
-                {!! Form::label('cedula', 'Cedula:') !!}
-                {!! Form::text('cedula', $estudiante->persona->cedula, ['class' => 'form-control','required']) !!}
-            </div>
-
-            <!-- Foto Field -->
-            <div class="form-group col-md-12">
-                {!! Form::label('foto', 'foto:') !!}
-                {!! Form::file('foto', ['class' => 'form-control']) !!}
-            </div>
+                {!! Form::hidden('cedula', $estudiante->persona->cedula, ['class' => ' ','required']) !!}
             
             <!-- De la tabla user -->
             <!-- Email Field -->
-            <div class="form-group col-md-12">
-                {!! Form::label('email', 'Email:') !!}
-                {!! Form::text('email', $estudiante->persona->user->email, ['class' => 'form-control','required']) !!}
-            </div>
+                {!! Form::hidden('email', $estudiante->persona->user->email, ['class' => ' ','required']) !!}
 
             <!-- Estado Field -->
             <div class="form-group col-md-12">
@@ -55,18 +37,6 @@
                         <option value="Inactivo" selected>Inactivo</option>
                     @endif
                 </select>       
-            </div>
-
-            <!-- Password Field -->
-            <div class="form-group col-md-12">
-                {!! Form::label('password', 'Clave:') !!}
-                    <input id="ctr1" class="form-control" type="password" name="password">
-            </div>
-
-            <!-- Clave confirm Field -->
-            <div class="form-group col-md-12">
-                    {!! Form::label('password2', 'Confirmar Clave:') !!}
-                    <input id="ctr2" class="form-control" type="password" name="password2" placeholder="Repita su Contraseña">
             </div>
 
             <!-- materia Field -->
