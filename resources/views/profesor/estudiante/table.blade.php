@@ -28,7 +28,7 @@
             {!! Form::close() !!} --> 
             <td>
                 <div class='btn-group'>
-                    <a href="{!! route('profesor.estudiantes.edit', [$estudiante->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                    <a href="{!! route('profesor.notas.show', [$estudiante->id]) !!}" target="_blank" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
                 </div>
             </td>
         </tr>

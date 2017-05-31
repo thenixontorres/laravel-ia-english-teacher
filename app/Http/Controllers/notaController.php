@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\nota;
+use App\Models\estudiante;
+use Auth;
+
+
 
 class notaController extends AppBaseController
 {
@@ -71,17 +76,21 @@ class notaController extends AppBaseController
      *
      * @return Response
      */
+    //recibe id del estudiante
     public function show($id)
     {
-        $nota = $this->notaRepository->findWithoutFail($id);
-
+        $notas = nota::where('estudiante_id', $id)->get();
+        $estudiante = estudiante::where('id', $id)->first();
         if (empty($nota)) {
-            Flash::error('nota not found');
+            Flash::error('Este estudiante no tiene ninguna nota registrada.');
 
-            return redirect(route('notas.index'));
+            return redirect()->back();
         }
-
-        return view('notas.show')->with('nota', $nota);
+        if (Auth::user()->tipo=='Admin') {
+            return view('admin.nota.show')->with('notas', $notas);
+        }else{
+            return view('profesor.nota.show')->with('notas', $notas);
+        }
     }
 
     /**

@@ -52,6 +52,8 @@ Route::group(['middleware' => 'auth'], function () {
         
         Route::resource('evaluacions', 'evaluacionController');
 
+        Route::resource('notas', 'notaController');
+
     });  
 });
 //Login-----------------------------------------------------------
