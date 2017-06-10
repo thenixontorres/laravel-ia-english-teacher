@@ -19,25 +19,28 @@ Route::group(['middleware' => 'auth'], function () {
     ]);
     //Rutas Admin--------------------------------------------------
     Route::group(['prefix' => 'admin'], function () {
-        Route::resource('estudiantes', 'estudianteController');
+        Route::group(['middleware' => 'admin'], function () {
         
-        Route::resource('personas', 'personaController');
-        
-        Route::resource('materias', 'materiaController');
-        
-        Route::resource('evaluacions', 'evaluacionController');
+            Route::resource('estudiantes', 'estudianteController');
+            
+            Route::resource('personas', 'personaController');
+            
+            Route::resource('materias', 'materiaController');
+            
+            Route::resource('evaluacions', 'evaluacionController');
 
-        Route::resource('casos', 'casoController');
-        
-        Route::resource('contextos', 'contextoController');
+            Route::resource('casos', 'casoController');
+            
+            Route::resource('contextos', 'contextoController');
 
-        Route::resource('reglas', 'reglaController');
-   
-        Route::resource('reaccions', 'reaccionController');
-    
-        Route::resource('entradas', 'entradaController');
+            Route::resource('reglas', 'reglaController');
+       
+            Route::resource('reaccions', 'reaccionController');
         
-        Route::resource('respuestas', 'respuestaController');
+            Route::resource('entradas', 'entradaController');
+            
+            Route::resource('respuestas', 'respuestaController');
+        });  
     });  
     //Rutas Profesor--------------------------------------------------       
     Route::group(['prefix' => 'profesor'], function () {
@@ -60,6 +63,17 @@ Route::group(['middleware' => 'auth'], function () {
         'uses'  =>  'casoController@micaso',
         'as'    =>  'profesor.casos.micaso',
         ]);
+        
+        Route::resource('contextos', 'contextoController');
+
+        Route::resource('reglas', 'reglaController');
+   
+        Route::resource('reaccions', 'reaccionController');
+    
+        Route::resource('entradas', 'entradaController');
+        
+        Route::resource('respuestas', 'respuestaController');
+
     });  
 });
 //Login-----------------------------------------------------------

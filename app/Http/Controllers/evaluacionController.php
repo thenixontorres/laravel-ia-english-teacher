@@ -50,6 +50,11 @@ class evaluacionController extends AppBaseController
             $materias = materia::all();
             return view('admin.evaluacion.create')
             ->with('materias', $materias);
+        }else{
+            $materias = Auth::user()->persona->materias;
+            return view('profesor.evaluacion.create')
+            ->with('materias', $materias);
+        }    
     }
 
     /**

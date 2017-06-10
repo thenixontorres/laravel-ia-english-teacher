@@ -59,9 +59,9 @@
             {{ $regla->puntos }}  
             </div>
             <div class="form-group col-md-2">
-                 <a href="{!! route('admin.reglas.edit', [$regla->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i>
+                 <a href="{!! route('profesor.reglas.edit', [$regla->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i>
                 </a>
-                {!! Form::open(['route' => ['admin.reglas.destroy', $regla->id], 'method' => 'delete']) !!}
+                {!! Form::open(['route' => ['profesor.reglas.destroy', $regla->id], 'method' => 'delete']) !!}
                 {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('¿Seguro que desea borrar esta regla?')"]) !!}
                 {!! Form::close() !!}
             </div>

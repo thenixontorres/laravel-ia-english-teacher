@@ -1,4 +1,4 @@
-{!! Form::open(['route' => 'admin.contextos.store']) !!}
+{!! Form::open(['route' => 'profesor.contextos.store']) !!}
     <div class="form-group row">
         <div class="col-md-12">
         {!! Form::submit('Nuevo contexto', ['class' => 'btn btn-primary btn-round']) !!}

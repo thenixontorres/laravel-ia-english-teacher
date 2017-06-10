@@ -9,7 +9,7 @@
             </div>
             <div class="card-content table-responsive">                   
 
-            {!! Form::model($evaluacion, ['route' => ['admin.evaluacions.update', $evaluacion->id], 'method' => 'patch']) !!}
+            {!! Form::model($evaluacion, ['route' => ['profesor.evaluacions.update', $evaluacion->id], 'method' => 'patch']) !!}
 
             @include('admin.evaluacion.fields')
 
