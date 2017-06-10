@@ -147,6 +147,7 @@ class casoController extends AppBaseController
         $contextos = contexto::where('caso_id',$caso->id)->get();
         $apuntadors = contexto::where('caso_id',$caso->id)->get();
         $reaccions = reaccion::all();
+       
         if (Auth::user()->tipo=='Admin') {
             return view('admin.caso.edit')
             ->with('caso', $caso)
@@ -229,6 +230,12 @@ class casoController extends AppBaseController
 
         Flash::success('Caso borrado con exito.');
 
+        if (Auth::user()->tipo == 'Admin') {
+        
         return redirect(route('admin.casos.index'));
+
+        }else{
+            return redirect()->back();
+        }
     }
 }

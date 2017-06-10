@@ -14,6 +14,7 @@ use App\Models\contexto;
 use App\Models\entrada;
 use App\Models\respuesta;
 use App\Models\regla;
+use Auth;
 
 class contextoController extends AppBaseController
 {
@@ -64,8 +65,12 @@ class contextoController extends AppBaseController
         $contexto = $this->contextoRepository->create($input);
 
         Flash::success('Contexto agregado con exito.');
-
-        return redirect(route('admin.casos.edit',$request->caso_id));
+        
+        if (Auth::user()->tipo == "Admin") {
+            return redirect(route('admin.casos.edit',$request->caso_id));
+        }else{
+            return redirect(route('profesor.casos.edit',$request->caso_id));
+        }
     }
 
     public function update(CreatecontextoRequest $request)
@@ -80,7 +85,7 @@ class contextoController extends AppBaseController
 
         Flash::success('Contexto actualizado con exito.');
 
-        return redirect(route('admin.casos.edit',$request->caso_id));
+        return redirect()->back();
     }
 
     /**

@@ -1,6 +1,6 @@
 <div class="form-group col-md-12">
     <div class="row">
-        @include('admin.caso.contexto_create')
+        @include('profesor.caso.contexto_create')
     </div>
     <hr>
         @foreach($contextos as $contexto)
@@ -76,7 +76,7 @@
         <hr>    
         @endforeach
     <div class="row">
-        @include('admin.caso.contexto_edit')
-        @include('admin.caso.regla_create')
+        @include('profesor.caso.contexto_edit')
+        @include('profesor.caso.regla_create')
     </div>  
 </div>  

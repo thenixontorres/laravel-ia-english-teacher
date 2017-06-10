@@ -15,7 +15,7 @@ use App\Models\entrada;
 use App\Models\respuesta;
 use App\Models\reaccion;
 use App\Models\contexto;
-
+use Auth;
 class reglaController extends AppBaseController
 {
     /** @var  reglaRepository */
@@ -88,7 +88,7 @@ class reglaController extends AppBaseController
             
         
         Flash::success('Regla registrada con exito.');
-
+        
         return redirect()->back();
     }
 
@@ -136,8 +136,17 @@ class reglaController extends AppBaseController
 
             return redirect()->back();
         }
-
-        return view('admin.regla.edit')
+        if (Auth::user()->tipo == 'admin') {
+            return view('admin.regla.edit')
+            ->with('regla', $regla)
+            ->with('caso_id', $caso_id)
+            ->with('contextos', $contextos)
+            ->with('apuntadors', $apuntadors)
+            ->with('reaccions', $reaccions)
+            ->with('entradas', $entradas)
+            ->with('respuestas', $respuestas);    # code...
+        }else{
+        return view('profesor.regla.edit')
             ->with('regla', $regla)
             ->with('caso_id', $caso_id)
             ->with('contextos', $contextos)
@@ -145,6 +154,7 @@ class reglaController extends AppBaseController
             ->with('reaccions', $reaccions)
             ->with('entradas', $entradas)
             ->with('respuestas', $respuestas);
+        }    
     }
 
     /**

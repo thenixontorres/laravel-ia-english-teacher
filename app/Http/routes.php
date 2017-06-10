@@ -44,36 +44,39 @@ Route::group(['middleware' => 'auth'], function () {
     });  
     //Rutas Profesor--------------------------------------------------       
     Route::group(['prefix' => 'profesor'], function () {
-        Route::resource('estudiantes', 'estudianteController');
-        Route::get('estudiantes/show/{id}', [
-            'uses'  =>  'estudianteController@mis_estudiantes_show',
-            'as'    =>  'profesor.estudiantes.mis_estudiantes_show',
-        ]);
-        Route::resource('personas', 'personaController');
+        Route::group(['middleware' => 'profesor'], function () {
 
-        Route::resource('materias', 'materiaController');
+            Route::resource('estudiantes', 'estudianteController');
+            
+            Route::get('estudiantes/show/{id}', [
+                'uses'  =>  'estudianteController@mis_estudiantes_show',
+                'as'    =>  'profesor.estudiantes.mis_estudiantes_show',
+            ]);
+            Route::resource('personas', 'personaController');
+
+            Route::resource('materias', 'materiaController');
+            
+            Route::resource('evaluacions', 'evaluacionController');
+
+            Route::resource('notas', 'notaController');
+
+            Route::resource('casos', 'casoController');
+
+            Route::get('casos/micaso/{id}', [
+            'uses'  =>  'casoController@micaso',
+            'as'    =>  'profesor.casos.micaso',
+            ]);
+            
+            Route::resource('contextos', 'contextoController');
+
+            Route::resource('reglas', 'reglaController');
+       
+            Route::resource('reaccions', 'reaccionController');
         
-        Route::resource('evaluacions', 'evaluacionController');
-
-        Route::resource('notas', 'notaController');
-
-        Route::resource('casos', 'casoController');
-
-        Route::get('casos/micaso/{id}', [
-        'uses'  =>  'casoController@micaso',
-        'as'    =>  'profesor.casos.micaso',
-        ]);
-        
-        Route::resource('contextos', 'contextoController');
-
-        Route::resource('reglas', 'reglaController');
-   
-        Route::resource('reaccions', 'reaccionController');
-    
-        Route::resource('entradas', 'entradaController');
-        
-        Route::resource('respuestas', 'respuestaController');
-
+            Route::resource('entradas', 'entradaController');
+            
+            Route::resource('respuestas', 'respuestaController');
+        });    
     });  
 });
 //Login-----------------------------------------------------------

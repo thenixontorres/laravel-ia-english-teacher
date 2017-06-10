@@ -8,7 +8,7 @@
                 <h4 class="title">{{ $caso->titulo }}</h4>
             </div>
          <div class="card-content table-responsive">                   
-            @include('admin.caso.fields')
+            @include('profesor.caso.fields')
         </div>  
     </div>
 </div>          
