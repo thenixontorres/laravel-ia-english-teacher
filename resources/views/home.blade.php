@@ -68,7 +68,7 @@
 									<td>{{ $evaluacion->estado }}</td>
 									<td>{{ $evaluacion->materia->materia }}</td>
 									<td>
-										 <a href="{!! route('profesor.evaluacions.show', [$evaluacion->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+										 <a href="{!! route('profesor.casos.show', [$evaluacion->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
                    						 <a href="{!! route('profesor.evaluacions.edit', [$evaluacion->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                    
 									</td>

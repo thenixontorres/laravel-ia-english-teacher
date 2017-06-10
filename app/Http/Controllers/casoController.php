@@ -17,7 +17,7 @@ use App\Models\regla;
 use App\Models\caso;
 use App\Models\entrada;
 use App\Models\respuesta;
-
+use Auth;
 class casoController extends AppBaseController
 {
     /** @var  problemaRepository */
@@ -49,10 +49,27 @@ class casoController extends AppBaseController
      * @return Response
      */
     public function create()
-    {
+    {   
+        
         $evaluacions = evaluacion::all();
         return view('admin.caso.create')
             ->with('evaluacions', $evaluacions);
+
+    }
+
+    //recibe id de la evaluacion
+    public function micaso($id)
+    {
+        if(Auth::user()->tipo == 'Profesor'){
+            $evaluacion = evaluacion::where('id', $id)->first();
+            if (empty($evaluacion)) {
+                Flash::error('Caso no encontrado.');
+                return redirect()->back();
+            }
+
+            return view('profesor.caso.create')
+            ->with('evaluacion', $evaluacion);
+        }    
     }
 
     /**
@@ -66,11 +83,19 @@ class casoController extends AppBaseController
     {
         $input = $request->all();
 
+        $evaluacion = evaluacion::where('id', $request->evaluacion_id)->first();
         $caso = $this->casoRepository->create($input);
-
+        
         Flash::success('Bot registrado con exito.');
 
-        return redirect(route('admin.casos.index'));
+        if (Auth::user()->tipo =='Admin') {        
+
+            return redirect(route('admin.casos.index'));
+
+        }else{
+            
+            return redirect(route('profesor.casos.show', $evaluacion->id));
+        }
     }
 
     /**
@@ -80,17 +105,26 @@ class casoController extends AppBaseController
      *
      * @return Response
      */
+    //recibe id del caso en admin y id de la evaluacion en profesor
     public function show($id)
     {
-        $caso = $this->casoRepository->findWithoutFail($id);
+        if (Auth::user()->tipo=='Admin') {
+            $caso = $this->casoRepository->findWithoutFail($id);
 
-        if (empty($caso)) {
-            Flash::error('caso not found');
+            if (empty($caso)) {
+                Flash::error('caso not found');
 
-            return redirect(route('casos.index'));
+                return redirect(route('casos.index'));
+            }
+
+            return view('casos.show')->with('caso', $caso);
+        }else{
+            $evaluacion = evaluacion::where('id', $id)->first();
+            $casos = caso::where('evaluacion_id', $evaluacion->id)->get();
+             return view('profesor.caso.index')
+                ->with('evaluacion', $evaluacion)
+                ->with('casos', $casos);
         }
-
-        return view('casos.show')->with('caso', $caso);
     }
 
     /**

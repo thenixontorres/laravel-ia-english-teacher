@@ -3,12 +3,11 @@
 @section('content')
 <div class="row">
     <div class="col-lg-6 col-md-12">
-        <a class="btn btn-default" href="{!! route('admin.casos.create') !!}">Agregar Nuevo Caso</a>
         <div class="card">
             <div class="card-header" data-background-color="orange">
-                <h4 class="title">Casos</h4>
+                <h4 class="title">{{ $evaluacion->titulo }}</h4>
             </div>
-            <div class="card-content table-responsive">                   
+            <div class="card-content table-responsive">                  
                 @include('profesor.caso.table')
             </div>  
         </div>

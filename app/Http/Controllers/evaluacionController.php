@@ -50,11 +50,6 @@ class evaluacionController extends AppBaseController
             $materias = materia::all();
             return view('admin.evaluacion.create')
             ->with('materias', $materias);
-        }else{
-            $materias = Auth::User()->persona->materias;
-            return view('profesor.evaluacion.create')
-            ->with('materias', $materias);
-        }
     }
 
     /**
@@ -89,14 +84,20 @@ class evaluacionController extends AppBaseController
     public function show($id)
     {
         $evaluacion = $this->evaluacionRepository->findWithoutFail($id);
-
+        $casos = caso::where('evaluacion_id', $evaluacion->id)->get();
         if (empty($evaluacion)) {
             Flash::error('Evaluacion no encontrada');
 
             return redirect(route('admin.evaluacions.index'));
         }
-
-        return view('admin.evaluacion.show')->with('evaluacion', $evaluacion);
+        if (Auth::User()->tipo == 'Admin') {
+            return view('admin.evaluacion.show')->with('evaluacion', $evaluacion);
+        }else{
+            return view('profesor.evaluacion.show')
+            ->with('evaluacion', $evaluacion)
+            ->with('casos', $casos);
+        }
+        
     }
 
     /**

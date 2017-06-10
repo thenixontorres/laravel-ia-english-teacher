@@ -54,6 +54,12 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::resource('notas', 'notaController');
 
+        Route::resource('casos', 'casoController');
+
+        Route::get('casos/micaso/{id}', [
+        'uses'  =>  'casoController@micaso',
+        'as'    =>  'profesor.casos.micaso',
+        ]);
     });  
 });
 //Login-----------------------------------------------------------
