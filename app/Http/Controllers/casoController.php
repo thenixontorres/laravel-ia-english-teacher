@@ -141,18 +141,26 @@ class casoController extends AppBaseController
         if (empty($caso)) {
             Flash::error('Bot no encontrado.');
 
-            return redirect(route('admin.casos.index'));
+            return redirect()->back();
         }
 
         $contextos = contexto::where('caso_id',$caso->id)->get();
         $apuntadors = contexto::where('caso_id',$caso->id)->get();
         $reaccions = reaccion::all();
-
-        return view('admin.caso.edit')
+        if (Auth::user()->tipo=='Admin') {
+            return view('admin.caso.edit')
             ->with('caso', $caso)
             ->with('contextos', $contextos)
             ->with('apuntadors', $apuntadors)
             ->with('reaccions', $reaccions);
+        }else{
+            return view('profesor.caso.edit')
+            ->with('caso', $caso)
+            ->with('contextos', $contextos)
+            ->with('apuntadors', $apuntadors)
+            ->with('reaccions', $reaccions);
+        }
+        
     }
 
     /**
