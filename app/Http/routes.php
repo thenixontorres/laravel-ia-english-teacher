@@ -85,7 +85,13 @@ Route::group(['middleware' => 'auth'], function () {
             Route::resource('logs', 'logController');
 
         });    
-    });  
+    }); 
+    //Rutas estudiante
+    Route::group(['prefix' => 'estudiante'], function () {
+        Route::group(['middleware' => 'estudiante'], function () {
+             Route::resource('personas', 'personaController');
+        });
+    });
 });
 //Login-----------------------------------------------------------
 

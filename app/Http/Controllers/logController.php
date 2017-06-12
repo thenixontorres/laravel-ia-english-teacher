@@ -80,6 +80,9 @@ class logController extends AppBaseController
                 $log->respuesta_id = $respuesta->id;
                 $log->caso_id = $caso->id;
                 $log->save();
+                if ($contexto_actual->contexto == 'Final') {
+                    Flash::success('Felicitaciones! has encontrado la solucion al problema!');
+                }
                 return view('profesor.caso.test')
                     ->with('contexto_actual', $contexto_actual)
                     ->with('reaccion', $reaccion)

@@ -11,7 +11,13 @@
 					<div class="content">
 						<h6 class="category text-gray">{{ Auth::user()->tipo }}</h6>
 						<h4 class="card-title">{{ Auth::user()->persona->nombre.' '.Auth::user()->persona->apellido }}</h4>
+						@if(Auth::User()->tipo == 'Profesor')
 						<a href="{!! route('profesor.personas.edit', Auth::User()->persona->id) !!}" class="btn btn-default">Actualizar Perfil</a>
+						@elseif(Auth::User()->tipo == 'Estudiante')
+						<a href="{!! route('estudiante.personas.edit', Auth::User()->persona->id) !!}" class="btn btn-default">Actualizar Perfil</a>
+						@else
+						<a href="{!! route('admin.personas.edit', Auth::User()->persona->id) !!}" class="btn btn-default">
+						@endif
 					</div>
 				</div>
 			</div>
@@ -47,39 +53,41 @@
 							<a class="btn btn-default" href="{!! route('profesor.materias.create') !!}"><i class="glyphicon glyphicon-plus"></i></a>
 						</div>
 						<br>
-					<div class="card-header" data-background-color="orange">
-						<h4 class="title" id="evaluacions">Mis Evaluaciones</h4>
-					</div>
-					<div class="card-content">
-						<table class="table table-responsive" id="table">
-							<thead>
-								<th>Titulo</th>
-								<th>Tipo</th>
-								<th>Estado</th>
-								<th>Materia</th>
-								<th>Acciones</th>
-							</thead>
-							<tbody>
-							@foreach(Auth::user()->persona->materias as $materia)
-								@foreach($materia->evaluacions as $evaluacion)
-									<tr>
-									<td>{{ $evaluacion->titulo }}</td>
-									<td>{{ $evaluacion->tipo }}</td>
-									<td>{{ $evaluacion->estado }}</td>
-									<td>{{ $evaluacion->materia->materia }}</td>
-									<td>
-										 <a href="{!! route('profesor.casos.show', [$evaluacion->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                   						 <a href="{!! route('profesor.evaluacions.edit', [$evaluacion->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
-                   
-									</td>
-									</tr>
+						<div class="card-header" data-background-color="orange">
+							<h4 class="title" id="evaluacions">Mis Evaluaciones</h4>
+						</div>
+						<div class="card-content">
+							<table class="table table-responsive" id="table">
+								<thead>
+									<th>Titulo</th>
+									<th>Tipo</th>
+									<th>Estado</th>
+									<th>Materia</th>
+									<th>Acciones</th>
+								</thead>
+								<tbody>
+								@foreach(Auth::user()->persona->materias as $materia)
+									@foreach($materia->evaluacions as $evaluacion)
+										<tr>
+										<td>{{ $evaluacion->titulo }}</td>
+										<td>{{ $evaluacion->tipo }}</td>
+										<td>{{ $evaluacion->estado }}</td>
+										<td>{{ $evaluacion->materia->materia }}</td>
+										<td>
+											 <a href="{!! route('profesor.casos.show', [$evaluacion->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+	                   						 <a href="{!! route('profesor.evaluacions.edit', [$evaluacion->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+	                   
+										</td>
+										</tr>
+									@endforeach
 								@endforeach
-							@endforeach
-							</tbody>
-						</table>
-						<a class="btn btn-default" href="{!! route('profesor.evaluacions.create') !!}"><i class="glyphicon glyphicon-plus"></i></a>
-					</div>
-					<br>
+								</tbody>
+							</table>
+							<a class="btn btn-default" href="{!! route('profesor.evaluacions.create') !!}"><i class="glyphicon glyphicon-plus"></i></a>
+						</div>
+						<br>
+					@elseif(Auth::user()->tipo == "Estudiante")
+
 					@endif
 				</div>
 			</div>

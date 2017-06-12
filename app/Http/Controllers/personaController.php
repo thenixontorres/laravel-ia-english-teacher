@@ -138,6 +138,8 @@ class personaController extends AppBaseController
             return view('admin.persona.edit')->with('persona', $persona);
         }elseif(Auth::user()->tipo=="Profesor"){
             return view('profesor.persona.edit')->with('persona', $persona);
+        }else{
+            return view('estudiante.persona.edit')->with('persona', $persona);
         }
     }
 
@@ -160,6 +162,8 @@ class personaController extends AppBaseController
             if(Auth::user()->tipo=="Admin"){
                 return redirect(route('admin.personas.index'));
             }elseif(Auth::user()->tipo=="Profesor"){
+                return redirect()->back();   
+            }else{
                 return redirect()->back();   
             }    
         }
@@ -193,7 +197,7 @@ class personaController extends AppBaseController
             if(Auth::user()->tipo=="Admin"){
                 Flash::success('Profesor actualizado con exito.');
                 return redirect(route('admin.personas.index'));
-            }elseif(Auth::user()->tipo=="Profesor"){
+            }else{
                 Flash::success('Perfil actualizado con exito.');
                 return redirect()->route('home');   
             }    
@@ -213,7 +217,7 @@ class personaController extends AppBaseController
             if(Auth::user()->tipo=="Admin"){
                 Flash::success('Profesor actualizado con exito.');
                 return redirect(route('admin.personas.index'));
-            }elseif(Auth::user()->tipo=="Profesor"){
+            }else{
                 Flash::success('Perfil actualizado con exito.');
                 return redirect()->route('home');   
             }   
@@ -222,7 +226,7 @@ class personaController extends AppBaseController
         if(Auth::user()->tipo=="Admin"){
             Flash::success('Profesor actualizado con exito.');
             return redirect(route('admin.personas.index'));
-        }elseif(Auth::user()->tipo=="Profesor"){
+        }else{
             Flash::success('Perfil actualizado con exito.');
             return redirect()->route('home');   
         }   
