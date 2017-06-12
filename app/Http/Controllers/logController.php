@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\regla;
+use App\Models\entrada;
+use App\Models\respuesta;
+use App\Models\log;
+use App\Models\contexto;
+use App\Models\caso;
 
 class logController extends AppBaseController
 {
@@ -56,12 +62,61 @@ class logController extends AppBaseController
     public function store(CreatelogRequest $request)
     {
         $input = $request->all();
+        
+        $reglas = regla::where('contexto_id', $request->contexto_actual)->get();
+        foreach ($reglas as $regla) {
+            $entrada = entrada::where('regla_id', $regla->id)->where('entrada','LIKE',"%$request->mensaje%")->first();
+            //si consigue una entrada similar
+            if (!empty($entrada)) {
+                $contexto_actual = contexto::where('id', $regla->apuntador_id)->first();
+                $reaccion = $regla->reaccion;
+                $caso = caso::where('id', $request->caso_id)->first();
+                $respuesta = respuesta::where('regla_id', $regla->id)->first();
+                $mensaje = $request->mensaje;
+                $log = new log();
+                $log->estudiante_id = '1';
+                $log->puntos = $regla->puntos;
+                $log->entrada_id = $entrada->id;
+                $log->respuesta_id = $respuesta->id;
+                $log->caso_id = $caso->id;
+                $log->save();
+                return view('profesor.caso.test')
+                    ->with('contexto_actual', $contexto_actual)
+                    ->with('reaccion', $reaccion)
+                    ->with('caso', $caso)
+                    ->with('respuesta', $respuesta)
+                    ->with('mensaje', $mensaje);
+            }
+        }
 
-        $log = $this->logRepository->create($input);
+        //si no consigue ninguna entrada similar
+        foreach ($reglas as $regla) {
+            $entrada = entrada::where('regla_id', $regla->id)->where('entrada', 'default')->first();
+            if (!empty($entrada)) {
+                $contexto_actual = contexto::where('id', $request->contexto_actual)->first();
+                $reaccion = $regla->reaccion;
+                $caso = caso::where('id', $request->caso_id)->first();
+                $respuesta = respuesta::where('regla_id', $regla->id)->first();
+                $mensaje = $request->mensaje;
+                $log = new log();
+                $log->estudiante_id = '1';
+                $log->puntos = $regla->puntos;
+                $log->entrada_id = $entrada->id;
+                $log->respuesta_id = $respuesta->id;
+                $log->caso_id = $caso->id;
+                $log->save();
+                return view('profesor.caso.test')
+                    ->with('contexto_actual', $contexto_actual)
+                    ->with('reaccion', $reaccion)
+                    ->with('caso', $caso)
+                    ->with('respuesta', $respuesta)
+                    ->with('mensaje', $mensaje);
+            }
+        }
 
-        Flash::success('log saved successfully.');
+        //$log = $this->logRepository->create($input);
 
-        return redirect(route('logs.index'));
+        return redirect()->back();
     }
 
     /**

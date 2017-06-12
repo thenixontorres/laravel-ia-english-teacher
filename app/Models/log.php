@@ -108,11 +108,8 @@ class log extends Model
      *
      * @var array
      */
+
     public static $rules = [
-        'entrada_id' => 'required',
-        'puntos' => 'required|numeric',
-        'estudiante_id' => 'required',
-        'respuesta_id' => 'required',
         'caso_id' => 'required'
     ];
 }

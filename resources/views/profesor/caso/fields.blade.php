@@ -4,6 +4,7 @@
     </div>
     <hr>
         @foreach($contextos as $contexto)
+        @if($contexto->contexto != 'Final')
         <div class="row">
             <div class="form-group col-md-8" id ="{!! $contexto->id !!}" value ="{!! $contexto->contexto !!}">
                <strong> {!! $contexto->contexto !!} </strong>
@@ -73,7 +74,8 @@
                 </a>
             </div>
         </div>
-        <hr>    
+        <hr>  
+        @endif  
         @endforeach
     <div class="row">
         @include('profesor.caso.contexto_edit')

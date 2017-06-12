@@ -66,6 +66,11 @@ Route::group(['middleware' => 'auth'], function () {
             'uses'  =>  'casoController@micaso',
             'as'    =>  'profesor.casos.micaso',
             ]);
+
+            Route::get('casos/test/{id}', [
+            'uses'  =>  'casoController@test',
+            'as'    =>  'profesor.casos.test',
+            ]);
             
             Route::resource('contextos', 'contextoController');
 
@@ -76,6 +81,9 @@ Route::group(['middleware' => 'auth'], function () {
             Route::resource('entradas', 'entradaController');
             
             Route::resource('respuestas', 'respuestaController');
+            
+            Route::resource('logs', 'logController');
+
         });    
     });  
 });

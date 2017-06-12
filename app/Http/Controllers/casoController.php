@@ -72,6 +72,27 @@ class casoController extends AppBaseController
         }    
     }
 
+    public function test($id)
+    {
+        if(Auth::user()->tipo == 'Profesor'){
+            $caso = caso::where('id', $id)->first();
+            if (empty($caso)) {
+                Flash::error('Caso no encontrado.');
+                return redirect()->back();
+            }
+
+            $contexto_actual = contexto::where('contexto', 'Inicio')->where('caso_id', $caso->id)->first();
+
+            if (empty($contexto_actual)) {
+                Flash::error('Este caso no tiene contexto inicial.');
+                return redirect()->back();
+            }
+
+            return view('profesor.caso.test')
+            ->with('caso', $caso)
+            ->with('contexto_actual', $contexto_actual);
+        }    
+    }
     /**
      * Store a newly created problema in storage.
      *
@@ -85,7 +106,7 @@ class casoController extends AppBaseController
 
         $evaluacion = evaluacion::where('id', $request->evaluacion_id)->first();
         $caso = $this->casoRepository->create($input);
-        
+
         Flash::success('Bot registrado con exito.');
 
         if (Auth::user()->tipo =='Admin') {        
