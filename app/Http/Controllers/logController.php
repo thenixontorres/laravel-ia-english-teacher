@@ -16,6 +16,7 @@ use App\Models\respuesta;
 use App\Models\log;
 use App\Models\contexto;
 use App\Models\caso;
+use Auth;
 
 class logController extends AppBaseController
 {
@@ -62,7 +63,7 @@ class logController extends AppBaseController
     public function store(CreatelogRequest $request)
     {
         $input = $request->all();
-        
+        $fin = false;
         $reglas = regla::where('contexto_id', $request->contexto_actual)->get();
         foreach ($reglas as $regla) {
             $entrada = entrada::where('regla_id', $regla->id)->where('entrada','LIKE',"%$request->mensaje%")->first();
@@ -74,21 +75,37 @@ class logController extends AppBaseController
                 $respuesta = respuesta::where('regla_id', $regla->id)->first();
                 $mensaje = $request->mensaje;
                 $log = new log();
-                $log->estudiante_id = '1';
+                if(Auth::user()->tipo == 'Estudiante'){
+                    $log->estudiante_id = Auth::user()->persona->estudiante->id; 
+                }else{
+                    $log->estudiante_id = '1';
+                }
                 $log->puntos = $regla->puntos;
                 $log->entrada_id = $entrada->id;
                 $log->respuesta_id = $respuesta->id;
                 $log->caso_id = $caso->id;
                 $log->save();
                 if ($contexto_actual->contexto == 'Final') {
+                    $fin = true;
                     Flash::success('Felicitaciones! has encontrado la solucion al problema!');
                 }
+                if (Auth::user()->tipo=="Profesor") {
                 return view('profesor.caso.test')
                     ->with('contexto_actual', $contexto_actual)
                     ->with('reaccion', $reaccion)
                     ->with('caso', $caso)
                     ->with('respuesta', $respuesta)
-                    ->with('mensaje', $mensaje);
+                    ->with('mensaje', $mensaje)
+                    ->with('fin', $fin);
+                }elseif(Auth::user()->tipo=="Estudiante"){
+                return view('estudiante.caso.test')
+                    ->with('contexto_actual', $contexto_actual)
+                    ->with('reaccion', $reaccion)
+                    ->with('caso', $caso)
+                    ->with('respuesta', $respuesta)
+                    ->with('mensaje', $mensaje)
+                    ->with('fin', $fin);
+                }    
             }
         }
 
@@ -108,12 +125,22 @@ class logController extends AppBaseController
                 $log->respuesta_id = $respuesta->id;
                 $log->caso_id = $caso->id;
                 $log->save();
+                if (Auth::user()->tipo=="Profesor") {
                 return view('profesor.caso.test')
                     ->with('contexto_actual', $contexto_actual)
                     ->with('reaccion', $reaccion)
                     ->with('caso', $caso)
                     ->with('respuesta', $respuesta)
                     ->with('mensaje', $mensaje);
+                }elseif(Auth::user()->tipo=="Estudiante"){
+                return view('estudiante.caso.test')
+                    ->with('contexto_actual', $contexto_actual)
+                    ->with('reaccion', $reaccion)
+                    ->with('caso', $caso)
+                    ->with('respuesta', $respuesta)
+                    ->with('mensaje', $mensaje)
+                    ->with('fin', $fin);
+                }  
             }
         }
 

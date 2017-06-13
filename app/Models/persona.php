@@ -64,10 +64,10 @@ class persona extends Model
 
     protected $dates = ['deleted_at'];
 
-    //hasMany----------------------------------
-    public function estudiantes()
+    //hasOne----------------------------------
+    public function estudiante()
     {
-        return $this->hasMany('App\Models\estudiante');
+        return $this->hasOne('App\Models\estudiante');
     }
     public function materias()
     {

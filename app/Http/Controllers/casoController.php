@@ -91,6 +91,46 @@ class casoController extends AppBaseController
             return view('profesor.caso.test')
             ->with('caso', $caso)
             ->with('contexto_actual', $contexto_actual);
+        }elseif (Auth::user()->tipo == 'Estudiante') {
+            $evaluacion = evaluacion::where('id', $id)->first();
+            $caso = caso::where('evaluacion_id', $evaluacion->id)->first();
+            if (empty($caso)) {
+                Flash::error('Caso no encontrado.');
+                return redirect()->back();
+            }
+
+            $contexto_actual = contexto::where('contexto', 'Inicio')->where('caso_id', $caso->id)->first();
+
+            if (empty($contexto_actual)) {
+                Flash::error('Este caso no tiene contexto inicial.');
+                return redirect()->back();
+            }
+
+            return view('estudiante.caso.test')
+            ->with('caso', $caso)
+            ->with('contexto_actual', $contexto_actual);
+        }    
+    }
+
+    public function play($id)
+    {
+        if(Auth::user()->tipo == 'Profesor'){
+            $caso = caso::where('id', $id)->first();
+            if (empty($caso)) {
+                Flash::error('Caso no encontrado.');
+                return redirect()->back();
+            }
+
+            $contexto_actual = contexto::where('contexto', 'Inicio')->where('caso_id', $caso->id)->first();
+
+            if (empty($contexto_actual)) {
+                Flash::error('Este caso no tiene contexto inicial.');
+                return redirect()->back();
+            }
+
+            return view('profesor.caso.test')
+            ->with('caso', $caso)
+            ->with('contexto_actual', $contexto_actual);
         }    
     }
     /**

@@ -39,6 +39,23 @@
 				<a onclick='active("rea");' href="{{ route('profesor.personas.edit', Auth::user()->persona->id) }}">Mi Usuario</a>
 				</a>
 			</li>
+			@else
+			<li id="mmat">
+				<a onclick='active("rea");' href="{{ route('home').'#materias' }}">Mi Materia</a>
+				</a>
+			</li>
+			<li id="meva">
+				<a onclick='active("rea");' href="{{ route('home').'#evaluacions' }}">Mis Evaluaciones</a>
+				</a>
+			</li>
+			<li id="meva">
+				<a onclick='active("rea");' href="{{ route('home').'#practicas' }}">Mis Practicas</a>
+				</a>
+			</li>
+			<li id="muser">
+				<a onclick='active("rea");' href="{{ route('estudiante.personas.edit', Auth::user()->persona->id) }}">Mi Usuario</a>
+				</a>
+			</li>
 			@endif
 		</ul>
 	</div>

@@ -89,7 +89,21 @@ Route::group(['middleware' => 'auth'], function () {
     //Rutas estudiante
     Route::group(['prefix' => 'estudiante'], function () {
         Route::group(['middleware' => 'estudiante'], function () {
-             Route::resource('personas', 'personaController');
+             
+            Route::resource('personas', 'personaController');
+
+            Route::get('casos/play/{id}', [
+            'uses'  =>  'casoController@play',
+            'as'    =>  'estudiante.casos.play',
+            ]);
+
+            Route::get('casos/test/{id}', [
+            'uses'  =>  'casoController@test',
+            'as'    =>  'estudiante.casos.test',
+            ]);
+
+            Route::resource('logs', 'logController');
+
         });
     });
 });

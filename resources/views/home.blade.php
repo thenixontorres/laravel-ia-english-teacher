@@ -87,7 +87,78 @@
 						</div>
 						<br>
 					@elseif(Auth::user()->tipo == "Estudiante")
-
+						<div class="card-header" data-background-color="orange">
+							<h4 class="title" id="materias">Mi Materia</h4>
+						</div>
+						<div class="card-content">
+							<table class="table table-responsive" id="table">
+								<thead>
+									<th>Materia</th>
+									<th>Seccion</th>
+								</thead>
+								<tbody>
+									<tr>
+										<td>{!! Auth::user()->persona->estudiante->materia->materia !!}</td>
+										<td>{!! Auth::user()->persona->estudiante->materia->seccion->seccion !!}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<br>
+						<div class="card-header" data-background-color="orange">
+							<h4 class="title" id="evaluacions">Mis Evaluaciones</h4>
+						</div>
+						<div class="card-content">
+							<table class="table table-responsive" id="table">
+								<thead>
+									<th>Titulo</th>
+									<th>Materia</th>
+									<th>Acciones</th>
+								</thead>
+								<tbody>
+								@foreach(Auth::user()->persona->estudiante->materia->evaluacions as $evaluacion)
+									@if($evaluacion->estado == 'Activo' && $evaluacion->tipo == 'Prueba')
+											<tr>
+											<td>{{ $evaluacion->titulo }}</td>
+											<td>{{ $evaluacion->materia->materia }}</td>
+											<td>
+												 <a href="{!! route('estudiante.casos.play', [$evaluacion->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-play"></i></a>
+		               
+											</td>
+											</tr>
+									@endif		
+								@endforeach
+								</tbody>
+							</table>
+						</div>
+						<br>
+						<div class="card-header" data-background-color="orange">
+							<h4 class="title" id="practicas">Mis Practicas</h4>
+						</div>
+						<div class="card-content">
+							<table class="table table-responsive" id="table">
+								<thead>
+									<th>Titulo</th>
+									<th>Materia</th>
+									<th>Acciones</th>
+								</thead>
+								<tbody>
+								@foreach(Auth::user()->persona->estudiante->materia->evaluacions as $evaluacion)
+									@if($evaluacion->estado == 'Activo' && $evaluacion->tipo == 'Practica')
+											<tr>
+											<td>{{ $evaluacion->titulo }}</td>
+											<td>{{ $evaluacion->materia->materia }}</td>
+											<td>
+												 <a target="_blank" href="{!! route('estudiante.casos.test', [$evaluacion->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-play"></i></a>
+		               
+											</td>
+											</tr>
+									@endif		
+								@endforeach
+								</tbody>
+							</table>
+						</div>
+						<br>
 					@endif
 				</div>
 			</div>
