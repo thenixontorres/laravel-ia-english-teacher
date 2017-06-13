@@ -17,6 +17,7 @@ use App\Models\regla;
 use App\Models\caso;
 use App\Models\entrada;
 use App\Models\respuesta;
+use App\Models\log;
 use Auth;
 class casoController extends AppBaseController
 {
@@ -95,7 +96,7 @@ class casoController extends AppBaseController
             $evaluacion = evaluacion::where('id', $id)->first();
             $caso = caso::where('evaluacion_id', $evaluacion->id)->first();
             if (empty($caso)) {
-                Flash::error('Caso no encontrado.');
+                Flash::error('Esta evaluacion no tienes casos por ahora.');
                 return redirect()->back();
             }
 
@@ -132,13 +133,21 @@ class casoController extends AppBaseController
             ->with('caso', $caso)
             ->with('contexto_actual', $contexto_actual);
         }elseif (Auth::user()->tipo == 'Estudiante') {
+            //validar que no existan otros logs
+
             $evaluacion = evaluacion::where('id', $id)->first();
             $caso = caso::where('evaluacion_id', $evaluacion->id)->first();
             if (empty($caso)) {
                 Flash::error('Esta evaluacion de no tiene casos practicos aun.');
                 return redirect()->back();
             }
-
+            $estudiante_id = Auth::user()->persona->estudiante->id;
+            $logs = log::where('caso_id', $caso->id)->where('estudiante_id', $estudiante_id)->first();
+            $count_logs = count($logs);
+            if ($count_logs>0) {
+                Flash::error('Ya has persentado esta evaluacion!');
+                return redirect()->back();
+            }
             $contexto_actual = contexto::where('contexto', 'Inicio')->where('caso_id', $caso->id)->first();
 
             if (empty($contexto_actual)) {

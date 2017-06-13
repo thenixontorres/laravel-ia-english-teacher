@@ -119,7 +119,11 @@ class logController extends AppBaseController
                 $respuesta = respuesta::where('regla_id', $regla->id)->first();
                 $mensaje = $request->mensaje;
                 $log = new log();
-                $log->estudiante_id = '1';
+                if(Auth::user()->tipo == 'Estudiante'){
+                    $log->estudiante_id = Auth::user()->persona->estudiante->id; 
+                }else{
+                    $log->estudiante_id = '1';
+                }
                 $log->puntos = $regla->puntos;
                 $log->entrada_id = $entrada->id;
                 $log->respuesta_id = $respuesta->id;
