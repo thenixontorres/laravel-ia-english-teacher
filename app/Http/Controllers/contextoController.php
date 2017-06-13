@@ -64,6 +64,28 @@ class contextoController extends AppBaseController
 
         $contexto = $this->contextoRepository->create($input);
 
+        //esqueleto  
+        //regla default
+        $regla = new regla();
+        $regla->puntos = 1;
+        $regla->contexto_id = $contexto->id;
+        $regla->apuntador_id = $contexto->id;
+        $regla->reaccion_id = 2;
+        $regla->save();
+        //entradas
+        $entrada = new entrada();
+        $entrada->entrada = 'default';
+        $entrada->regla_id = $regla->id;
+        $entrada->save();
+        $salidas = ['What?', 'Huh?', '...mmm?', 'Mmmm....i am confused', 'Eh? Are you ok?', 'I am not kiddin bro..'];
+        //respuestas
+        foreach ($salidas as $salida) {
+        $respuesta = new respuesta();
+        $respuesta->respuesta = $salida;
+        $respuesta->regla_id = $regla->id;
+        $respuesta->save();
+        }
+        
         Flash::success('Contexto agregado con exito.');
         
         if (Auth::user()->tipo == "Admin") {

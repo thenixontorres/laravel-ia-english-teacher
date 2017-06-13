@@ -23,8 +23,8 @@
             		</div>
             		<div class="col-md-9">
 		            	@if(isset($respuesta))
-		            		<div class="card">Tu dijiste: {{$mensaje}}</div>
-		            		<div class="card">Bot respondio: {{$respuesta->respuesta}}</div>
+		            		<div class="card"><strong>Tu dijiste:</strong> {{$mensaje}}</div>
+		            		<div class="card"><strong>Bot respondio:</strong> {{$respuesta->respuesta}}</div>
 		            	@else
 		            		<div class="card"><strong> Bot dice: </strong> Hola! que tal? necesito tu ayuda. </div>
 		            	@endif
@@ -57,6 +57,8 @@
                             <input type="hidden" name="contexto_actual" value="{{ $contexto_actual->id }}">
                             <!-- caso actual -->
                             <input type="hidden" name="caso_id" value="{{ $caso->id }}">
+                            <!--tipo de evaluacion -->
+                            <input type="hidden" name="tipo_evaluacion" value="practica">
                             </div>
                             <div class="form-group col-md-4">
                             <center>

@@ -128,7 +128,25 @@ class casoController extends AppBaseController
                 return redirect()->back();
             }
 
-            return view('profesor.caso.test')
+            return view('profesor.caso.play')
+            ->with('caso', $caso)
+            ->with('contexto_actual', $contexto_actual);
+        }elseif (Auth::user()->tipo == 'Estudiante') {
+            $evaluacion = evaluacion::where('id', $id)->first();
+            $caso = caso::where('evaluacion_id', $evaluacion->id)->first();
+            if (empty($caso)) {
+                Flash::error('Esta evaluacion de no tiene casos practicos aun.');
+                return redirect()->back();
+            }
+
+            $contexto_actual = contexto::where('contexto', 'Inicio')->where('caso_id', $caso->id)->first();
+
+            if (empty($contexto_actual)) {
+                Flash::error('Este caso no tiene contexto inicial.');
+                return redirect()->back();
+            }
+
+            return view('estudiante.caso.play')
             ->with('caso', $caso)
             ->with('contexto_actual', $contexto_actual);
         }    
@@ -146,6 +164,63 @@ class casoController extends AppBaseController
 
         $evaluacion = evaluacion::where('id', $request->evaluacion_id)->first();
         $caso = $this->casoRepository->create($input);
+
+        //esqueleto
+        $contexto = new contexto();
+        $contexto->caso_id = $caso->id;
+        $contexto->contexto = 'Inicio';
+        $contexto->save();
+        //regla default
+        $regla = new regla();
+        $regla->puntos = 1;
+        $regla->contexto_id = $contexto->id;
+        $regla->apuntador_id = $contexto->id;
+        $regla->reaccion_id = 2;
+        $regla->save();
+        //entradas
+        $entrada = new entrada();
+        $entrada->entrada = 'default';
+        $entrada->regla_id = $regla->id;
+        $entrada->save();
+        $salidas = ['What?', 'Huh?', '...mmm?', 'Mmmm....i am confused', 'Eh? Are you ok?', 'I am not kiddin bro..'];
+        //respuestas
+        foreach ($salidas as $salida) {
+        $respuesta = new respuesta();
+        $respuesta->respuesta = $salida;
+        $respuesta->regla_id = $regla->id;
+        $respuesta->save();
+        }
+
+        $contexto = new contexto();
+        $contexto->caso_id = $caso->id;
+        $contexto->contexto = 'Problema';
+        $contexto->save();
+
+        //reglas default
+        $regla = new regla();
+        $regla->puntos = 1;
+        $regla->contexto_id = $contexto->id;
+        $regla->apuntador_id = $contexto->id;
+        $regla->reaccion_id = 2;
+        $regla->save();
+        //entradas
+        $entrada = new entrada();
+        $entrada->entrada = 'default';
+        $entrada->regla_id = $regla->id;
+        $entrada->save();
+        $salidas = ['What?', 'Huh?', '...mmm?', 'Mmmm....i am confused', 'Eh? Are you ok?', 'I am not kiddin bro..'];
+        //respuestas
+        foreach ($salidas as $salida) {
+        $respuesta = new respuesta();
+        $respuesta->respuesta = $salida;
+        $respuesta->regla_id = $regla->id;
+        $respuesta->save();
+        }
+
+        $contexto = new contexto();
+        $contexto->caso_id = $caso->id;
+        $contexto->contexto = 'Final';
+        $contexto->save();
 
         Flash::success('Bot registrado con exito.');
 
@@ -169,7 +244,7 @@ class casoController extends AppBaseController
     //recibe id del caso en admin y id de la evaluacion en profesor
     public function show($id)
     {
-        if (Auth::user()->tipo=='Admin') {
+        if (Auth::user()->tipo =='Admin') {
             $caso = $this->casoRepository->findWithoutFail($id);
 
             if (empty($caso)) {

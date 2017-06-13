@@ -1,73 +1,26 @@
-@extends('layouts.app')
-@section('content')
-<div class="row">
-    <div class="col-lg-6 col-md-12">
-        <div class="card">
-            <div class="card-header" data-background-color="orange">
-                <h4 class="title">{{ $caso->titulo }}</h4>
-            </div>
-            <div class="card-content table-responsive">        
-                <div class="row">
-                    <div class="col-md-3">
-                        @if(isset($reaccion))
-                            <img src="{{ asset($reaccion->reaccion)}}" class="img img-responsive">
-                            <center>
-                            {{'Contexto: '.$contexto_actual->contexto}}
-                            </center>
-                        @else
-                            <img src="{{ asset('/img/reaccions/neutral.png')}}" class="img img-responsive">
-                            <center>
-                            {{'Contexto: '.$contexto_actual->contexto}}
-                            </center>
-                        @endif
-                    </div>
-                    <div class="col-md-9">
-                        @if(isset($respuesta))
-                            <div class="card">Tu dijiste: {{$mensaje}}</div>
-                            <div class="card">Bot respondio: {{$respuesta->respuesta}}</div>
-                        @else
-                            <div class="card"><strong> Bot dice: </strong> Hola! que tal? necesito tu ayuda. </div>
-                        @endif
-                    </div>
-                </div>  
-                @if(isset($fin))
-                    @if($fin == false)
-                    {!! Form::open(['route' => 'profesor.logs.store']) !!}    
-                       <hr>
-                        <div class="form-group col-md-8">
-                        {!! Form::text('mensaje', null, ['class' => 'form-control', 'placeholder'=> 'Escribe tu mensaje','required']) !!}
-                            <!--contexto actual -->
-                            <input type="hidden" name="contexto_actual" value="{{ $contexto_actual->id }}">
-                            <!-- caso actual -->
-                            <input type="hidden" name="caso_id" value="{{ $caso->id }}">
-                            </div>
-                            <div class="form-group col-md-4">
-                            <center>
-                            {!! Form::submit('Enviar', ['class' => 'btn btn-default']) !!}
-                            </center>
-                            </div>
-                    {!! Form::close() !!}
-                    @endif
-                @else
-                    {!! Form::open(['route' => 'profesor.logs.store']) !!}    
-                       <hr>
-                        <div class="form-group col-md-8">
-                        {!! Form::text('mensaje', null, ['class' => 'form-control', 'placeholder'=> 'Escribe tu mensaje','required']) !!}
-                            <!--contexto actual -->
-                            <input type="hidden" name="contexto_actual" value="{{ $contexto_actual->id }}">
-                            <!-- caso actual -->
-                            <input type="hidden" name="caso_id" value="{{ $caso->id }}">
-                            </div>
-                            <div class="form-group col-md-4">
-                            <center>
-                            {!! Form::submit('Enviar', ['class' => 'btn btn-default']) !!}
-                            </center>
-                            </div>
-                    {!! Form::close() !!}
-                @endif   
-            </div>  
-        </div>
-    </div>   
-</div>            
-@endsection
-
+<table class="table table-responsive" id="table">
+    <thead>
+        <th>Titulo</th>
+        <th>Evaluacion</th>
+        <th>Tipo</th>
+        <th>Accion</th>
+    </thead>
+    <tbody>
+    @foreach($casos as $caso)
+        <tr>
+            <td>{!! $caso->titulo !!}</td>
+            <td>{!! $caso->evaluacion->titulo !!}</td>
+            <td>{!! $caso->evaluacion->tipo !!}</td>
+            <td>
+                {!! Form::open(['route' => ['profesor.casos.destroy', $caso->id], 'method' => 'delete']) !!}
+                <div class='btn-group'>
+                    <a href="{!! route('profesor.casos.edit', [$caso->id]) !!}" class='btn btn-primary btn-xs'>Enseñar reglas</a>
+                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Seguro que desea borrar esta este Bot?')"]) !!}
+                </div>
+                {!! Form::close() !!}
+            </td>
+        </tr>
+    @endforeach
+    </tbody>
+</table>
+<a class="btn btn-default" href="{!! route('profesor.casos.micaso', $evaluacion->id) !!}"><i class="glyphicon glyphicon-plus"></i></a>
