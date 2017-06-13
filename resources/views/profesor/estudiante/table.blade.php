@@ -7,7 +7,7 @@
         <th>Estado</th>
         <th>Periodo</th>
         <th>Acciones</th>
-        <th>Ver Notas</th>
+        <th>Ver Evaluaciones</th>
     </thead>
     <tbody>
     @foreach($estudiantes as $estudiante)
@@ -28,7 +28,7 @@
             {!! Form::close() !!} --> 
             <td>
                 <div class='btn-group'>
-                    <a href="{!! route('profesor.notas.show', [$estudiante->id]) !!}" target="_blank" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                    <a href="{!! route('profesor.estudiantes.estudiantes_evaluacions_show', [$estudiante->id]) !!}" target="_blank" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
                 </div>
             </td>
         </tr>

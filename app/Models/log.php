@@ -72,6 +72,10 @@ class log extends Model
     {
         return $this->BelongsTo('App\Models\respuesta');
     }
+    public function entrada()
+    {
+        return $this->BelongsTo('App\Models\entrada');
+    }
     public function estudiante()
     {
         return $this->BelongsTo('App\Models\estudiante');

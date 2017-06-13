@@ -18,6 +18,7 @@ use App\Models\persona;
 use App\Models\materia;
 use App\Models\seccion;
 use App\Models\periodo;
+use App\Models\log;
 use Auth;
 
 class estudianteController extends AppBaseController
@@ -178,6 +179,17 @@ class estudianteController extends AppBaseController
         return view('profesor.estudiante.show')
             ->with('estudiantes', $estudiantes)
             ->with('materia', $materia);
+    }
+
+    //recibe id del estudiante --retorna sus evaluaciones
+    public function estudiantes_evaluacions_show($id)
+    {
+
+        $estudiante = estudiante::where('id', $id)->first();
+        $evaluacions = $estudiante->materia->evaluacions;
+        return view('profesor.estudiante.evaluacions_show')
+            ->with('estudiante', $estudiante)
+            ->with('evaluacions', $evaluacions);
     }
 
     //Admin - Profesor

@@ -122,8 +122,8 @@
 											<td>{{ $evaluacion->titulo }}</td>
 											<td>{{ $evaluacion->materia->materia }}</td>
 											<td>
-												 <a href="{!! route('estudiante.casos.play', [$evaluacion->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-play"></i></a>
-		               
+												<a href="{!! route('estudiante.casos.play', [$evaluacion->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-play"></i></a>
+		               							<a href="{!! route('estudiante.logs.show', [$evaluacion->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>	
 											</td>
 											</tr>
 									@endif		

@@ -52,6 +52,12 @@ Route::group(['middleware' => 'auth'], function () {
                 'uses'  =>  'estudianteController@mis_estudiantes_show',
                 'as'    =>  'profesor.estudiantes.mis_estudiantes_show',
             ]);
+
+            Route::get('estudiantes/evaluacions/{id}', [
+                'uses'  =>  'estudianteController@estudiantes_evaluacions_show',
+                'as'    =>  'profesor.estudiantes.estudiantes_evaluacions_show',
+            ]);
+
             Route::resource('personas', 'personaController');
 
             Route::resource('materias', 'materiaController');
@@ -83,6 +89,11 @@ Route::group(['middleware' => 'auth'], function () {
             Route::resource('respuestas', 'respuestaController');
             
             Route::resource('logs', 'logController');
+
+            Route::get('profesor/logs/{estudiante_id}/{evaluacion_id}', [
+            'uses'  =>  'logController@prof_show',
+            'as'    =>  'profesor.logs.prof_show',
+            ]);
 
         });    
     }); 

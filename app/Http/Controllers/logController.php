@@ -16,6 +16,8 @@ use App\Models\respuesta;
 use App\Models\log;
 use App\Models\contexto;
 use App\Models\caso;
+use App\Models\evaluacion;
+use App\Models\estudiante;
 use Auth;
 
 class logController extends AppBaseController
@@ -160,19 +162,48 @@ class logController extends AppBaseController
      *
      * @return Response
      */
+    //recibe el id de la evaluacion cuando es estudiante
     public function show($id)
     {
-        $log = $this->logRepository->findWithoutFail($id);
-
-        if (empty($log)) {
-            Flash::error('log not found');
-
-            return redirect(route('logs.index'));
+        if (Auth::User()->tipo == 'Estudiante') {
+            $evaluacion = evaluacion::where('id', $id)->first();
+            $estudiante_id = Auth::User()->persona->estudiante->id;
+            foreach ($evaluacion->casos as $caso) {
+                $logs = log::where('caso_id', $caso->id)->where('estudiante_id',$estudiante_id)->get();
+                if (count($logs)>0) {
+                    return view('estudiante.log.show')
+                    ->with('logs', $logs)
+                    ->with('evaluacion', $evaluacion)
+                    ->with('caso', $caso);
+                }                
+            }
+            Flash::error('Aun no has realizado esta evaluacion');
+            return redirect()->back();
+        }else{
+            $log = $this->logRepository->findWithoutFail($id);
+            if (empty($log)) {
+                Flash::error('log not found');
+                return redirect(route('logs.index'));
+            }
+            return view('logs.show')->with('log', $log);
         }
-
-        return view('logs.show')->with('log', $log);
     }
 
+    public function prof_show($estudiante_id, $evaluacion_id){
+        $evaluacion = evaluacion::where('id', $evaluacion_id)->first();
+        $estudiante = estudiante::where('id', $estudiante_id)->first();
+            foreach ($evaluacion->casos as $caso) {
+                $logs = log::where('caso_id', $caso->id)->where('estudiante_id',$estudiante->id)->get();
+                if (count($logs)>0) {
+                    return view('profesor.log.show')
+                    ->with('logs', $logs)
+                    ->with('evaluacion', $evaluacion)
+                    ->with('caso', $caso);
+                }                
+            }
+            Flash::error('Este estudiante aun no ha realizado esta evaluacion');
+            return redirect()->back();
+    }
     /**
      * Show the form for editing the specified registro.
      *

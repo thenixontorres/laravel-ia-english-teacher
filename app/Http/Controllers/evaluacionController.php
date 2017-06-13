@@ -13,6 +13,7 @@ use Response;
 use App\Models\materia;
 use App\Models\caso;
 use Auth;
+use App\Models\evaluacion;
 
 class evaluacionController extends AppBaseController
 {
