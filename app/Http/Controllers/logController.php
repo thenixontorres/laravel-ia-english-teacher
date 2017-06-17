@@ -191,8 +191,8 @@ class logController extends AppBaseController
              if (!empty($entrada)) {
                 $contexto_actual = contexto::where('id', $regla->apuntador_id)->first();
                 $reaccion = $regla->reaccion;
-                 $caso = caso::where('id', $request->caso_id)->first();
-                $respuesta = respuesta::where('regla_id', $regla->id)->first();
+                 $caso = caso::where('id', $request->caso_id)->first(); 
+                $respuesta = respuesta::where('regla_id', $regla->id)->orderByRaw("RAND()")->first();
 
                 $mensaje = $request->mensaje;
                 //solo creo el log cuando es estudiante y es prueba
@@ -252,7 +252,7 @@ class logController extends AppBaseController
                 $reaccion = $regla->reaccion;
                 //mantengo el mismo caso
                 $caso = caso::where('id', $request->caso_id)->first();
-                $respuesta = respuesta::where('regla_id', $regla->id)->first();
+                $respuesta = respuesta::where('regla_id', $regla->id)->orderByRaw("RAND()")->first();
                 $mensaje = $request->mensaje;
 
                 if(Auth::user()->tipo == 'Estudiante' && $request->tipo_evaluacion == 'prueba'){
