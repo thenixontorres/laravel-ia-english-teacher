@@ -37,7 +37,7 @@ class ReaccionSeeder extends Seeder
         ]);
 
         DB::table('reaccions')->insert([
-                'titulo'  => 'Ofendido',
+                'titulo'  => 'Sorprendido',
                 'reaccion'  => 'img/reaccions/sorprendido.png',
         ]);
 
