@@ -30,5 +30,20 @@ class ReaccionSeeder extends Seeder
                 'titulo'  => 'Alegre',
                 'reaccion'  => 'img/reaccions/alegre.png',
         ]);
+
+        DB::table('reaccions')->insert([
+                'titulo'  => 'Ofendido',
+                'reaccion'  => 'img/reaccions/ofendido.png',
+        ]);
+
+        DB::table('reaccions')->insert([
+                'titulo'  => 'Ofendido',
+                'reaccion'  => 'img/reaccions/sorprendido.png',
+        ]);
+
+        DB::table('reaccions')->insert([
+                'titulo'  => 'Triste',
+                'reaccion'  => 'img/reaccions/triste.png',
+        ]);
     }
 }
