@@ -46,7 +46,7 @@
             	</div>	
             	@if(isset($fin))
                     @if($fin == false)
-                    {!! Form::open(['route' => 'profesor.logs.store']) !!}    
+                    {!! Form::open(['route' => 'profesor.logs.chat']) !!}    
                        <hr>
                         <div class="form-group col-md-8">
                         {!! Form::text('mensaje', null, ['class' => 'form-control', 'placeholder'=> 'Escribe tu mensaje','required']) !!}

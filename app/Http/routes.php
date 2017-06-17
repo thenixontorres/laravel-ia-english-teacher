@@ -101,7 +101,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'estudiante'], function () {
         Route::group(['middleware' => 'estudiante'], function () {
              
-            Route::resource('personas', 'personaController');
+            Route::resource('personas', 'personaController', ['only' =>['edit', 'update']]);
 
             Route::get('casos/play/{id}', [
             'uses'  =>  'casoController@play',
@@ -113,7 +113,12 @@ Route::group(['middleware' => 'auth'], function () {
             'as'    =>  'estudiante.casos.test',
             ]);
 
-            Route::resource('logs', 'logController');
+            Route::resource('logs', 'logController', ['only' =>['show']]);
+
+            Route::post('chat/', [
+            'uses'  =>  'logController@chat',
+            'as'    =>  'estudiante.logs.chat',
+            ]);
 
         });
     });
