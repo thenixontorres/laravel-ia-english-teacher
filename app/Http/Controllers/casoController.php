@@ -94,7 +94,8 @@ class casoController extends AppBaseController
             ->with('contexto_actual', $contexto_actual);
         }elseif (Auth::user()->tipo == 'Estudiante') {
             $evaluacion = evaluacion::where('id', $id)->first();
-            $caso = caso::where('evaluacion_id', $evaluacion->id)->first();
+            //se obtiene un caso aleatorio de la evaluacion
+            $caso = caso::where('evaluacion_id', $evaluacion->id)->orderByRaw("RAND()")->first();
             if (empty($caso)) {
                 Flash::error('Esta evaluacion no tienes casos por ahora.');
                 return redirect()->back();
@@ -112,7 +113,7 @@ class casoController extends AppBaseController
             ->with('contexto_actual', $contexto_actual);
         }    
     }
-
+    //profesor recibe id del caso, estudiante id de la evaluacion
     public function play($id)
     {
         if(Auth::user()->tipo == 'Profesor'){
@@ -136,7 +137,9 @@ class casoController extends AppBaseController
             //validar que no existan otros logs
 
             $evaluacion = evaluacion::where('id', $id)->first();
-            $caso = caso::where('evaluacion_id', $evaluacion->id)->first();
+            //obtenemos un caso aleatorio que pertenesca a la evaluacion
+            $caso = caso::where('evaluacion_id', $evaluacion->id)->orderByRaw("RAND()")->first();
+                        
             if (empty($caso)) {
                 Flash::error('Esta evaluacion de no tiene casos practicos aun.');
                 return redirect()->back();

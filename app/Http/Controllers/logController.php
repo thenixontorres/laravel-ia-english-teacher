@@ -62,7 +62,7 @@ class logController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreatelogRequest $request)
+    /*public function store(CreatelogRequest $request)
     {
         $input = $request->all();
         $fin = false;
@@ -178,7 +178,7 @@ class logController extends AppBaseController
                 }  
             }
         }
-    }
+    }*/
 
     public function chat(CreatelogRequest $request)
     {
