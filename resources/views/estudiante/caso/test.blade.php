@@ -7,29 +7,43 @@
                 <h4 class="title">{{ $caso->titulo }}</h4>
             </div>
             <div class="card-content table-responsive">        
-            	<div class="row">
-            		<div class="col-md-3">
-            			@if(isset($reaccion))
-            				<img src="{{ asset($reaccion->reaccion)}}" class="img img-responsive">
-            				<center>
-            				{{'Contexto: '.$contexto_actual->contexto}}
-            				</center>
-            			@else
-            				<img src="{{ asset('/img/reaccions/neutral.png')}}" class="img img-responsive">
-            				<center>
-            				{{'Contexto: '.$contexto_actual->contexto}}
-            				</center>
-            			@endif
-            		</div>
-            		<div class="col-md-9">
-		            	@if(isset($respuesta))
-		            		<div class="card"><strong>Tu dijiste:</strong> {{$mensaje}}</div>
-		            		<div class="card"><strong>Bot respondio:</strong> {{$respuesta->respuesta}}</div>
-		            	@else
-		            		<div class="card"><strong> Bot dice: </strong> Hola! que tal? necesito tu ayuda. </div>
-		            	@endif
-	            	</div>
-            	</div>	
+            	<!-- mensaje del usuario -->
+                @if(isset($respuesta))
+                    <div class="row" id="user-messege">
+                        <div class="col-md-9">
+                               <div class="card"><strong>Tu dijiste:</strong> {{$mensaje}}</div>  
+                        </div>
+                        <div class="col-md-3">
+                                <img src="{{ asset(Auth::user()->persona->foto) }}" class="img img-responsive">
+                                <center>
+                                {{Auth::user()->persona->nombre}}
+                                </center>
+                        </div>
+                    </div>
+                @endif
+                <!-- respuesta del bot -->
+                <div class="row" id="bot-messege">
+                    <div class="col-md-3">
+                        @if(isset($reaccion))
+                            <img src="{{ asset($reaccion->reaccion)}}" class="img img-responsive">
+                            <center>
+                            {{'Contexto: '.$contexto_actual->contexto}}
+                            </center>
+                        @else
+                            <img src="{{ asset('/img/reaccions/neutral.png')}}" class="img img-responsive">
+                            <center>
+                            {{'Contexto: '.$contexto_actual->contexto}}
+                            </center>
+                        @endif
+                    </div>
+                    <div class="col-md-9">
+                        @if(isset($respuesta))
+                            <div class="card"><strong>Tyler respondio: </strong>{{$respuesta->respuesta}}</div>
+                        @else
+                            <div class="card"><strong> Bot dice: </strong> Hola! que tal? necesito tu ayuda. </div>
+                        @endif
+                    </div>
+                </div>  	
                 @if(isset($fin))
                     @if($fin == false)
                 	{!! Form::open(['route' => 'estudiante.logs.store']) !!}	
