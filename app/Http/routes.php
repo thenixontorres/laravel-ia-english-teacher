@@ -88,7 +88,12 @@ Route::group(['middleware' => 'auth'], function () {
             
             Route::resource('respuestas', 'respuestaController');
             
-            Route::resource('logs', 'logController');
+            Route::resource('logs', 'logController', ['only' =>['show']]);
+
+            Route::post('chat/', [
+            'uses'  =>  'logController@chat',
+            'as'    =>  'profesor.logs.chat',
+            ]);
 
             Route::get('profesor/logs/{estudiante_id}/{evaluacion_id}', [
             'uses'  =>  'logController@prof_show',

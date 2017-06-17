@@ -11,7 +11,7 @@
 
             {!! Form::model($evaluacion, ['route' => ['profesor.evaluacions.update', $evaluacion->id], 'method' => 'patch']) !!}
 
-            @include('admin.evaluacion.fields')
+            @include('profesor.evaluacion.fields')
 
             {!! Form::close() !!}
             </div>    
