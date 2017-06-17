@@ -8,3 +8,8 @@
     <div class="card"><strong>Bot respondio:</strong> {{$log->respuesta}}</div>
 @endforeach
     {!! Form::label('Fecha', 'Fin de la conversacion.') !!}
+<div class="form-group col-md-12">
+<center>	
+    <a href="#" class="btn btn-default">Imprimir</a>
+</center>
+</div>

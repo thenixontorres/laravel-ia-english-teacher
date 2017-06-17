@@ -95,11 +95,13 @@
 								<thead>
 									<th>Materia</th>
 									<th>Seccion</th>
+									<th>Perofesor</th>
 								</thead>
 								<tbody>
 									<tr>
 										<td>{!! Auth::user()->persona->estudiante->materia->materia !!}</td>
 										<td>{!! Auth::user()->persona->estudiante->materia->seccion->seccion !!}</td>
+										<td>{!! Auth::user()->persona->estudiante->materia->persona->nombre.' '.Auth::user()->persona->estudiante->materia->persona->apellido.' '.Auth::user()->persona->estudiante->materia->persona->cedula !!}</td>
 									</tr>
 								</tbody>
 							</table>
