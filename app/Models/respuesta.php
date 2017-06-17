@@ -50,11 +50,7 @@ class respuesta extends Model
 
     protected $dates = ['deleted_at'];
 
-    //hasMany----------------------------------
-    public function logs()
-    {
-        return $this->hasMany('App\Models\log');
-    }
+    
     //BelongsTo----------------------------------
     public function regla()
     {

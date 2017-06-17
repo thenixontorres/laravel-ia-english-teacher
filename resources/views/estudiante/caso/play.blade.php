@@ -50,6 +50,7 @@
                        <hr>
                         <div class="form-group col-md-8">
                         {!! Form::text('mensaje', null, ['class' => 'form-control', 'placeholder'=> 'Escribe tu mensaje','required']) !!}
+                            <input type="hidden" name="tipo_evaluacion" value="prueba">
                             <!--contexto actual -->
                             <input type="hidden" name="contexto_actual" value="{{ $contexto_actual->id }}">
                             <!-- caso actual -->

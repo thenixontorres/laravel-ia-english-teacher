@@ -69,69 +69,86 @@ class logController extends AppBaseController
         $reglas = regla::where('contexto_id', $request->contexto_actual)->get();
         foreach ($reglas as $regla) {
             $entrada = entrada::where('regla_id', $regla->id)->where('entrada','LIKE',"%$request->mensaje%")->first();
-            //si consigue una entrada similar
-            if (!empty($entrada)) {
+             //si consigue una entrada similar
+             if (!empty($entrada)) {
                 $contexto_actual = contexto::where('id', $regla->apuntador_id)->first();
                 $reaccion = $regla->reaccion;
-                $caso = caso::where('id', $request->caso_id)->first();
+                 $caso = caso::where('id', $request->caso_id)->first();
                 $respuesta = respuesta::where('regla_id', $regla->id)->first();
-                $mensaje = $request->mensaje;
-                $log = new log();
-                if(Auth::user()->tipo == 'Estudiante'){
-                    $log->estudiante_id = Auth::user()->persona->estudiante->id; 
-                }else{
-                    $log->estudiante_id = '1';
-                }
-                $log->puntos = $regla->puntos;
-                $log->entrada_id = $entrada->id;
-                $log->respuesta_id = $respuesta->id;
-                $log->caso_id = $caso->id;
-                $log->save();
-                if ($contexto_actual->contexto == 'Final') {
-                    $fin = true;
-                    Flash::success('Felicitaciones! has encontrado la solucion al problema!');
-                }
-                if (Auth::user()->tipo=="Profesor") {
-                return view('profesor.caso.test')
-                    ->with('contexto_actual', $contexto_actual)
-                    ->with('reaccion', $reaccion)
-                    ->with('caso', $caso)
-                    ->with('respuesta', $respuesta)
-                    ->with('mensaje', $mensaje)
-                    ->with('fin', $fin);
-                }elseif(Auth::user()->tipo=="Estudiante"){
-                return view('estudiante.caso.test')
-                    ->with('contexto_actual', $contexto_actual)
-                    ->with('reaccion', $reaccion)
-                    ->with('caso', $caso)
-                    ->with('respuesta', $respuesta)
-                    ->with('mensaje', $mensaje)
-                    ->with('fin', $fin);
-                }    
-            }
-        }
 
-        //si no consigue ninguna entrada similar
+                $mensaje = $request->mensaje;
+                //solo creo el log cuando es estudiante y es prueba
+                //el mensaje y la respuesta se guarda como string
+                if(Auth::user()->tipo == 'Estudiante' && $request->tipo_evaluacion == 'prueba'){
+                     $log = new log();
+                    $log->estudiante_id = Auth::user()->persona->estudiante->id;
+                    $log->puntos = $regla->puntos;
+                    $log->entrada = $mensaje;
+                    $log->respuesta = $respuesta->respuesta;
+                    $log->caso_id = $caso->id;
+                    $log->save(); 
+                 }
+                
+                 if ($contexto_actual->contexto == 'Final') {
+                     $fin = true;
+                     Flash::success('Felicitaciones! has encontrado la solucion al problema!');
+                 }
+
+                 if (Auth::user()->tipo=="Profesor") {
+                 return view('profesor.caso.test')
+                     ->with('contexto_actual', $contexto_actual)
+                     ->with('reaccion', $reaccion)
+                     ->with('caso', $caso)
+                     ->with('respuesta', $respuesta)
+                     ->with('mensaje', $mensaje)
+                     ->with('fin', $fin);
+                 }elseif(Auth::user()->tipo=="Estudiante"){
+                    //pruebas
+                    if($request->tipo_evaluacion == 'prueba'){
+                         return view('estudiante.caso.play')
+                         ->with('contexto_actual', $contexto_actual)
+                         ->with('reaccion', $reaccion)
+                         ->with('caso', $caso)
+                         ->with('respuesta', $respuesta)
+                         ->with('mensaje', $mensaje)
+                         ->with('fin', $fin);
+                    //practicas    
+                    }elseif($request->tipo_evaluacion == 'practica'){
+                         return view('estudiante.caso.test')
+                         ->with('contexto_actual', $contexto_actual)
+                         ->with('reaccion', $reaccion)
+                         ->with('caso', $caso)
+                         ->with('respuesta', $respuesta)
+                         ->with('mensaje', $mensaje)
+                         ->with('fin', $fin);
+                    }
+                }      
+             }
+        }
+        //si despues de recorren todas las reglas no consigue ninguna entrada similar
         foreach ($reglas as $regla) {
             $entrada = entrada::where('regla_id', $regla->id)->where('entrada', 'default')->first();
             if (!empty($entrada)) {
+                //en este caso mantengo en contexto
                 $contexto_actual = contexto::where('id', $request->contexto_actual)->first();
                 $reaccion = $regla->reaccion;
+                //mantengo el mismo caso
                 $caso = caso::where('id', $request->caso_id)->first();
                 $respuesta = respuesta::where('regla_id', $regla->id)->first();
                 $mensaje = $request->mensaje;
-                $log = new log();
-                if(Auth::user()->tipo == 'Estudiante'){
-                    $log->estudiante_id = Auth::user()->persona->estudiante->id; 
-                }else{
-                    $log->estudiante_id = '1';
+
+                if(Auth::user()->tipo == 'Estudiante' && $request->tipo_evaluacion == 'prueba'){
+                    $log = new log();
+                    $log->estudiante_id = Auth::user()->persona->estudiante->id;     
+                    $log->puntos = $regla->puntos;
+                    $log->entrada = $mensaje;
+                    $log->respuesta = $respuesta->respuesta;
+                    $log->caso_id = $caso->id;
+                    $log->save();
                 }
-                $log->puntos = $regla->puntos;
-                $log->entrada_id = $entrada->id;
-                $log->respuesta_id = $respuesta->id;
-                $log->caso_id = $caso->id;
-                $log->save();
+
                 if (Auth::user()->tipo=="Profesor") {
+                //practicas de profesor
                 return view('profesor.caso.test')
                     ->with('contexto_actual', $contexto_actual)
                     ->with('reaccion', $reaccion)
@@ -139,20 +156,28 @@ class logController extends AppBaseController
                     ->with('respuesta', $respuesta)
                     ->with('mensaje', $mensaje);
                 }elseif(Auth::user()->tipo=="Estudiante"){
-                return view('estudiante.caso.test')
-                    ->with('contexto_actual', $contexto_actual)
-                    ->with('reaccion', $reaccion)
-                    ->with('caso', $caso)
-                    ->with('respuesta', $respuesta)
-                    ->with('mensaje', $mensaje)
-                    ->with('fin', $fin);
+                    //pruebas
+                    if ($request->tipo_evaluacion == 'prueba') {
+                        return view('estudiante.caso.play')
+                        ->with('contexto_actual', $contexto_actual)
+                        ->with('reaccion', $reaccion)
+                        ->with('caso', $caso)
+                        ->with('respuesta', $respuesta)
+                        ->with('mensaje', $mensaje)
+                        ->with('fin', $fin);
+                    //practicas    
+                    }elseif($request->tipo_evaluacion == 'practica'){
+                        return view('estudiante.caso.test')
+                        ->with('contexto_actual', $contexto_actual)
+                        ->with('reaccion', $reaccion)
+                        ->with('caso', $caso)
+                        ->with('respuesta', $respuesta)
+                        ->with('mensaje', $mensaje)
+                        ->with('fin', $fin);
+                    }
                 }  
             }
         }
-
-        //$log = $this->logRepository->create($input);
-
-        return redirect()->back();
     }
 
     /**

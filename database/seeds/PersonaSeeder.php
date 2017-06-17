@@ -15,7 +15,7 @@ class PersonaSeeder extends Seeder
         DB::table('users')->insert([
 
                 'email'  => 'admin@example.com',
-                'password'  => bcrypt('admin'),
+                'password'  => bcrypt('admin@example.com'),
                 'tipo' => 'Admin',
                 'estado' => 'Activo'
         ]);
@@ -25,14 +25,14 @@ class PersonaSeeder extends Seeder
                 'nombre'  => 'Admin',
                 'apellido'  => 'Admin',
                 'cedula'  => '00000001',
-                'foto' => 'img/fotos/admin.jpg',
+                'foto' => 'img/fotos/admin.png',
                 'user_id' => '1'
         ]);
 
         DB::table('users')->insert([
 
                 'email'  => 'profesor@example.com',
-                'password'  => bcrypt('profesor'),
+                'password'  => bcrypt('profesor@example.com'),
                 'tipo' => 'Profesor',
                 'estado' => 'Activo'
         ]);
@@ -42,7 +42,7 @@ class PersonaSeeder extends Seeder
                 'nombre'  => 'Profesor',
                 'apellido'  => 'Profesor',
                 'cedula'  => '00000001',
-                'foto' => 'img/fotos/profesor.jpg',
+                'foto' => 'img/fotos/profesor.png',
                 'user_id' => '2'
         ]);
     }

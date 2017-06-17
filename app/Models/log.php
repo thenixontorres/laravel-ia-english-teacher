@@ -68,14 +68,7 @@ class log extends Model
 
 
     //BelongsTo----------------------------------
-    public function respuesta()
-    {
-        return $this->BelongsTo('App\Models\respuesta');
-    }
-    public function entrada()
-    {
-        return $this->BelongsTo('App\Models\entrada');
-    }
+    
     public function estudiante()
     {
         return $this->BelongsTo('App\Models\estudiante');
@@ -87,10 +80,10 @@ class log extends Model
 
 
     public $fillable = [
-        'entrada_id',
+        'entrada',
         'puntos',
         'estudiante_id',
-        'respuesta_id',
+        'respuesta',
         'caso_id'
     ];
 
@@ -100,10 +93,10 @@ class log extends Model
      * @var array
      */
     protected $casts = [
-        'entrada_id' => 'integer',
+        'entrada' => 'string',
         'puntos' => 'string',
         'estudiante_id' => 'integer',
-        'respuesta_id' => 'integer',
+        'respuesta' => 'string',
         'caso_id' => 'integer'
     ];
 
@@ -114,6 +107,6 @@ class log extends Model
      */
 
     public static $rules = [
-        'caso_id' => 'required'
+        'caso_id' => 'required',
     ];
 }
