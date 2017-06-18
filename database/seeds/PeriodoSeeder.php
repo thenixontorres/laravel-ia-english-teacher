@@ -26,5 +26,20 @@ class PeriodoSeeder extends Seeder
 
             'periodo'  => '2016-III'
         ]);
+
+        DB::table('periodos')->insert([
+
+            'periodo'  => '2017-I'
+        ]);
+
+        DB::table('periodos')->insert([
+
+            'periodo'  => '2017-II'
+        ]);
+
+        DB::table('periodos')->insert([
+
+            'periodo'  => '2017-III'
+        ]);
     }
 }

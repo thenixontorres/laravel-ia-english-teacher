@@ -16,6 +16,8 @@ class CreateLogsTable extends Migration
         Schema::create('logs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('puntos');
+            $table->enum('coherencia', ['si', 'no']);
+            $table->enum('final', ['si', 'no']);
             $table->integer('estudiante_id')->unsigned();
             $table->foreign('estudiante_id')->references('id')->on('estudiantes');
             $table->string('entrada');

@@ -16,7 +16,7 @@ class MateriaSeeder extends Seeder
 
             'materia'  => 'Ingles I',
             'seccion_id' => '1',
-            'persona_id' => '1'
+            'persona_id' => '2'
         ]);
     }
 }

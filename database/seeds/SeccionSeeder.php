@@ -27,5 +27,20 @@ class SeccionSeeder extends Seeder
 
             'seccion'  => 'III',
         ]);
+
+        DB::table('seccions')->insert([
+
+            'seccion'  => 'IV',
+        ]);
+
+        DB::table('seccions')->insert([
+
+            'seccion'  => 'V',
+        ]);
+
+        DB::table('seccions')->insert([
+
+            'seccion'  => 'VI',
+        ]);
     }
 }

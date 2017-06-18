@@ -84,7 +84,9 @@ class log extends Model
         'puntos',
         'estudiante_id',
         'respuesta',
-        'caso_id'
+        'caso_id',
+        'coherencia',
+        'final'
     ];
 
     /**
@@ -97,7 +99,9 @@ class log extends Model
         'puntos' => 'string',
         'estudiante_id' => 'integer',
         'respuesta' => 'string',
-        'caso_id' => 'integer'
+        'caso_id' => 'integer',
+        'coherencia' => 'string',
+        'final' => 'string'
     ];
 
     /**

@@ -201,6 +201,12 @@ class logController extends AppBaseController
                 if(Auth::user()->tipo == 'Estudiante' && $request->tipo_evaluacion == 'prueba'){
                      $log = new log();
                     $log->estudiante_id = Auth::user()->persona->estudiante->id;
+                    $log->coherencia = 'si';
+                    if ($contexto_actual->contexto == 'Final') {
+                    $log->final = 'si'; 
+                    }else{
+                    $log->final = 'no';    
+                    }
                     $log->puntos = $regla->puntos;
                     $log->entrada = $mensaje;
                     $log->respuesta = $respuesta->respuesta;
@@ -263,6 +269,8 @@ class logController extends AppBaseController
                     $log->entrada = $mensaje;
                     $log->respuesta = $respuesta->respuesta;
                     $log->caso_id = $caso->id;
+                    $log->final = 'no';    
+                    $log->coherencia = 'no';
                     $log->save();
                 }
 
@@ -313,11 +321,36 @@ class logController extends AppBaseController
             $estudiante_id = Auth::User()->persona->estudiante->id;
             foreach ($evaluacion->casos as $caso) {
                 $logs = log::where('caso_id', $caso->id)->where('estudiante_id',$estudiante_id)->get();
-                if(count($logs)>0) {
+                //variables para el diagnostico
+                //cantidad de iteraciones
+                $count = count($logs);
+                //puntos del contexto
+                $elocuencia = 0;
+                //si el bot entendio
+                $coherencia = 0;
+                $fin = false;
+                if($count>0) {
+                    foreach ($logs as $log) {
+                        $elocuencia = $elocuencia+$log->puntos;
+                        if ($log->final=='si') {
+                            $fin = true;
+                        }
+                        if($log->coherencia == 'si'){
+                            $coherencia++;
+                        }
+                    }
+                    $elocuencia = $elocuencia/$count;
+                    $elocuencia = number_format($elocuencia, 2);
+                    $coherencia = $coherencia/$count;
+                    $coherencia = number_format($coherencia, 2);
                     return view('estudiante.log.show')
                     ->with('logs', $logs)
                     ->with('evaluacion', $evaluacion)
-                    ->with('caso', $caso);
+                    ->with('caso', $caso)
+                    ->with('count', $count)
+                    ->with('coherencia', $coherencia)
+                    ->with('elocuencia', $elocuencia)
+                    ->with('fin', $fin);
                 }                
             }
             Flash::error('Aun no has realizado esta evaluacion');
@@ -337,11 +370,38 @@ class logController extends AppBaseController
         $estudiante = estudiante::where('id', $estudiante_id)->first();
             foreach ($evaluacion->casos as $caso) {
                 $logs = log::where('caso_id', $caso->id)->where('estudiante_id',$estudiante->id)->get();
+                //variables para el diagnostico
+                //cantidad de iteraciones
+                $count = count($logs);
+                //puntos del contexto
+                $elocuencia = 0;
+                //si el bot entendio
+                $coherencia = 0;
+                $fin = false;
                 if (count($logs)>0) {
+                    //ini
+                     foreach ($logs as $log) {
+                        $elocuencia = $elocuencia+$log->puntos;
+                        if ($log->final=='si') {
+                            $fin = true;
+                        }
+                        if($log->coherencia == 'si'){
+                            $coherencia++;
+                        }
+                    }
+                    $elocuencia = $elocuencia/$count;
+                    $elocuencia = number_format($elocuencia, 2);
+                    $coherencia = $coherencia/$count;
+                    $coherencia = number_format($coherencia, 2);
                     return view('profesor.log.show')
                     ->with('logs', $logs)
                     ->with('evaluacion', $evaluacion)
-                    ->with('caso', $caso);
+                    ->with('caso', $caso)
+                    ->with('count', $count)
+                    ->with('coherencia', $coherencia)
+                    ->with('elocuencia', $elocuencia)
+                    ->with('fin', $fin);
+                    //fin
                 }                
             }
             Flash::error('Este estudiante aun no ha realizado esta evaluacion');
