@@ -1,0 +1,65 @@
+-Descripcion del contexto de la problematica planteada:
+
+La Universidad Nacional Experimental de los Llanos Centrales, "Rómulo Gallegos",
+es una institución educativa con una misión comprometida a buscar la verdad por
+medio de la investigación, creación, y divulgación del conocimiento.
+
+Mediante la técnica de la observación directa en el aula de clases se obtuvo la información
+suficiente para estructurar un análisis crítico de la situación actual en la asignatura de 
+inglés II. En cuanto a las debilidades que se presentan, destaca la omisión general de medios
+ tecnológicos dentro del aula y la falta de implementación de algún método fiable para hacer 
+evaluaciones a distancia para compensar las pocas horas académicas disponibles. Además tampoco
+es visible algún método para practicar y evaluar los conocimientos adquiridos en un entorno real. 
+
+-objetivos de la situacion de la problematica:
+
+Este sistema tiene como finalidad que el grupo de estudiantes aprenda los fundamentos de  inglés, 
+tomando como principal foco el inglés técnico en base a la forma de enseñar del profesor quien en
+este caso es la única fuente de sabiduría.
+
+El objetivo general de la siguiente propuesta es desarrollar un sistema basado en Inteligencia Artificial  para el 
+apoyo de  la evaluación de actividades académicas en la asignatura Inglés II mediante el uso de Chatbots en el Área 
+de Ingeniería en Sistemas de la Universidad Nacional Experimental Rómulo Gallegos. Los objetivos específicos son:
+
+A) Diagnosticar la situación actual de la asignatura de inglés II en el Área de Ingeniería en Sistemas de la 
+Universidad Nacional Experimental Rómulo Gallegos.
+B) Determinar los requerimientos del sistema propuesto en función de las necesidades detectadas durante el 
+diagnóstico realizado en asignatura de inglés II en el Área de Ingeniería en Sistemas de la Universidad Nacional 
+Experimental Rómulo Gallegos.
+C) Diseñar un bot conversacional  para  la evaluación de actividades académicas en la asignatura inglés II en el
+ Área de Ingeniería en Sistemas de la Universidad Nacional Experimental Rómulo Gallegos.
+D) Implementar un bot conversacional  para  la evaluación de actividades académicas en la asignatura inglés
+ II en el Área de Ingeniería en Sistemas de la Universidad Nacional Experimental Rómulo Gallegos.
+
+
+-Demostracion de la recoleccion, interpretacion, analisis  y metodos de adquisicion del conocimiento:
+(Cronograma).
+
+-Demostraciond de diseño de datos, EL, ER, normalizacion:
+Base de datos.
+Arbol Sintactico.
+Automata finito.
+ 
+(carga de informacion)
+
+-demostracion de la metodologia aplicada hasta la fase actual.
+
+La Metodología IDEAL, desarrollada por Carrillo V. en sus tesis para optar por el título de Doctor 
+en Informática, intenta una primera aproximación a la sistematización del desarrollo de Sistemas Expertos,
+ estructurándolo en una serie de fases, etapas y actividades que intentan facilitar la labor del Ingeniero
+ en la construcción de un Sistema Experto.
+
+Fase I: Determinación de necesidades y valoración del proyecto. 
+En esta fase hay que dar respuesta a tres condiciones básicas para el desarrollo posterior del Sistema Experto: 
+
+Fase  II: Construcción conceptual del  Prototipo  y diseño de  la  Ingeniería  del Conocimiento.  
+(diagramas)
+
+Fase  III: Construcción  de la versión  en  producción.  (Actual)
+
+Fase  IV: Comprobación  del  Sistema  e  Integración  del  mismo  en Producción.
+
+-demostracion del conocimiento y cumplimiento de las fases de 
+la metodologia seleccionada
+
+(Prueba del chat)
