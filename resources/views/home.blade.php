@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@if(Auth::user()->tipo != 'Admin')
  <div class="content">
 	<div class="container-fluid">
 		<div class="row">
@@ -166,5 +167,6 @@
 			</div>
 		</div>
 	</div>
-</div>	
+</div>
+@endif	
 @endsection
