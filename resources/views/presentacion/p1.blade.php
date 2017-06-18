@@ -1,7 +1,7 @@
 @extends('layouts.login')	
 @section('title','Iniciar Sesion')
 @section('content')	
-@include('layouts.elements.slider')	
+	
 <div class="row">
     <div class="col-lg-6 col-md-10 col-md-offset-1">
         <div class="card">

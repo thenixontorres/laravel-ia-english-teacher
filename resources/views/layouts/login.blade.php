@@ -43,6 +43,12 @@
 		</div>
 		<br>
 		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 		
 		@include('layouts.elements.footer')	
 		<script src="{{ asset('/css/theme/assets/js/bootstrap.min.js') }}"></script>

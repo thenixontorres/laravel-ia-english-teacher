@@ -10,6 +10,36 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+//presentaciones
+Route::get('presnetacion/p-1', [
+    'uses'  =>  'homeController@p1',
+    'as'    =>  'presentacion.p1',
+]);
+
+Route::get('presnetacion/p-2', [
+    'uses'  =>  'homeController@p2',
+    'as'    =>  'presentacion.p2',
+]);
+
+Route::get('presnetacion/p-3', [
+    'uses'  =>  'homeController@p3',
+    'as'    =>  'presentacion.p3',
+]);
+
+Route::get('presnetacion/p-4', [
+    'uses'  =>  'homeController@p4',
+    'as'    =>  'presentacion.p4',
+]);
+
+Route::get('presnetacion/p-5', [
+    'uses'  =>  'homeController@p5',
+    'as'    =>  'presentacion.p5',
+]);
+
+Route::get('presnetacion/p-6', [
+    'uses'  =>  'homeController@p6',
+    'as'    =>  'presentacion.p6',
+]);
 
 Route::group(['middleware' => 'auth'], function () {
 

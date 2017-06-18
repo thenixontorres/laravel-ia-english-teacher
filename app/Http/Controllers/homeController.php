@@ -23,6 +23,36 @@ class homeController extends Controller
         return view('home');        
     }
 
+    public function p1()
+    {   
+        return view('presentacion.p1');        
+    }
+
+    public function p2()
+    {   
+        return view('presentacion.p2');        
+    }
+
+    public function p3()
+    {   
+        return view('presentacion.p3');        
+    }
+
+    public function p4()
+    {   
+        return view('presentacion.p4');        
+    }
+
+    public function p5()
+    {   
+        return view('presentacion.p5');        
+    }
+
+    public function p6()
+    {   
+        return view('presentacion.p6');        
+    }
+
     /**
      * Show the form for creating a new resource.
      *
