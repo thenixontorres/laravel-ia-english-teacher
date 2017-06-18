@@ -19,6 +19,7 @@ use App\Models\caso;
 use App\Models\evaluacion;
 use App\Models\estudiante;
 use Auth;
+use Carbon\Carbon;  
 
 class logController extends AppBaseController
 {
@@ -312,7 +313,7 @@ class logController extends AppBaseController
             $estudiante_id = Auth::User()->persona->estudiante->id;
             foreach ($evaluacion->casos as $caso) {
                 $logs = log::where('caso_id', $caso->id)->where('estudiante_id',$estudiante_id)->get();
-                if (count($logs)>0) {
+                if(count($logs)>0) {
                     return view('estudiante.log.show')
                     ->with('logs', $logs)
                     ->with('evaluacion', $evaluacion)
