@@ -41,7 +41,7 @@ class PersonaSeeder extends Seeder
 
                 'nombre'  => 'Profesor',
                 'apellido'  => 'Profesor',
-                'cedula'  => '00000001',
+                'cedula'  => '00000002',
                 'foto' => 'img/fotos/profesor.png',
                 'user_id' => '2'
         ]);
