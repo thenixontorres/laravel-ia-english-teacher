@@ -40,7 +40,7 @@
                         @if(isset($respuesta))
                             <div class="card"><strong>Tyler respondio: </strong>{{$respuesta->respuesta}}</div>
                         @else
-                            <div class="card"><strong> Bot dice: </strong> Hola! que tal? necesito tu ayuda. </div>
+                            <div class="card"><strong> Bot dice: </strong> Hello! {{ Auth::user()->persona->nombre }}, it's me, again. Today I need your help.  </div>
                         @endif
                     </div>
                 </div>  	
@@ -49,7 +49,7 @@
                 	{!! Form::open(['route' => 'estudiante.logs.chat']) !!}	
                 	   <hr>
     		            <div class="form-group col-md-8">
-    		            {!! Form::text('mensaje', null, ['class' => 'form-control', 'placeholder'=> 'Escribe tu mensaje','required']) !!}
+    		            {!! Form::text('mensaje', null, ['class' => 'form-control', 'placeholder'=> 'Escribe tu mensaje','required', 'autocomplete' => 'off']) !!}
         		           <input type="hidden" name="tipo_evaluacion" value="practica">
                             <!--contexto actual -->
         		            <input type="hidden" name="contexto_actual" value="{{ $contexto_actual->id }}">
