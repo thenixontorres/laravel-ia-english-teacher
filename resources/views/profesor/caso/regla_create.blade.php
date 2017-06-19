@@ -57,7 +57,7 @@
                             <div class="form-group">
                             {!! Form::label('puntos', 'Puntos:') !!}
                             <select name="puntos" class="form-control">
-                                @for($i = 1; $i<'11'; $i++)
+                                @for($i = 1; $i<'4'; $i++)
                                     <option value="{{ $i }}">{{ $i }} 
                                     </option>
                                 @endfor

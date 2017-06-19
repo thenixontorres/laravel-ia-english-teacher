@@ -1,3 +1,39 @@
+Inicio:
+A: tell me what's your problem? -> What's more delicious?
+B: hi* -> inicio
+C: i can not help you* -> inicio
+D: what* -> incio
+Default: * -> inicio
+
+What's more delicious?:
+A: the lemon cake is more delicious for me* -> Which of these ingredients did not have to buy?
+B: I do not like any*-> Which of these ingredients did not have to buy?
+C:  i can not help you* -> What's more delicious? 
+D:  what* -> What's more delicious?
+Default: * -> What's more delicious?
+
+Which of these ingredients did not have to buy?:
+A:  you did not have to buy the chicken* ->  You have eaten a chicken cake?
+B: milk , sugar , butter*  -> You have eaten a chicken cake?
+C: which ingredients?* -> Which of these ingredients did not have to buy?
+D:i can not help you* -> Which of these ingredients did not have to buy?
+E: what*- > Which of these ingredients did not have to buy?
+Default:*-> Which of these ingredients did not have to buy?
+
+You have eaten a chicken cake?:
+A: yes, I have eaten a chicken cake* -> the cake should be stored in the refrigerator?
+B:i can not help you* -> the cake should be stored in the refrigerator?:
+C: what*- > You have eaten a chicken cake?
+Default:* -> You have eaten a chicken cake?
+
+the cake should be stored in the refrigerator?:
+A: yes *->Fin
+B: no* ->Fin
+C:i can not help you* -> Fin
+D: what*- > the cake should be stored in the refrigerator?
+Deafult:* -> the cake should be stored in the refrigerator?
+ 
+
 Presente:
 ask: I need your help (listo)
 ans: what's your problem? (listo)
@@ -14,4 +50,4 @@ ans: Yes, I have eaten a chicken cake (LISTO)
 
 Futuro:
 ask: Well ... I can not imagine its taste. Well, that's all for one ... the cake is in the oven. When this list do you think it should be stored in the refrigerator?
-ans: Yes, you should keep the cake in the fridge
+ans:  

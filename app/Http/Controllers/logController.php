@@ -340,6 +340,7 @@ class logController extends AppBaseController
                         }
                     }
                     $elocuencia = $elocuencia/$count;
+                    $elocuencia = ($elocuencia*100)/3;
                     $elocuencia = number_format($elocuencia, 2);
                     $coherencia = $coherencia/$count;
                     $coherencia = number_format($coherencia, 2);

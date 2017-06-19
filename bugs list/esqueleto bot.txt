@@ -128,31 +128,85 @@
 #good morning, nice to meet you
 #good nights, nice to meet you
 #good afternoon, nice to meet you
+
 ---NO PUEDO AYUDARTE
-#i can not help you?
-#i can't help you?
+#i can not help you
+#i can't help you
 
-#hi, i can not help you?
-#hi, can't help you?
-#hi i can not help you?
-#hi i can't help you?
+#i don't know how to help you
+#i do not know how to help you
 
-#hello, i can not help you?
-#hello, i can't help you?
-#hello i can not help you?
-#hello i can't help you?
+#sorry,  i don't know how to help you
+#sorry, i do not know how to help you
 
-#i don't know how to help you?
-#i do not know how to help you?
+#sorry  i do not know how to help you
+#sorry i do not know how to help you
 
-#hi, i don't know how to help you?
-#hi, i do not know how to help you?
+#i am sorry, i do not know how to help you
+#i am sorry, i do not know how to help you
 
-#hi i don't know how to help you?
-#hi i do not know how to help you?
+#i am sorry i do not know how to help you
+#i am sorry i do not know how to help you
 
-#hello, i don't know how to help you?
-#hello, i do not know how to help you?
+#i don't know
+#i do not know
 
-#hello i don't know how to help you?
-#hello i do not know how to help you?
+#sorry,  i don't know
+#sorry, i do not know
+
+#sorry  i don't know
+#sorry i do not know
+
+#i am sorry, i don't know
+#i am sorry, i do not know
+
+#i am sorry i don't know
+#i am sorry i do not know
+
+#hi, i can not help you
+#hi, can't help you
+#hi i can not help you
+#hi i can't help you
+
+#hello, i can not help you
+#hello, i can't help you
+#hello i can not help you
+#hello i can't help you
+
+#i don't know how to help you
+#i do not know how to help you
+
+#hi, i don't know how to help you
+#hi, i do not know how to help you
+
+#hi i don't know how to help you
+#hi i do not know how to help you
+
+#hello, i don't know how to help you
+#hello, i do not know how to help you
+
+#hello i don't know how to help you
+#hello i do not know how to help you
+
+--CUAL ES TU NOMBRE
+
+--CUAL?
+#which ingredients?
+#which are?
+#which?
+#Which are the ingredients?
+#What were the iingredients?
+#What ingredients?
+
+--QUE?
+#what? 
+#how? 
+#which? 
+#where? 
+#when?
+#who? 
+#who? 
+#like  what? 
+#what thing? 
+#where in?
+

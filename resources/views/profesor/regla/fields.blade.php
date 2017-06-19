@@ -48,7 +48,7 @@
     <div class="form-group col-md-12">
         {!! Form::label('puntos', 'Puntos:') !!}
         <select name="puntos" class="form-control">
-            @for($i = 1; $i<'11'; $i++)
+            @for($i = 1; $i<'4'; $i++)
                 @if($i == $regla->puntos)
                 <option selected value="{{ $i }}">{{ $i }} 
                 </option>        
