@@ -1,3 +1,1 @@
-falta pattern en formularios
-falta carrousel en el login
-validar si el usuario esta activo en el login
+Validar si usuario esta activo

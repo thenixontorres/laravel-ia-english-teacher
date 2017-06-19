@@ -1,0 +1,158 @@
+---INICIAL
+#tell me what's your problem?
+#tell me whats your problem?
+#tell me what is your problem?
+
+#hi, tell me what's your problem? 
+#hi, tell me whats your problem?
+#hi, tell me what is your problem?
+
+#hi tell me what's your problem?
+#hi tell me whats your problem?
+#hi tell me what is your problem?
+
+#hello, tell me what's your problem? 
+#hello, tell me whats your problem?
+#hello, tell me what is your problem?
+
+#hello tell me what's your problem?
+#hello tell me whats your problem?
+#hello tell me what is your problem?
+---
+#what's your problem?
+#whats your problem?
+#what is your problem?
+
+#hi, what's your problem? 
+#hi, whats your problem?
+#hi, what is your problem?
+
+#hi what's your problem?
+#hi whats your problem?
+#hi what is your problem?
+
+#hello, what's your problem? 
+#hello, whats your problem?
+#hello, what is your problem?
+
+#hello what's your problem?
+#hello whats your problem?
+#hello what is your problem?
+---
+#what do you need?
+
+#hi, what do you need?
+
+#hi what do you need?
+
+#hello, what do you need?
+
+#hello what do you need?
+---
+#what happends?
+#what is happening?
+
+#hi, what happends? 
+#hi, what is happening?
+
+#hi what happends?
+#hi what is happening?
+
+#hello, what happends? 
+#hello, what is happening?
+
+#hello what happends?
+#hello what is happening?
+---
+#how can i help you?
+#how would i help you?
+
+#hi, how can i help you?
+#hi, how would i help you?
+
+#hi how can i help you?
+#hi how would i help you?
+
+#hello, how can i help you?
+#hello, how would i help you?
+
+#hello how can i help you?
+#hello how would i help you?
+---
+#what's the situation?
+#whats the situation?
+#what is the situation?
+
+#hi, what's the situation? 
+#hi, whats the situation?
+#hi, what is the situation?
+
+#hi what's the situation?
+#hi whats the situation?
+#hi what is the situation?
+
+#hello, what's the situation? 
+#hello, whats the situation?
+#hello, what is the situation?
+
+#hello what's the situation?
+#hello whats the situation?
+#hello what is the situation?
+---SALUDOS
+#hi
+#hello
+#good morning
+#good nights
+#good afternoon
+
+#hi how are you?
+#hello how are you?
+#good morning how are you?
+#good nights how are you?
+#good afternoon how are you?
+
+#hi, how are you?
+#hello, how are you?
+#good morning, how are you?
+#good nights, how are you?
+#good afternoon, how are you?
+
+#hi nice to meet you
+#hello nice to meet you
+#good morning nice to meet you
+#good nights nice to meet you
+#good afternoon nice to meet you
+
+#hi, nice to meet you
+#hello, nice to meet you
+#good morning, nice to meet you
+#good nights, nice to meet you
+#good afternoon, nice to meet you
+---NO PUEDO AYUDARTE
+#i can not help you?
+#i can't help you?
+
+#hi, i can not help you?
+#hi, can't help you?
+#hi i can not help you?
+#hi i can't help you?
+
+#hello, i can not help you?
+#hello, i can't help you?
+#hello i can not help you?
+#hello i can't help you?
+
+#i don't know how to help you?
+#i do not know how to help you?
+
+#hi, i don't know how to help you?
+#hi, i do not know how to help you?
+
+#hi i don't know how to help you?
+#hi i do not know how to help you?
+
+#hello, i don't know how to help you?
+#hello, i do not know how to help you?
+
+#hello i don't know how to help you?
+#hello i do not know how to help you?

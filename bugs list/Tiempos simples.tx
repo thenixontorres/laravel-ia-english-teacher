@@ -1,0 +1,17 @@
+Presente:
+ask: I need your help (listo)
+ans: what's your problem? (listo)
+--
+ask: What is more delicious for you? chocolate cake, lemon cake or cheese cake? (listo)
+ans: the lemon cake is more delicious for me  (listo)
+
+Pasado  Pasado:
+ask: Which of these ingredients did not have to buy? (listo)
+ans: You did not have to buy the vinegar (listo)
+--
+ask: You have eaten a chicken cake? (LISTO)
+ans: Yes, I have eaten a chicken cake (LISTO)
+
+Futuro:
+ask: Well ... I can not imagine its taste. Well, that's all for one ... the cake is in the oven. When this list do you think it should be stored in the refrigerator?
+ans: Yes, you should keep the cake in the fridge
