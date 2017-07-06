@@ -19,7 +19,7 @@
                         </div>
                         <div class="form-group col-md-3">
                             <b>
-                                <a href="#" data-toggle="modal" data-target="#entrada_edit" class='btn btn-primary btn-xs'> <i class="glyphicon glyphicon-edit" onclick="editar_entrada({{ $entrada->id }}, '{{ $entrada->entrada }}');"></i>
+                                <a href="#" data-toggle="modal" data-target="#entrada_edit" class='btn btn-primary btn-xs'> <i class="glyphicon glyphicon-edit" onclick="editar_entrada('{{ $entrada->id }}', '{{ $entrada->entrada }});"></i>
                                 </a>
                             </b>  
                         </div>

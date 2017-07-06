@@ -25,7 +25,7 @@
     <center><h4>Diagnostico:</h4></center>
 </div>
 <div class="form-group col-md-12">
-    <p class="text-justify">	El estudiante relizo {{ $count }} interaciones en la conversacion. En el transcuro se la conversacion mantuvo un {{ $coherencia }}% de coherencia en sus mensajes. Tambien mostro un {{ $elocuencia }}% de elocuencia al hablar. Por ultimo, @if($fin == true) si @else no @endif pudo completar la conversacion exitosamente. </p>
+    <p class="text-justify">	El estudiante relizo {{ $count }} interaciones en la conversacion. En el transcuro se la conversacion mantuvo un {{ $coherencia }}% de coherencia en sus mensajes. Tambien mostro un {{ $elocuencia }}% de elocuencia al hablar. Por ultimo, @if($fin == true) si @else no @endif pudo completar la conversacion satisfactoriamente. </p>
 </div>
 <div class="form-group col-md-6">
     <p class="text-justify"><strong>Coherencia: </strong> La coherencia esta reprensentada por el porcentaje de interaciones donde se recibio un mensaje que el bot fue capaz de reconocer e interpretar.</p>

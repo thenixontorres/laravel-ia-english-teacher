@@ -32,8 +32,7 @@ B: no* ->Fin
 C:i can not help you* -> Fin
 D: what*- > the cake should be stored in the refrigerator?
 Deafult:* -> the cake should be stored in the refrigerator?
- 
-
+---
 Presente:
 ask: I need your help (listo)
 ans: what's your problem? (listo)
